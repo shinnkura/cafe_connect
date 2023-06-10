@@ -1,3 +1,4 @@
+import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -6,10 +7,11 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  // ignore: library_private_types_in_public_api
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   String dropdownValue = 'コーヒー';
@@ -18,9 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: buildAppBar(),
       body: Form(
         key: _formKey,
         child: Padding(
@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   labelText: 'Enter your name',
                 ),
                 validator: (value) {
+                  // ignore: prefer_is_empty
                   if (value?.length == 0) {
                     return 'Please enter your name';
                   }
@@ -72,10 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    print(
-                        'Name: ${_nameController.text}, Order: $dropdownValue, Time: $timeDropdownValue');
-                  }
+                  if (_formKey.currentState!.validate()) {}
                 },
                 child: const Text('Submit'),
               ),
@@ -83,6 +81,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      backgroundColor: kPrimaryColor,
+      elevation: 0,
+      title: Text(widget.title),
     );
   }
 }
