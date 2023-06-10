@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
+import '../edito_order_pages/edit_order_page.dart';
 
 class OrderListPage extends StatelessWidget {
   // Dummy data for demonstration
@@ -22,7 +23,7 @@ class OrderListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Text('Order List'),
+        title: const Text('Order List'),
       ),
       body: ListView.builder(
         itemCount: orders.length,
@@ -54,14 +55,28 @@ class OrderListPage extends StatelessWidget {
                             fontSize: 18,
                             color: Colors.brown[800]),
                       ),
-                      const Divider(color: kPrimaryColor),
+                      Divider(color: Colors.brown[800]),
                       ...names.map((name) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(
-                            name,
-                            style: TextStyle(
-                                fontSize: 16, color: Colors.brown[700]),
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditOrderPage(
+                                  name: name,
+                                  initialCoffeeType: coffeeType,
+                                  initialTime: time,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(
+                              name,
+                              style: TextStyle(
+                                  fontSize: 16, color: Colors.brown[700]),
+                            ),
                           ),
                         );
                       }).toList(),
