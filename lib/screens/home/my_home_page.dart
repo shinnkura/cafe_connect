@@ -42,8 +42,13 @@ class MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextFormField(
               controller: _nameController,
+              style: Theme.of(context).textTheme.titleMedium,
               decoration: const InputDecoration(
                 labelText: 'Enter your name',
+                labelStyle: TextStyle(color: kTextColor),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: kTextColor),
+                ),
               ),
               validator: (value) {
                 if (value?.length == 0) {
@@ -86,6 +91,11 @@ class MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {}
               },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  kPrimaryColor,
+                ),
+              ),
               child: const Text('Submit'),
             ),
           ],

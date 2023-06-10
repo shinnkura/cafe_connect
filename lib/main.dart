@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
                   ),
+                  titleMedium: const TextStyle(color: kTextColor),
                 ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
