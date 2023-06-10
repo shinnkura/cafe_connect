@@ -39,7 +39,68 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// class OrderListPage extends StatelessWidget {
+//   // Dummy data for demonstration
+//   final Map<String, Map<String, List<String>>> orders = {
+//     '15時': {
+//       'コーヒー': ['John', 'Alice'],
+//       'ふわふわカフェオレ': ['Bob'],
+//       'カフェオレ': ['Charlie', 'David'],
+//     },
+//     '17時': {
+//       'コーヒー': ['Eve', 'Frank'],
+//       'ふわふわカフェオレ': ['Grace'],
+//       'カフェオレ': ['Heidi', 'Ivan'],
+//     },
+//   };
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: kPrimaryColor,
+//         title: Text('Order List'),
+//       ),
+//       body: ListView.builder(
+//         itemCount: orders.length,
+//         itemBuilder: (context, index) {
+//           String time = orders.keys.elementAt(index);
+//           return ExpansionTile(
+//             title: Text(time),
+//             children: orders[time]!.entries.map((entry) {
+//               String coffeeType = entry.key;
+//               List<String> names = entry.value;
+//               return ExpansionTile(
+//                 title: Text(coffeeType),
+//                 children: names.map((name) {
+//                   return ListTile(
+//                     title: Text(name),
+//                   );
+//                 }).toList(),
+//               );
+//             }).toList(),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+
 class OrderListPage extends StatelessWidget {
+  // Dummy data for demonstration
+  final Map<String, Map<String, List<String>>> orders = {
+    '15時': {
+      'コーヒー': ['John', 'Alice'],
+      'ふわふわカフェオレ': ['Bob'],
+      'カフェオレ': ['Charlie', 'David'],
+    },
+    '17時': {
+      'コーヒー': ['Eve', 'Frank'],
+      'ふわふわカフェオレ': ['Grace'],
+      'カフェオレ': ['Heidi', 'Ivan'],
+    },
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +109,32 @@ class OrderListPage extends StatelessWidget {
         title: Text('Order List'),
       ),
       body: ListView.builder(
-        itemCount: 10, // Replace with your list length
+        itemCount: orders.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Order $index'), // Replace with your data
-            subtitle:
-                Text('Details for Order $index'), // Replace with your data
+          String time = orders.keys.elementAt(index);
+          return ExpansionTile(
+            title: Text(time),
+            children: orders[time]!.entries.map((entry) {
+              String coffeeType = entry.key;
+              List<String> names = entry.value;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0, top: 8.0),
+                    child: Text(
+                      coffeeType,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  ...names.map((name) {
+                    return ListTile(
+                      title: Text(name),
+                    );
+                  }).toList(),
+                ],
+              );
+            }).toList(),
           );
         },
       ),
