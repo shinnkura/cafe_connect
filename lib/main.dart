@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
 import 'screens/home/my_home_page.dart';
 
 void main() {
@@ -15,10 +16,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Coffee Order Tracker',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        scaffoldBackgroundColor: kBackgroundColor,
+        primaryColor: kPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MyHomePage(title: 'Coffee Order Tracker', key: Key('home')),
+      home: const MyHomePage(
+        title: 'Coffee Order Tracker',
+        key: Key('home'),
+      ),
     );
   }
 }
