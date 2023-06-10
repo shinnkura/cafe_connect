@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 import 'screens/order_list_pages/order_list_page.dart';
+import 'screens/top_pages/top_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,11 +31,12 @@ class MyApp extends StatelessWidget {
                 ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MyHomePage(
-        title: 'Coffee Order Tracker',
-        key: Key('home'),
-      ),
+      home: TopPage(), // Changed from MyHomePage to TopPage
       routes: {
+        '/home': (context) => const MyHomePage(
+              title: 'Coffee Order Tracker',
+              key: Key('home'),
+            ),
         '/orderList': (context) => OrderListPage(),
       },
     );
