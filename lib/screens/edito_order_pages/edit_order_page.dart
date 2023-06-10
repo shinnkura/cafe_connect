@@ -39,8 +39,18 @@ class _EditOrderPageState extends State<EditOrderPage> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text(
+              'Edit Order for ${widget.name}',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
             if (!isOrderCancelled) ...[
+              Text(
+                'Coffee Type',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               DropdownButton<String>(
                 value: dropdownValue,
                 onChanged: (String? newValue) {
@@ -55,6 +65,11 @@ class _EditOrderPageState extends State<EditOrderPage> {
                     child: Text(value),
                   );
                 }).toList(),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Time',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               DropdownButton<String>(
                 value: selectedTime,
@@ -71,6 +86,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                   );
                 }).toList(),
               ),
+              SizedBox(height: 20),
             ],
             ElevatedButton(
               onPressed: () {
@@ -85,16 +101,19 @@ class _EditOrderPageState extends State<EditOrderPage> {
               ),
               child: const Text('注文取り消し'),
             ),
+            SizedBox(height: 20),
             ElevatedButton(
-              onPressed: isOrderCancelled
-                  ? null
-                  : () {
-                      // Update the order in your data source here
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThanksPage()),
-                      );
-                    },
+              onPressed: () {
+                if (isOrderCancelled) {
+                  // Cancel the order in your data source here
+                } else {
+                  // Update the order in your data source here
+                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ThanksPage()),
+                );
+              },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
                   kPrimaryColor,
