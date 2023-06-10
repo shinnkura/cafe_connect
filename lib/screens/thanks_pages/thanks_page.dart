@@ -26,8 +26,8 @@ class ThanksPage extends StatelessWidget {
             const SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.brown[800], // background
-                onPrimary: Colors.white, // foreground
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.brown[800], // foreground
               ),
               onPressed: () {
                 Navigator.push(
@@ -40,8 +40,8 @@ class ThanksPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.brown[800], // background
-                onPrimary: Colors.white, // foreground
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.brown[800], // foreground
               ),
               onPressed: () {
                 Navigator.pop(context);
