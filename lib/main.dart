@@ -39,53 +39,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// class OrderListPage extends StatelessWidget {
-//   // Dummy data for demonstration
-//   final Map<String, Map<String, List<String>>> orders = {
-//     '15時': {
-//       'コーヒー': ['John', 'Alice'],
-//       'ふわふわカフェオレ': ['Bob'],
-//       'カフェオレ': ['Charlie', 'David'],
-//     },
-//     '17時': {
-//       'コーヒー': ['Eve', 'Frank'],
-//       'ふわふわカフェオレ': ['Grace'],
-//       'カフェオレ': ['Heidi', 'Ivan'],
-//     },
-//   };
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: kPrimaryColor,
-//         title: Text('Order List'),
-//       ),
-//       body: ListView.builder(
-//         itemCount: orders.length,
-//         itemBuilder: (context, index) {
-//           String time = orders.keys.elementAt(index);
-//           return ExpansionTile(
-//             title: Text(time),
-//             children: orders[time]!.entries.map((entry) {
-//               String coffeeType = entry.key;
-//               List<String> names = entry.value;
-//               return ExpansionTile(
-//                 title: Text(coffeeType),
-//                 children: names.map((name) {
-//                   return ListTile(
-//                     title: Text(name),
-//                   );
-//                 }).toList(),
-//               );
-//             }).toList(),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
-
 class OrderListPage extends StatelessWidget {
   // Dummy data for demonstration
   final Map<String, Map<String, List<String>>> orders = {
@@ -112,31 +65,103 @@ class OrderListPage extends StatelessWidget {
         itemCount: orders.length,
         itemBuilder: (context, index) {
           String time = orders.keys.elementAt(index);
+          int totalOrdersAtThisTime =
+              orders[time]!.values.fold(0, (prev, curr) => prev + curr.length);
           return ExpansionTile(
-            title: Text(time),
+            title: Text('$time     $totalOrdersAtThisTime名',
+                style: TextStyle(color: Colors.brown[800], fontSize: 20)),
             children: orders[time]!.entries.map((entry) {
               String coffeeType = entry.key;
               List<String> names = entry.value;
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0, top: 8.0),
-                    child: Text(
-                      coffeeType,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+              return Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                elevation: 10,
+                margin: const EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '$coffeeType     ${names.length}名',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.brown[800]),
+                      ),
+                      const Divider(color: kPrimaryColor),
+                      ...names.map((name) {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            name,
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.brown[700]),
+                          ),
+                        );
+                      }).toList(),
+                    ],
                   ),
-                  ...names.map((name) {
-                    return ListTile(
-                      title: Text(name),
-                    );
-                  }).toList(),
-                ],
+                ),
               );
             }).toList(),
           );
         },
+      ),
+    );
+  }
+}
+
+class ThanksPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.brown[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Thank You!',
+              style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.brown[800]),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Your order has been submitted successfully.',
+              style: TextStyle(fontSize: 20, color: Colors.brown[700]),
+            ),
+            SizedBox(height: 40),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.brown[800], // background
+                onPrimary: Colors.white, // foreground
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OrderListPage()),
+                );
+              },
+              child: Text('View Orders'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.brown[800], // background
+                onPrimary: Colors.white, // foreground
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Back to Home'),
+            ),
+          ],
+        ),
       ),
     );
   }

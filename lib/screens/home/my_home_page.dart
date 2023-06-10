@@ -1,6 +1,8 @@
 import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({required Key key, required this.title}) : super(key: key);
 
@@ -89,7 +91,13 @@ class MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                if (_formKey.currentState!.validate()) {}
+                if (_formKey.currentState!.validate()) {
+                  print('Name: ${_nameController.text}, Order: $dropdownValue');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ThanksPage()),
+                  );
+                }
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
