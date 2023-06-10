@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
+import '../order_list_pages/order_list_page.dart';
 
 class ThanksPage extends StatelessWidget {
   @override
