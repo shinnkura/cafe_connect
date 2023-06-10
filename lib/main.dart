@@ -44,6 +44,7 @@ class OrderListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         title: Text('Order List'),
       ),
       body: ListView.builder(
