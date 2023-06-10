@@ -7,8 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // const MyApp(Key? key) : super(key: key);
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +31,30 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(
         title: 'Coffee Order Tracker',
         key: Key('home'),
+      ),
+      routes: {
+        '/orderList': (context) => OrderListPage(),
+      },
+    );
+  }
+}
+
+class OrderListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Order List'),
+      ),
+      body: ListView.builder(
+        itemCount: 10, // Replace with your list length
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('Order $index'), // Replace with your data
+            subtitle:
+                Text('Details for Order $index'), // Replace with your data
+          );
+        },
       ),
     );
   }

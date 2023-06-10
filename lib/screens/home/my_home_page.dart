@@ -36,7 +36,7 @@ class MyHomePageState extends State<MyHomePage> {
     return Form(
       key: _formKey,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0 * 1.5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -97,6 +97,17 @@ class MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               child: const Text('Submit'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/orderList');
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  kPrimaryColor,
+                ),
+              ),
+              child: const Text('View Orders'),
             ),
           ],
         ),
