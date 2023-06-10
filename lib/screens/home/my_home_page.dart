@@ -1,7 +1,8 @@
 import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
+// import '../../main.dart';
+import '../thanks_pages/thanks_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({required Key key, required this.title}) : super(key: key);
