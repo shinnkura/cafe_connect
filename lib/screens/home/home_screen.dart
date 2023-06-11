@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/greeting_text.dart';
-import '../../widgets/order_button.dart';
+import 'components/greeting_text.dart';
+import 'components/order_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import '../screens/order_screen/order_screen.dart';
+import '../../order_screen/order_screen.dart';
 
 class OrderButton extends StatelessWidget {
   const OrderButton({Key? key}) : super(key: key);
