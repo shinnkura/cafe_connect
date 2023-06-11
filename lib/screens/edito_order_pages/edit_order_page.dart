@@ -9,11 +9,13 @@ class EditOrderPage extends StatefulWidget {
   final String initialTime;
 
   const EditOrderPage(
-      {super.key, required this.name,
+      {super.key,
+      required this.name,
       required this.initialCoffeeType,
       required this.initialTime});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EditOrderPageState createState() => _EditOrderPageState();
 }
 
@@ -42,7 +44,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              '${widget.name}様のご注文を変更しますか？',
+              '${widget.name}さんのご注文を変更します',
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),

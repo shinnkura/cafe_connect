@@ -1,6 +1,9 @@
-import 'package:cafe_connect/constants.dart';
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../constants.dart';
 import '../thanks_pages/thanks_page.dart';
 
 class OrderPage extends StatefulWidget {
@@ -18,15 +21,21 @@ class OrderPageState extends State<OrderPage> {
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時';
 
-  // フォームのバリデーションを行うメソッド
-  void _validateForm() {
-    if (_formKey.currentState!.validate()) {
-      print('Name: ${_nameController.text}, Order: $dropdownValue');
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const ThanksPage()),
-      );
+  Future<void> saveOrder(String time, String coffeeType, String name) async {
+    final prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> order = {
+      'time': time,
+      'coffeeType': coffeeType,
+      'name': name,
+    };
+    String orderString = jsonEncode(order);
+    List<String>? orderListString = prefs.getStringList('orderList');
+    if (orderListString == null) {
+      orderListString = [orderString];
+    } else {
+      orderListString.add(orderString);
     }
+    prefs.setStringList('orderList', orderListString);
   }
 
   @override
@@ -104,7 +113,19 @@ class OrderPageState extends State<OrderPage> {
               }).toList(),
             ),
             ElevatedButton(
-              onPressed: _validateForm, // フォームのバリデーションを行う
+              // onPressed: _validateForm, // フォームのバリデーションを行う
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  // print('Name: ${_nameController.text}, Order: $dropdownValue');
+                  // 注文を保存します
+                  saveOrder(
+                      timeDropdownValue, dropdownValue, _nameController.text);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ThanksPage()),
+                  );
+                }
+              },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
                   kPrimaryColor,

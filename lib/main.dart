@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               key: Key('order'),
               title: 'Coffee Order',
             ),
-        '/orderList': (context) => OrderListPage(),
+        '/orderList': (context) => const OrderListPage(),
       },
     );
   }

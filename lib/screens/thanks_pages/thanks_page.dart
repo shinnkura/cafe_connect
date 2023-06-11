@@ -34,7 +34,7 @@ class ThanksPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => OrderListPage()),
+                  MaterialPageRoute(builder: (context) => const OrderListPage()),
                 );
               },
               child: const Text('注文一覧へ'),
