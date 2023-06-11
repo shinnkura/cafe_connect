@@ -1,10 +1,14 @@
+// order_page.dart
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../constants.dart';
 import '../thanks/thanks_page.dart';
+import 'components/custom_app_bar.dart';
+import 'components/custom_dropdown_button.dart';
+import 'components/custom_elevated_button.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({required Key key, required this.title}) : super(key: key);
+  const OrderPage({required Key key, required this.title}) :super(key: key);
 
   final String title;
 
@@ -34,16 +38,8 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: CustomAppBar(title: widget.title),
       body: _buildBody(),
-    );
-  }
-
-  AppBar _buildAppBar() {
-    return AppBar(
-      backgroundColor: kPrimaryColor,
-      elevation: 0,
-      title: Text(widget.title),
     );
   }
 
@@ -75,25 +71,25 @@ class _OrderPageState extends State<OrderPage> {
                 _formKey.currentState!.validate();
               },
             ),
-            _buildDropdownButton<String>(
+            CustomDropdownButton<String>(
               value: dropdownValue,
               onChanged: (String? newValue) {
                 setState(() {
                   dropdownValue = newValue!;
                 });
               },
-              items: ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ'],
+              items: const ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ'],
             ),
-            _buildDropdownButton<String>(
+            CustomDropdownButton<String>(
               value: timeDropdownValue,
               onChanged: (String? newValue) {
                 setState(() {
                   timeDropdownValue = newValue!;
                 });
               },
-              items: ['15時', '17時'],
+              items: const ['15時', '17時'],
             ),
-            ElevatedButton(
+            CustomElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _saveOrder(
@@ -104,45 +100,18 @@ class _OrderPageState extends State<OrderPage> {
                   );
                 }
               },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  kPrimaryColor,
-                ),
-              ),
-              child: const Text('注文'),
+              text: '注文',
             ),
             const Spacer(),
-            ElevatedButton(
+            CustomElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/orderList');
               },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  kPrimaryColor,
-                ),
-              ),
-              child: const Text('注文一覧'),
+              text: '注文一覧',
             ),
           ],
         ),
       ),
-    );
-  }
-
-  DropdownButton<T> _buildDropdownButton<T>({
-    required T value,
-    required ValueChanged<T?> onChanged,
-    required List<T> items,
-  }) {
-    return DropdownButton<T>(
-      value: value,
-      onChanged: onChanged,
-      items: items.map<DropdownMenuItem<T>>((T value) {
-        return DropdownMenuItem<T>(
-          value: value,
-          child: Text(value.toString()),
-        );
-      }).toList(),
     );
   }
 }
