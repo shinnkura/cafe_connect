@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants.dart';
 import '../thanks_pages/components/thanks_edito_order.dart';
@@ -15,7 +16,6 @@ class EditOrderPage extends StatefulWidget {
       required this.initialTime});
 
   @override
-  // ignore: library_private_types_in_public_api
   _EditOrderPageState createState() => _EditOrderPageState();
 }
 
@@ -29,6 +29,39 @@ class _EditOrderPageState extends State<EditOrderPage> {
     super.initState();
     dropdownValue = widget.initialCoffeeType;
     selectedTime = widget.initialTime;
+  }
+
+  Future<void> updateOrder() async {
+    CollectionReference orders =
+        FirebaseFirestore.instance.collection('orders');
+    QuerySnapshot querySnapshot = await orders.get();
+    for (var doc in querySnapshot.docs) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      if (data['name'] == widget.name &&
+          data['coffeeType'] == widget.initialCoffeeType &&
+          data['time'] == widget.initialTime) {
+        doc.reference.update({
+          'coffeeType': dropdownValue,
+          'time': selectedTime,
+        });
+        break;
+      }
+    }
+  }
+
+  Future<void> cancelOrder() async {
+    CollectionReference orders =
+        FirebaseFirestore.instance.collection('orders');
+    QuerySnapshot querySnapshot = await orders.get();
+    for (var doc in querySnapshot.docs) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      if (data['name'] == widget.name &&
+          data['coffeeType'] == widget.initialCoffeeType &&
+          data['time'] == widget.initialTime) {
+        doc.reference.delete();
+        break;
+      }
+    }
   }
 
   @override
@@ -91,10 +124,12 @@ class _EditOrderPageState extends State<EditOrderPage> {
               const SizedBox(height: 20),
             ],
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  isOrderCancelled = true;
-                });
+              onPressed: () async {
+                await cancelOrder();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThanksPage()),
+                );
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
@@ -105,11 +140,9 @@ class _EditOrderPageState extends State<EditOrderPage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                if (isOrderCancelled) {
-                  // Cancel the order in your data source here
-                } else {
-                  // Update the order in your data source here
+              onPressed: () async {
+                if (!isOrderCancelled) {
+                  await updateOrder();
                 }
                 Navigator.push(
                   context,

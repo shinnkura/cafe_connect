@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,7 +18,7 @@ class _OrderListPageState extends State<OrderListPage> {
   Future<Map<String, Map<String, List<String>>>> loadOrder() async {
     CollectionReference orders =
         FirebaseFirestore.instance.collection('orders');
-    Map<String, Map<String, List<String>>> ordersMap = {};
+    Map<String, Map<String, List<String>>> ordersMap = SplayTreeMap();
 
     QuerySnapshot querySnapshot = await orders.get();
     for (var doc in querySnapshot.docs) {

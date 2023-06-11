@@ -18,7 +18,7 @@ class ThanksPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              '注文を承りました!',
+              '注文を変更しました!',
               style: TextStyle(fontSize: 24),
             ),
             const SizedBox(height: 20),
