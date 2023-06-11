@@ -88,6 +88,17 @@ class OrderListPage extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            kPrimaryColor,
+          ),
+        ),
+        child: const Text('ホームに戻る'),
+      ),
     );
   }
 }
