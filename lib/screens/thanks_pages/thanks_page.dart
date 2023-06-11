@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../order_list_pages/order_list_page.dart';
+import '../order_lists/order_list.dart';
 
 class ThanksPage extends StatelessWidget {
   const ThanksPage({super.key});

@@ -1,5 +1,5 @@
 import 'package:cafe_connect/screens/order_pages/order_page.dart';
-import 'package:cafe_connect/screens/order_list_pages/order_list_page.dart';
+import 'package:cafe_connect/screens/order_lists/order_list.dart';
 import 'package:cafe_connect/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
