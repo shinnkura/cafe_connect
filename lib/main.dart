@@ -25,28 +25,36 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Coffee Order',
-      theme: ThemeData(
-        scaffoldBackgroundColor: kBackgroundColor,
-        primaryColor: kBackgroundColor,
-        textTheme:
-            Theme.of(context).textTheme.apply(bodyColor: kTextColor).copyWith(
-                  bodyMedium: const TextStyle(
-                    color: kTextColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
-                  titleMedium: const TextStyle(color: kTextColor),
-                ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: _buildThemeData(context),
       home: const HomeScreen(),
-      routes: {
-        '/order': (context) => const OrderPage(
-              key: Key('order'),
-              title: 'Coffee Order',
-            ),
-        '/orderList': (context) => const OrderListPage(),
-      },
+      routes: _buildRoutes(),
     );
+  }
+
+  ThemeData _buildThemeData(BuildContext context) {
+    return ThemeData(
+      scaffoldBackgroundColor: kBackgroundColor,
+      primaryColor: kBackgroundColor,
+      textTheme:
+          Theme.of(context).textTheme.apply(bodyColor: kTextColor).copyWith(
+                bodyMedium: const TextStyle(
+                  color: kTextColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+                titleMedium: const TextStyle(color: kTextColor),
+              ),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    );
+  }
+
+  Map<String, WidgetBuilder> _buildRoutes() {
+    return {
+      '/order': (context) => const OrderPage(
+            key: Key('order'),
+            title: 'Coffee Order',
+          ),
+      '/orderList': (context) => const OrderListPage(),
+    };
   }
 }
