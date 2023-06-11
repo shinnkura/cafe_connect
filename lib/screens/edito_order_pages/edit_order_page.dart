@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants.dart';
-import '../thanks/components/thanks_edito_order.dart';
+import '../thanks/thanks_page.dart';
 
 class EditOrderPage extends StatefulWidget {
   final String name;
