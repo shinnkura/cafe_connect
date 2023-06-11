@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cafe_connect/screens/order_pages/order_page.dart';
+
+import '../order_pages/order_page.dart';
+
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,6 +25,16 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                // Firebase Analyticsのインスタンスを作成
+                // FirebaseAnalytics analytics = FirebaseAnalytics();
+
+                // // イベントを記録
+                // analytics.logEvent(name: 'button_pressed');
+
+                FirebaseAnalytics.instance.logEvent(
+                  name: 'ボタンがおされました',
+                );
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
