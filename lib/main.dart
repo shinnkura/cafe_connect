@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Coffee Order Tracker',
+      title: 'Coffee Order',
       theme: ThemeData(
         scaffoldBackgroundColor: kBackgroundColor,
         primaryColor: kBackgroundColor,
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       home: TopPage(), // Changed from MyHomePage to TopPage
       routes: {
         '/home': (context) => const MyHomePage(
-              title: 'Coffee Order Tracker',
+              title: 'Coffee Order',
               key: Key('home'),
             ),
         '/orderList': (context) => OrderListPage(),

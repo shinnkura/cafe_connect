@@ -6,23 +6,25 @@ class TopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Coffee Order Tracker'),
+        title: Text('Coffee Order'),
         backgroundColor: Colors.brown,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Welcome to Coffee Order Tracker',
+            const Text(
+              'いつも、お疲れ様です！',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Coffee Order Tracker', key: Key('home'))),
+                  MaterialPageRoute(
+                      builder: (context) => const MyHomePage(
+                          title: 'Coffee Order', key: Key('home'))),
                 );
               },
               style: ButtonStyle(
@@ -30,7 +32,7 @@ class TopPage extends StatelessWidget {
                   Colors.brown,
                 ),
               ),
-              child: const Text('Start Ordering'),
+              child: const Text('注文を始める'),
             ),
           ],
         ),

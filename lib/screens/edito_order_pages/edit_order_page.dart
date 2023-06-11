@@ -34,7 +34,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Text('Edit Order'),
+        title: const Text('注文変更'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -42,12 +42,12 @@ class _EditOrderPageState extends State<EditOrderPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Edit Order for ${widget.name}',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              '${widget.name}様のご注文を変更しますか？',
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             if (!isOrderCancelled) ...[
-              Text(
+              const Text(
                 'Coffee Type',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -66,8 +66,8 @@ class _EditOrderPageState extends State<EditOrderPage> {
                   );
                 }).toList(),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Time',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -86,7 +86,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                   );
                 }).toList(),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
             ElevatedButton(
               onPressed: () {
@@ -119,7 +119,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                   kPrimaryColor,
                 ),
               ),
-              child: const Text('Submit'),
+              child: const Text('注文'),
             ),
           ],
         ),

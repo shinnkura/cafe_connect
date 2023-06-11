@@ -12,15 +12,15 @@ class ThanksPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Thank You!',
+              'いつも、ありがとうございます!',
               style: TextStyle(
-                  fontSize: 40,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.brown[800]),
             ),
             const SizedBox(height: 20),
             Text(
-              'Your order has been submitted successfully.',
+              'ご注文を承りました',
               style: TextStyle(fontSize: 20, color: Colors.brown[700]),
             ),
             const SizedBox(height: 40),
@@ -35,18 +35,7 @@ class ThanksPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => OrderListPage()),
                 );
               },
-              child: Text('View Orders'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.brown[800], // foreground
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Back to Home'),
+              child: const Text('注文一覧へ'),
             ),
           ],
         ),

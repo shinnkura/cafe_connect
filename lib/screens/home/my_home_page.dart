@@ -47,7 +47,7 @@ class MyHomePageState extends State<MyHomePage> {
               controller: _nameController,
               style: Theme.of(context).textTheme.titleMedium,
               decoration: const InputDecoration(
-                labelText: 'Enter your name',
+                labelText: 'お名前をご記入ください',
                 labelStyle: TextStyle(color: kTextColor),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: kTextColor),
@@ -55,7 +55,7 @@ class MyHomePageState extends State<MyHomePage> {
               ),
               validator: (value) {
                 if (value?.length == 0) {
-                  return 'Please enter your name';
+                  return 'お名前をご記入ください';
                 }
                 return null;
               },
@@ -105,7 +105,7 @@ class MyHomePageState extends State<MyHomePage> {
                   kPrimaryColor,
                 ),
               ),
-              child: const Text('Submit'),
+              child: const Text('注文'),
             ),
             // const SizedBox(height: 200),
             const Spacer(),
@@ -118,7 +118,7 @@ class MyHomePageState extends State<MyHomePage> {
                   kPrimaryColor,
                 ),
               ),
-              child: const Text('View Orders'),
+              child: const Text('注文一覧'),
             ),
           ],
         ),
