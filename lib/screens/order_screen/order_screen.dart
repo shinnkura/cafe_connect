@@ -1,4 +1,3 @@
-// order_page.dart
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../constants.dart';
@@ -8,7 +7,7 @@ import 'components/custom_dropdown_button.dart';
 import 'components/custom_elevated_button.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({required Key key, required this.title}) :super(key: key);
+  const OrderPage({required Key key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -49,7 +48,7 @@ class _OrderPageState extends State<OrderPage> {
       child: Padding(
         padding: const EdgeInsets.all(20.0 * 1.5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             TextFormField(
               controller: _nameController,
@@ -78,7 +77,7 @@ class _OrderPageState extends State<OrderPage> {
                   dropdownValue = newValue!;
                 });
               },
-              items: const ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ'],
+              items: ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ'],
             ),
             CustomDropdownButton<String>(
               value: timeDropdownValue,
@@ -87,7 +86,7 @@ class _OrderPageState extends State<OrderPage> {
                   timeDropdownValue = newValue!;
                 });
               },
-              items: const ['15時', '17時'],
+              items: ['15時', '17時'],
             ),
             CustomElevatedButton(
               onPressed: () {
