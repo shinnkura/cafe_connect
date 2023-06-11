@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants.dart';
 import '../thanks_pages/thanks_page.dart';
@@ -22,20 +21,16 @@ class OrderPageState extends State<OrderPage> {
   String timeDropdownValue = '15時';
 
   Future<void> saveOrder(String time, String coffeeType, String name) async {
-    final prefs = await SharedPreferences.getInstance();
-    Map<String, dynamic> order = {
-      'time': time,
-      'coffeeType': coffeeType,
-      'name': name,
-    };
-    String orderString = jsonEncode(order);
-    List<String>? orderListString = prefs.getStringList('orderList');
-    if (orderListString == null) {
-      orderListString = [orderString];
-    } else {
-      orderListString.add(orderString);
-    }
-    prefs.setStringList('orderList', orderListString);
+    CollectionReference orders =
+        FirebaseFirestore.instance.collection('orders');
+    return orders
+        .add({
+          'time': time,
+          'coffeeType': coffeeType,
+          'name': name,
+        })
+        .then((value) => print("Order Added"))
+        .catchError((error) => print("Failed to add order: $error"));
   }
 
   @override

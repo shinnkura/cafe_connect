@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants.dart';
 import '../edito_order_pages/edit_order_page.dart';
@@ -15,25 +14,26 @@ class OrderListPage extends StatefulWidget {
 
 class _OrderListPageState extends State<OrderListPage> {
   Future<Map<String, Map<String, List<String>>>> loadOrder() async {
-    final prefs = await SharedPreferences.getInstance();
-    Map<String, Map<String, List<String>>> orders = {};
-    List<String>? orderListString = prefs.getStringList('orderList');
-    if (orderListString != null) {
-      for (String orderString in orderListString) {
-        Map<String, dynamic> order = jsonDecode(orderString);
-        String time = order['time'];
-        String coffeeType = order['coffeeType'];
-        String name = order['name'];
-        if (orders[time] == null) {
-          orders[time] = {};
-        }
-        if (orders[time]![coffeeType] == null) {
-          orders[time]![coffeeType] = [];
-        }
-        orders[time]![coffeeType]!.add(name);
+    CollectionReference orders =
+        FirebaseFirestore.instance.collection('orders');
+    Map<String, Map<String, List<String>>> ordersMap = {};
+
+    QuerySnapshot querySnapshot = await orders.get();
+    for (var doc in querySnapshot.docs) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      String time = data['time'];
+      String coffeeType = data['coffeeType'];
+      String name = data['name'];
+      if (ordersMap[time] == null) {
+        ordersMap[time] = {};
       }
+      if (ordersMap[time]![coffeeType] == null) {
+        ordersMap[time]![coffeeType] = [];
+      }
+      ordersMap[time]![coffeeType]!.add(name);
     }
-    return orders;
+
+    return ordersMap;
   }
 
   @override
@@ -49,7 +49,7 @@ class _OrderListPageState extends State<OrderListPage> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return const Center(child: Text('エラーが発生しました'));
+              return Center(child: Text('エラーが発生しました: ${snapshot.error}'));
             } else {
               Map<String, Map<String, List<String>>> orders = snapshot.data!;
               return ListView.builder(
