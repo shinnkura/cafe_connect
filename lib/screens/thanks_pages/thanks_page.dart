@@ -13,12 +13,15 @@ class ThanksPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'いつも、ありがとうございます!',
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.brown[800]),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                'いつも、ありがとうございます!',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.brown[800]),
+              ),
             ),
             const SizedBox(height: 20),
             Text(
@@ -34,7 +37,8 @@ class ThanksPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const OrderListPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const OrderListPage()),
                 );
               },
               child: const Text('注文一覧へ'),
