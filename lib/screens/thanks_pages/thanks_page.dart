@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../order_list_pages/order_list_page.dart';
 
 class ThanksPage extends StatelessWidget {
+  const ThanksPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

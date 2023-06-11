@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:cafe_connect/screens/order_pages/order_page.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Coffee Order'),
+        title: const Text('Coffee Order'),
         backgroundColor: Colors.brown,
       ),
       body: Center(

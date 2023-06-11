@@ -18,6 +18,8 @@ class OrderListPage extends StatelessWidget {
     },
   };
 
+  OrderListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

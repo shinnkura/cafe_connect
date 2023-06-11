@@ -8,8 +8,8 @@ class EditOrderPage extends StatefulWidget {
   final String initialCoffeeType;
   final String initialTime;
 
-  EditOrderPage(
-      {required this.name,
+  const EditOrderPage(
+      {super.key, required this.name,
       required this.initialCoffeeType,
       required this.initialTime});
 
@@ -101,7 +101,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
               ),
               child: const Text('注文取り消し'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 if (isOrderCancelled) {
@@ -111,7 +111,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 }
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ThanksPage()),
+                  MaterialPageRoute(builder: (context) => const ThanksPage()),
                 );
               },
               style: ButtonStyle(

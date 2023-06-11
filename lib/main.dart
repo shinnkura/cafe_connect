@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
                 ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
       routes: {
         '/order': (context) => const OrderPage(
               key: Key('order'),

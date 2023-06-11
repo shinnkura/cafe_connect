@@ -24,7 +24,7 @@ class OrderPageState extends State<OrderPage> {
       print('Name: ${_nameController.text}, Order: $dropdownValue');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ThanksPage()),
+        MaterialPageRoute(builder: (context) => const ThanksPage()),
       );
     }
   }
@@ -64,7 +64,7 @@ class OrderPageState extends State<OrderPage> {
                 ),
               ),
               validator: (value) {
-                if (value?.length == 0) {
+                if (value!.isEmpty) {
                   return 'お名前をご記入ください';
                 }
                 return null;
