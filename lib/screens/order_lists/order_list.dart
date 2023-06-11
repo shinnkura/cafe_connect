@@ -1,11 +1,8 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../constants.dart';
 import '../edito_order_pages/edit_order_page.dart';
+import '../order_screen/components/custom_app_bar.dart';
+import '../order_screen/components/custom_elevated_button.dart';
+import 'components/order_loader.dart';
 
 class OrderListPage extends StatefulWidget {
   const OrderListPage({Key? key}) : super(key: key);
@@ -15,36 +12,10 @@ class OrderListPage extends StatefulWidget {
 }
 
 class _OrderListPageState extends State<OrderListPage> {
-  Future<Map<String, Map<String, List<String>>>> loadOrder() async {
-    CollectionReference orders =
-        FirebaseFirestore.instance.collection('orders');
-    Map<String, Map<String, List<String>>> ordersMap = SplayTreeMap();
-
-    QuerySnapshot querySnapshot = await orders.get();
-    for (var doc in querySnapshot.docs) {
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      String time = data['time'];
-      String coffeeType = data['coffeeType'];
-      String name = data['name'];
-      if (ordersMap[time] == null) {
-        ordersMap[time] = {};
-      }
-      if (ordersMap[time]![coffeeType] == null) {
-        ordersMap[time]![coffeeType] = [];
-      }
-      ordersMap[time]![coffeeType]!.add(name);
-    }
-
-    return ordersMap;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        title: const Text('Order List'),
-      ),
+      appBar: const CustomAppBar(title: 'Order List'),
       body: FutureBuilder<Map<String, Map<String, List<String>>>>(
           future: loadOrder(),
           builder: (context, snapshot) {
@@ -88,28 +59,33 @@ class _OrderListPageState extends State<OrderListPage> {
                               ),
                               Divider(color: Colors.brown[800]),
                               ...names.map((name) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => EditOrderPage(
-                                          name: name,
-                                          initialCoffeeType: coffeeType,
-                                          initialTime: time,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Text(
+                                return Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
                                       name,
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.brown[700]),
                                     ),
-                                  ),
+                                    IconButton(
+                                      icon: Icon(Icons.edit,
+                                          color: Colors.brown[700]),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => EditOrderPage(
+                                              name: name,
+                                              initialCoffeeType: coffeeType,
+                                              initialTime: time,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 );
                               }).toList(),
                             ],
@@ -122,16 +98,11 @@ class _OrderListPageState extends State<OrderListPage> {
               );
             }
           }),
-      floatingActionButton: ElevatedButton(
+      floatingActionButton: CustomElevatedButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);
         },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            kPrimaryColor,
-          ),
-        ),
-        child: const Text('ホームに戻る'),
+        text: 'ホームに戻る',
       ),
     );
   }
