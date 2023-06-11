@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants.dart';
-import '../thanks/thanks_page.dart';
+import '../thanks_pages/thanks_page.dart';
+import 'components/coffee_type_dropdown.dart';
+import 'components/order_change_text.dart';
 
 class EditOrderPage extends StatefulWidget {
   final String name;
@@ -76,30 +78,16 @@ class _EditOrderPageState extends State<EditOrderPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              '${widget.name}さんのご注文を変更します',
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+            OrderChangeText(name: widget.name),
             const SizedBox(height: 20),
             if (!isOrderCancelled) ...[
-              const Text(
-                'Coffee Type',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              DropdownButton<String>(
-                value: dropdownValue,
-                onChanged: (String? newValue) {
+              CoffeeTypeDropdown(
+                dropdownValue: dropdownValue,
+                onChanged: (newValue) {
                   setState(() {
                     dropdownValue = newValue!;
                   });
                 },
-                items: <String>['コーヒー', 'ふわふわカフェオレ', 'カフェオレ']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
               ),
               const SizedBox(height: 20),
               const Text(

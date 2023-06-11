@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../constants.dart';
-import '../thanks/thanks_page.dart';
+import '../thanks_pages/thanks_page.dart';
 import 'components/custom_app_bar.dart';
 import 'components/custom_dropdown_button.dart';
 import 'components/custom_elevated_button.dart';
