@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
+import '../../order_list_pages/order_list_page.dart';
 
 class ThanksPage extends StatelessWidget {
   const ThanksPage({super.key});
@@ -19,6 +20,22 @@ class ThanksPage extends StatelessWidget {
             const Text(
               '注文を承りました!',
               style: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  kPrimaryColor,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const OrderListPage()),
+                );
+              },
+              child: const Text('注文一覧へ'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
