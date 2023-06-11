@@ -18,6 +18,17 @@ class OrderPageState extends State<OrderPage> {
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時';
 
+  // フォームのバリデーションを行うメソッド
+  void _validateForm() {
+    if (_formKey.currentState!.validate()) {
+      print('Name: ${_nameController.text}, Order: $dropdownValue');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ThanksPage()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +69,9 @@ class OrderPageState extends State<OrderPage> {
                 }
                 return null;
               },
+              onChanged: (value) {
+                _formKey.currentState!.validate();
+              },
             ),
             DropdownButton<String>(
               value: dropdownValue,
@@ -90,15 +104,7 @@ class OrderPageState extends State<OrderPage> {
               }).toList(),
             ),
             ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  print('Name: ${_nameController.text}, Order: $dropdownValue');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ThanksPage()),
-                  );
-                }
-              },
+              onPressed: _validateForm, // フォームのバリデーションを行う
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
                   kPrimaryColor,
