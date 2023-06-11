@@ -7,24 +7,33 @@ class OrderButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        FirebaseAnalytics.instance.logEvent(
-          name: 'ボタンがおされました',
-        );
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  const OrderPage(title: 'Coffee Order', key: Key('order'))),
-        );
-      },
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(
-          Colors.brown,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: () {
+          FirebaseAnalytics.instance.logEvent(
+            name: 'ボタンがおされました',
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const OrderPage(title: 'Coffee Order', key: Key('order'))),
+          );
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Colors.brown,
+          ),
+          padding: MaterialStateProperty.all<EdgeInsets>(
+            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+          ),
+        ),
+        child: const Text(
+          '注文を始める',
+          style: TextStyle(fontSize: 20),
         ),
       ),
-      child: const Text('注文を始める'),
     );
   }
 }
