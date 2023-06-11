@@ -1,19 +1,18 @@
 import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 
-// import '../../main.dart';
 import '../thanks_pages/thanks_page.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({required Key key, required this.title}) : super(key: key);
+class OrderPage extends StatefulWidget {
+  const OrderPage({required Key key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  MyHomePageState createState() => MyHomePageState();
+  OrderPageState createState() => OrderPageState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class OrderPageState extends State<OrderPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   String dropdownValue = 'コーヒー';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cafe_connect/screens/home/my_home_page.dart';
+import 'package:cafe_connect/screens/order_pages/order_page.dart';
 
-class TopPage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +23,8 @@ class TopPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const MyHomePage(
-                          title: 'Coffee Order', key: Key('home'))),
+                      builder: (context) => const OrderPage(
+                          title: 'Coffee Order', key: Key('order'))),
                 );
               },
               style: ButtonStyle(

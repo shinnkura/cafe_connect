@@ -1,9 +1,9 @@
-import 'package:cafe_connect/screens/home/my_home_page.dart';
+import 'package:cafe_connect/screens/order_pages/order_page.dart';
+import 'package:cafe_connect/screens/order_list_pages/order_list_page.dart';
+import 'package:cafe_connect/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
-import 'screens/order_list_pages/order_list_page.dart';
-import 'screens/top_pages/top_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
                 ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: TopPage(), // Changed from MyHomePage to TopPage
+      home: HomeScreen(),
       routes: {
-        '/home': (context) => const MyHomePage(
+        '/order': (context) => const OrderPage(
+              key: Key('order'),
               title: 'Coffee Order',
-              key: Key('home'),
             ),
         '/orderList': (context) => OrderListPage(),
       },
