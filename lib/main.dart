@@ -1,4 +1,4 @@
-import 'package:cafe_connect/screens/order_pages/order_page.dart';
+import 'package:cafe_connect/screens/order_screen/order_screen.dart';
 import 'package:cafe_connect/screens/order_lists/order_list.dart';
 import 'package:cafe_connect/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';

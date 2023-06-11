@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../constants.dart';
-import '../thanks_pages/thanks_page.dart';
+import '../thanks/thanks_page.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({required Key key, required this.title}) : super(key: key);

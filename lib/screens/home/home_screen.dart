@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../order_pages/order_page.dart';
+import '../order_screen/order_screen.dart';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 
