@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../constants.dart';
 import '../thanks/thanks_page.dart';
 
@@ -11,16 +9,16 @@ class OrderPage extends StatefulWidget {
   final String title;
 
   @override
-  OrderPageState createState() => OrderPageState();
+  _OrderPageState createState() => _OrderPageState();
 }
 
-class OrderPageState extends State<OrderPage> {
+class _OrderPageState extends State<OrderPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時';
 
-  Future<void> saveOrder(String time, String coffeeType, String name) async {
+  Future<void> _saveOrder(String time, String coffeeType, String name) async {
     CollectionReference orders =
         FirebaseFirestore.instance.collection('orders');
     return orders
@@ -36,12 +34,12 @@ class OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
-      body: buildBody(),
+      appBar: _buildAppBar(),
+      body: _buildBody(),
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar _buildAppBar() {
     return AppBar(
       backgroundColor: kPrimaryColor,
       elevation: 0,
@@ -49,7 +47,7 @@ class OrderPageState extends State<OrderPage> {
     );
   }
 
-  Widget buildBody() {
+  Widget _buildBody() {
     return Form(
       key: _formKey,
       child: Padding(
@@ -77,43 +75,28 @@ class OrderPageState extends State<OrderPage> {
                 _formKey.currentState!.validate();
               },
             ),
-            DropdownButton<String>(
+            _buildDropdownButton<String>(
               value: dropdownValue,
               onChanged: (String? newValue) {
                 setState(() {
                   dropdownValue = newValue!;
                 });
               },
-              items: <String>['コーヒー', 'ふわふわカフェオレ', 'カフェオレ']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              items: ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ'],
             ),
-            DropdownButton<String>(
+            _buildDropdownButton<String>(
               value: timeDropdownValue,
               onChanged: (String? newValue) {
                 setState(() {
                   timeDropdownValue = newValue!;
                 });
               },
-              items: <String>['15時', '17時']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              items: ['15時', '17時'],
             ),
             ElevatedButton(
-              // onPressed: _validateForm, // フォームのバリデーションを行う
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  // print('Name: ${_nameController.text}, Order: $dropdownValue');
-                  // 注文を保存します
-                  saveOrder(
+                  _saveOrder(
                       timeDropdownValue, dropdownValue, _nameController.text);
                   Navigator.push(
                     context,
@@ -128,7 +111,6 @@ class OrderPageState extends State<OrderPage> {
               ),
               child: const Text('注文'),
             ),
-            // const SizedBox(height: 200),
             const Spacer(),
             ElevatedButton(
               onPressed: () {
@@ -144,6 +126,23 @@ class OrderPageState extends State<OrderPage> {
           ],
         ),
       ),
+    );
+  }
+
+  DropdownButton<T> _buildDropdownButton<T>({
+    required T value,
+    required ValueChanged<T?> onChanged,
+    required List<T> items,
+  }) {
+    return DropdownButton<T>(
+      value: value,
+      onChanged: onChanged,
+      items: items.map<DropdownMenuItem<T>>((T value) {
+        return DropdownMenuItem<T>(
+          value: value,
+          child: Text(value.toString()),
+        );
+      }).toList(),
     );
   }
 }
