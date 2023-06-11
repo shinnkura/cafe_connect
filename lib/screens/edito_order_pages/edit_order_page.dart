@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
-import '../thanks_pages/components/edito_order.dart';
+import '../thanks_pages/components/thanks_edito_order.dart';
 
 class EditOrderPage extends StatefulWidget {
   final String name;
