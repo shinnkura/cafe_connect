@@ -77,7 +77,7 @@ class _OrderPageState extends State<OrderPage> {
                   dropdownValue = newValue!;
                 });
               },
-              items: ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ'],
+              items: const ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ', 'アイスコーヒー'],
             ),
             CustomDropdownButton<String>(
               value: timeDropdownValue,
@@ -86,7 +86,7 @@ class _OrderPageState extends State<OrderPage> {
                   timeDropdownValue = newValue!;
                 });
               },
-              items: ['15時', '17時'],
+              items: const ['15時', '17時'],
             ),
             CustomElevatedButton(
               onPressed: () {
