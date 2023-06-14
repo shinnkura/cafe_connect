@@ -14,7 +14,7 @@ class CoffeeTypeDropdown extends StatelessWidget {
     return DropdownButton<String>(
       value: dropdownValue,
       onChanged: onChanged,
-      items: const ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ', 'アイスコーヒー(急冷式)', 'アイスコーヒー（水出し）']
+      items: const ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ', 'アイスコーヒー(急冷式)', 'アイスコーヒー（水出し）', 'アイスカフェオレ']
           .map<DropdownMenuItem<String>>((value) {
         return DropdownMenuItem<String>(
           value: value,
