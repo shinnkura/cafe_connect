@@ -77,7 +77,15 @@ class _OrderPageState extends State<OrderPage> {
                   dropdownValue = newValue!;
                 });
               },
-              items: const ['コーヒー', 'ふわふわカフェオレ', 'カフェオレ', 'アイスコーヒー(急冷式)', 'アイスコーヒー（水出し）', 'アイスカフェオレ'],
+              items: const [
+                'コーヒー',
+                'ふわふわラテ',
+                'カフェオレ',
+                'アイスコーヒー(急冷式)',
+                'アイスコーヒー（水出し）',
+                'アイスカフェラテ（牛乳７割）',
+                'アイスカフェオレ（コーヒー７割）',
+              ],
             ),
             CustomDropdownButton<String>(
               value: timeDropdownValue,
