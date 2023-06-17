@@ -17,8 +17,11 @@ class OrderButton extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    const OrderPage(title: 'Coffee Order', key: Key('order'))),
+              builder: (context) => const OrderPage(
+                title: 'Coffee Order',
+                key: Key('order'),
+              ),
+            ),
           );
         },
         style: ButtonStyle(

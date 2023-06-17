@@ -10,7 +10,7 @@ class OrderListButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
         backgroundColor: Colors.brown[800],
-        minimumSize: Size(200, 60), // ボタンの最小サイズを設定
+        minimumSize: const Size(200, 60), // ボタンの最小サイズを設定
       ),
       onPressed: () {
         Navigator.push(

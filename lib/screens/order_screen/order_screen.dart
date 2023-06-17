@@ -109,13 +109,13 @@ class _OrderPageState extends State<OrderPage> {
               },
               text: '注文',
             ),
-            const Spacer(),
-            CustomElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/orderList');
-              },
-              text: '注文一覧',
-            ),
+            // const Spacer(),
+            // CustomElevatedButton(
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, '/orderList');
+            //   },
+            //   text: '注文一覧',
+            // ),
           ],
         ),
       ),

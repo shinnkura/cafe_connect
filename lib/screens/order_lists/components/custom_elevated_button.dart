@@ -5,7 +5,7 @@ class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
 
-  CustomElevatedButton({required this.onPressed, required this.text});
+  const CustomElevatedButton({required this.onPressed, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,14 @@ class CustomElevatedButton extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all<Color>(
           kPrimaryColor,
         ),
+        padding: MaterialStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+        ),
       ),
-      child: Text(text),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 20),
+      ),
     );
   }
 }
