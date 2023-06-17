@@ -101,7 +101,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                     selectedTime = newValue!;
                   });
                 },
-                items: <String>['15時', '17時']
+                items: <String>['15時30分', '17時30分']
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,

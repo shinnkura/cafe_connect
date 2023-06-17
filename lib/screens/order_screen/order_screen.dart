@@ -19,7 +19,7 @@ class _OrderPageState extends State<OrderPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   String dropdownValue = 'コーヒー';
-  String timeDropdownValue = '15時';
+  String timeDropdownValue = '15時30分';
 
   Future<void> _saveOrder(String time, String coffeeType, String name) async {
     CollectionReference orders =
@@ -94,7 +94,7 @@ class _OrderPageState extends State<OrderPage> {
                   timeDropdownValue = newValue!;
                 });
               },
-              items: const ['15時', '17時'],
+              items: const ['15時30分', '17時30分'],
             ),
             CustomElevatedButton(
               onPressed: () {
