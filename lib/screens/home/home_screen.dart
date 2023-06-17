@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../order_lists/components/custom_elevated_button.dart';
 import 'components/greeting_text.dart';
 import 'components/order_button.dart';
 
@@ -12,13 +13,20 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Coffee Order'),
         backgroundColor: Colors.brown,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            GreetingText(),
-            SizedBox(height: 20),
-            OrderButton(),
+            const GreetingText(),
+            const SizedBox(height: 20),
+            const OrderButton(),
+            const SizedBox(height: 200),
+            CustomElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/orderList');
+              },
+              text: '注文一覧',
+            ),
           ],
         ),
       ),
