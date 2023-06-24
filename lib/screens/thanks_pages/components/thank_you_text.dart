@@ -12,11 +12,13 @@ class ThankYouText extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Text(
-            'いつも、ありがとうございます!',
+            'ありがとうございます!',
+            textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.brown[800]),
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.brown[800],
+            ),
           ),
         ),
       ],
