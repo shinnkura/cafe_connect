@@ -18,15 +18,18 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const GreetingText(),
-            const SizedBox(height: 20),
+            // const SizedBox(height: 20),
+            Spacer(),
             const OrderButton(),
-            const SizedBox(height: 200),
+            // const SizedBox(height: 200),
+            Spacer(),
             CustomElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/orderList');
               },
               text: '注文一覧',
             ),
+            Spacer(),
           ],
         ),
       ),
