@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+// import 'package:lottie/lottie.dart';
 
 class ThankYouText extends StatelessWidget {
   const ThankYouText({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class ThankYouText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Lottie.asset('assets/success.json'),
+        // Lottie.asset('assets/success.json'),
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Text(

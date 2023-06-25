@@ -14,43 +14,40 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.brown,
       ),
       body: Center(
-        child: ListView(
+        // child: ListView(
+        //   children: <Widget>[
+        //     Column(
+        //       children: <Widget>[
+        //         const GreetingText(),
+        //         const SizedBox(height: 20),
+        //         const OrderButton(),
+        //         const SizedBox(height: 20),
+        //         CustomElevatedButton(
+        //           onPressed: () {
+        //             Navigator.pushNamed(context, '/orderList');
+        //           },
+        //           text: '注文一覧',
+        //         ),
+        //         const SizedBox(height: 20),
+        //       ],
+        //     ),
+        //   ],
+        // ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                const GreetingText(),
-                const SizedBox(height: 20),
-                const OrderButton(),
-                const SizedBox(height: 20),
-                CustomElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/orderList');
-                  },
-                  text: '注文一覧',
-                ),
-                const SizedBox(height: 20),
-              ],
+            const GreetingText(),
+            const SizedBox(height: 20),
+            const OrderButton(),
+            const SizedBox(height: 200),
+            CustomElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/orderList');
+              },
+              text: '注文一覧',
             ),
           ],
         ),
-        // child: Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: <Widget>[
-        //     const GreetingText(),
-        //     // const SizedBox(height: 20),
-        //     Spacer(),
-        //     const OrderButton(),
-        //     // const SizedBox(height: 200),
-        //     Spacer(),
-        //     CustomElevatedButton(
-        //       onPressed: () {
-        //         Navigator.pushNamed(context, '/orderList');
-        //       },
-        //       text: '注文一覧',
-        //     ),
-        //     Spacer(),
-        //   ],
-        // ),
       ),
     );
   }
