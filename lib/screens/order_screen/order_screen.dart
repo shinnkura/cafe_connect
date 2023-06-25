@@ -85,6 +85,8 @@ class _OrderPageState extends State<OrderPage> {
                 'アイスコーヒー（水出し）',
                 'アイスカフェラテ（牛乳７割）',
                 'アイスカフェオレ（コーヒー７割）',
+                'アイスグリーンティー（緑茶）',
+                'アイスティー（茶葉は日替わり）',
               ],
             ),
             CustomDropdownButton<String>(
