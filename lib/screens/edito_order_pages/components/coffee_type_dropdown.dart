@@ -16,14 +16,17 @@ class CoffeeTypeDropdown extends StatelessWidget {
       onChanged: onChanged,
       items: const [
         'コーヒー',
-        'ふわふわラテ',
         'カフェオレ',
-        'アイスコーヒー(急冷式)',
+        'ちょいふわカフェオレ',
+        'ふわふわカフェオレ',
         'アイスコーヒー（水出し）',
-        'アイスカフェラテ（牛乳７割）',
-        'アイスカフェオレ（コーヒー７割）',
-        'アイスグリーンティー（緑茶）',
-        'アイスティー（茶葉は日替わり）',
+        'アイスコーヒー(急冷式)',
+        'アイスカフェオレ',
+        'アイスカフェオレ（ミルク多め）',
+        '温かい緑茶',
+        '温かい紅茶（茶葉は日替わり）',
+        '冷たい緑茶',
+        '冷たい紅茶（茶葉は日替わり）',
       ].map<DropdownMenuItem<String>>((value) {
         return DropdownMenuItem<String>(
           value: value,
