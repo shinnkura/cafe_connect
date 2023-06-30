@@ -60,15 +60,8 @@ class _OrderListPageState extends State<OrderListPage> {
                               Divider(color: Colors.brown[800]),
                               ...names.map((name) {
                                 return Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      name,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.brown[700]),
-                                    ),
                                     IconButton(
                                       icon: Icon(Icons.edit,
                                           color: Colors.brown[700]),
@@ -84,6 +77,13 @@ class _OrderListPageState extends State<OrderListPage> {
                                           ),
                                         );
                                       },
+                                    ),
+                                    SizedBox(width: 20),
+                                    Text(
+                                      name,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.brown[700]),
                                     ),
                                   ],
                                 );
