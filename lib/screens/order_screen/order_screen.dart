@@ -18,6 +18,8 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
+
+  bool _isSugar = false;
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時30分';
 
@@ -50,56 +52,74 @@ class _OrderPageState extends State<OrderPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            TextFormField(
-              controller: _nameController,
-              style: Theme.of(context).textTheme.titleMedium,
-              decoration: const InputDecoration(
-                labelText: 'お名前をご記入ください',
-                labelStyle: TextStyle(color: kTextColor),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: kTextColor),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextFormField(
+                controller: _nameController,
+                style: Theme.of(context).textTheme.titleMedium,
+                decoration: const InputDecoration(
+                  labelText: 'お名前をご記入ください',
+                  labelStyle: TextStyle(color: kTextColor),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: kTextColor),
+                  ),
                 ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'お名前をご記入ください';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  _formKey.currentState!.validate();
+                },
               ),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'お名前をご記入ください';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                _formKey.currentState!.validate();
-              },
             ),
-            CustomDropdownButton<String>(
-              value: dropdownValue,
-              onChanged: (String? newValue) {
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: CustomDropdownButton<String>(
+                value: timeDropdownValue,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    timeDropdownValue = newValue!;
+                  });
+                },
+                items: const ['15時30分', '17時30分'],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: CustomDropdownButton<String>(
+                value: dropdownValue,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    dropdownValue = newValue!;
+                  });
+                },
+                items: const [
+                  'コーヒー',
+                  'カフェオレ',
+                  'ちょいふわカフェオレ',
+                  'ふわふわカフェオレ',
+                  'アイスコーヒー（水出し）',
+                  'アイスコーヒー(急冷式)',
+                  'アイスカフェオレ',
+                  'アイスカフェオレ（ミルク多め）',
+                  '温かい緑茶',
+                  '温かい紅茶（茶葉は日替わり）',
+                  '冷たい緑茶',
+                  '冷たい紅茶（茶葉は日替わり）',
+                ],
+              ),
+            ),
+            SwitchListTile(
+              title: const Text('砂糖'),
+              value: _isSugar,
+              onChanged: (bool value) {
                 setState(() {
-                  dropdownValue = newValue!;
+                  _isSugar = value;
                 });
               },
-              items: const [
-                'コーヒー',
-                'カフェオレ',
-                'ちょいふわカフェオレ',
-                'ふわふわカフェオレ',
-                'アイスコーヒー（水出し）',
-                'アイスコーヒー(急冷式)',
-                'アイスカフェオレ',
-                'アイスカフェオレ（ミルク多め）',
-                '温かい緑茶',
-                '温かい紅茶（茶葉は日替わり）',
-                '冷たい緑茶',
-                '冷たい紅茶（茶葉は日替わり）',
-              ],
-            ),
-            CustomDropdownButton<String>(
-              value: timeDropdownValue,
-              onChanged: (String? newValue) {
-                setState(() {
-                  timeDropdownValue = newValue!;
-                });
-              },
-              items: const ['15時30分', '17時30分'],
             ),
             CustomElevatedButton(
               onPressed: () {
@@ -114,13 +134,6 @@ class _OrderPageState extends State<OrderPage> {
               },
               text: '注文',
             ),
-            // const Spacer(),
-            // CustomElevatedButton(
-            //   onPressed: () {
-            //     Navigator.pushNamed(context, '/orderList');
-            //   },
-            //   text: '注文一覧',
-            // ),
           ],
         ),
       ),
