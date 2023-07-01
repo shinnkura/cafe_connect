@@ -24,19 +24,6 @@ class _OrderPageState extends State<OrderPage> {
   bool _isSugar = false;
   bool _isPickupOn4thFloor = false;
 
-  // Future<void> _saveOrder(String time, String coffeeType, String name) async {
-  //   CollectionReference orders =
-  //       FirebaseFirestore.instance.collection('orders');
-  //   return orders
-  //       .add({
-  //         'time': time,
-  //         'coffeeType': coffeeType,
-  //         'name': name,
-  //       })
-  //       .then((value) => print("Order Added"))
-  //       .catchError((error) => print("Failed to add order: $error"));
-  // }
-
   Future<void> _saveOrder(String time, String coffeeType, String name,
       bool isSugar, bool isPickupOn4thFloor) async {
     CollectionReference orders =
@@ -75,7 +62,7 @@ class _OrderPageState extends State<OrderPage> {
                 controller: _nameController,
                 style: Theme.of(context).textTheme.titleMedium,
                 decoration: const InputDecoration(
-                  labelText: 'お名前をご記入ください',
+                  labelText: '名前',
                   labelStyle: TextStyle(color: kTextColor),
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: kTextColor),
@@ -129,37 +116,24 @@ class _OrderPageState extends State<OrderPage> {
                 ],
               ),
             ),
-            SwitchListTile(
-              title: const Text('砂糖'),
+            CheckboxListTile(
+              title: const Text("砂糖あり"),
               value: _isSugar,
-              onChanged: (bool value) {
+              onChanged: (bool? value) {
                 setState(() {
-                  _isSugar = value;
+                  _isSugar = value!;
                 });
               },
             ),
-            SwitchListTile(
-              title: const Text('4階で受け取る'),
+            CheckboxListTile(
+              title: const Text("４階で受け取る"),
               value: _isPickupOn4thFloor,
-              onChanged: (bool value) {
+              onChanged: (bool? value) {
                 setState(() {
-                  _isPickupOn4thFloor = value;
+                  _isPickupOn4thFloor = value!;
                 });
               },
             ),
-            // CustomElevatedButton(
-            //   onPressed: () {
-            //     if (_formKey.currentState!.validate()) {
-            //       _saveOrder(
-            //           timeDropdownValue, dropdownValue, _nameController.text);
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(builder: (context) => const ThanksPage()),
-            //       );
-            //     }
-            //   },
-            //   text: '注文',
-            // ),
             CustomElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {

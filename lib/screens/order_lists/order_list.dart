@@ -96,7 +96,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 '${order['isSugar'] ? '   砂糖' : ''}',
                                             style: TextStyle(
                                               fontSize: 16,
-                                              color: Colors.red, // ここで色を変更します
+                                              color: Colors.red,
                                             ),
                                           ),
                                           TextSpan(
@@ -104,7 +104,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
                                             style: TextStyle(
                                               fontSize: 16,
-                                              color: Colors.blue, // ここで色を変更します
+                                              color: Colors.blue,
                                             ),
                                           ),
                                         ],

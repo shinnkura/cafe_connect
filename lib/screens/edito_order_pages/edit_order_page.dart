@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../constants.dart';
 import '../thanks_pages/thanks_page.dart';
 import 'components/coffee_type_dropdown.dart';
-import 'components/order_change_text.dart';
 
 class EditOrderPage extends StatefulWidget {
   final String name;
@@ -22,11 +21,12 @@ class EditOrderPage extends StatefulWidget {
 }
 
 class _EditOrderPageState extends State<EditOrderPage> {
+  late TextEditingController _nameController;
   late String dropdownValue;
   late String selectedTime;
   bool isOrderCancelled = false;
-  bool isSugar = false; // 追加
-  bool isPickupOn4thFloor = false; // 追加
+  bool isSugar = false;
+  bool isPickupOn4thFloor = false;
 
   Future<void> updateOrder() async {
     CollectionReference orders =
@@ -38,10 +38,11 @@ class _EditOrderPageState extends State<EditOrderPage> {
           data['coffeeType'] == widget.initialCoffeeType &&
           data['time'] == widget.initialTime) {
         doc.reference.update({
+          'name': _nameController.text,
           'coffeeType': dropdownValue,
           'time': selectedTime,
-          'isSugar': isSugar, // 追加
-          'isPickupOn4thFloor': isPickupOn4thFloor, // 追加
+          'isSugar': isSugar,
+          'isPickupOn4thFloor': isPickupOn4thFloor,
         });
         break;
       }
@@ -66,6 +67,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
   @override
   void initState() {
     super.initState();
+    _nameController = TextEditingController(text: widget.name);
     dropdownValue = widget.initialCoffeeType;
     selectedTime = widget.initialTime;
   }
@@ -82,40 +84,49 @@ class _EditOrderPageState extends State<EditOrderPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            OrderChangeText(name: widget.name),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: '名前',
+                ),
+              ),
+            ),
             const SizedBox(height: 20),
             if (!isOrderCancelled) ...[
-              CoffeeTypeDropdown(
-                dropdownValue: dropdownValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    dropdownValue = newValue!;
-                  });
-                },
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: CoffeeTypeDropdown(
+                  dropdownValue: dropdownValue,
+                  onChanged: (newValue) {
+                    setState(() {
+                      dropdownValue = newValue!;
+                    });
+                  },
+                ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Time',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              DropdownButton<String>(
-                value: selectedTime,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedTime = newValue!;
-                  });
-                },
-                items: <String>['15時30分', '17時30分']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: DropdownButton<String>(
+                  value: selectedTime,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedTime = newValue!;
+                    });
+                  },
+                  items: <String>['15時30分', '17時30分']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
               ),
               const SizedBox(height: 20),
               CheckboxListTile(
-                // 追加
                 title: const Text("砂糖あり"),
                 value: isSugar,
                 onChanged: (bool? value) {
@@ -125,7 +136,6 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 },
               ),
               CheckboxListTile(
-                // 追加
                 title: const Text("４階で受け取る"),
                 value: isPickupOn4thFloor,
                 onChanged: (bool? value) {
@@ -136,38 +146,66 @@ class _EditOrderPageState extends State<EditOrderPage> {
               ),
               const SizedBox(height: 20),
             ],
-            ElevatedButton(
-              onPressed: () async {
-                await cancelOrder();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ThanksPage()),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.red,
+            Container(
+              width: double.infinity, // コンテナの幅を最大に設定
+              child: ElevatedButton(
+                onPressed: () async {
+                  await cancelOrder();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ThanksPage()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.red,
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 15.0,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  '注文取り消し',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
               ),
-              child: const Text('注文取り消し'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                if (!isOrderCancelled) {
-                  await updateOrder();
-                }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ThanksPage()),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  kPrimaryColor,
+            Container(
+              width: double.infinity, // コンテナの幅を最大に設定
+              child: ElevatedButton(
+                onPressed: () async {
+                  if (!isOrderCancelled) {
+                    await updateOrder();
+                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ThanksPage()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    kPrimaryColor,
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 15.0,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  '注文',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
               ),
-              child: const Text('注文'),
             ),
           ],
         ),
