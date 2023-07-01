@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 import '../edito_order_pages/edit_order_page.dart';
 import '../order_screen/components/custom_app_bar.dart';
 import '../order_screen/components/custom_elevated_button.dart';
@@ -50,6 +50,7 @@ class _OrderListPageState extends State<OrderListPage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -128,35 +129,41 @@ class _OrderListPageState extends State<OrderListPage> {
               );
             }
           }),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(30),
-            child: FloatingActionButton(
-              onPressed: () async {
-                const url =
-                    'http://docs.google.com/forms/d/e/1FAIpQLSc1fO0xXfhBt_h-m62Evx0wL_J_z60Xe4rfH-zvxDGnaw-9aQ/viewform';
-                if (await canLaunchUrl(Uri.parse(url))) {
-                  await launchUrl(Uri.parse(url));
-                } else {
-                  throw 'Could not launch $url';
-                }
-              },
-              backgroundColor: Colors.brown[500],
-              heroTag: null,
-              child: Icon(Icons.mail),
-            ),
-          ),
-          SizedBox(height: 10),
-          CustomElevatedButton(
-            onPressed: () {
-              Navigator.popUntil(context, (route) => route.isFirst);
-            },
-            text: 'ホームに戻る',
-          ),
-        ],
+      floatingActionButton: CustomElevatedButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        text: 'ホームに戻る',
       ),
+      // floatingActionButton: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: [
+      //     Padding(
+      //       padding: const EdgeInsets.all(30),
+      //       child: FloatingActionButton(
+      //         onPressed: () async {
+      //           const url =
+      //               'http://docs.google.com/forms/d/e/1FAIpQLSc1fO0xXfhBt_h-m62Evx0wL_J_z60Xe4rfH-zvxDGnaw-9aQ/viewform';
+      //           if (await canLaunchUrl(Uri.parse(url))) {
+      //             await launchUrl(Uri.parse(url));
+      //           } else {
+      //             throw 'Could not launch $url';
+      //           }
+      //         },
+      //         backgroundColor: Colors.brown[500],
+      //         heroTag: null,
+      //         child: Icon(Icons.mail),
+      //       ),
+      //     ),
+      //     SizedBox(height: 10),
+      //     CustomElevatedButton(
+      //       onPressed: () {
+      //         Navigator.popUntil(context, (route) => route.isFirst);
+      //       },
+      //       text: 'ホームに戻る',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
