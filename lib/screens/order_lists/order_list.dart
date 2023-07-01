@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../edito_order_pages/edit_order_page.dart';
 import '../order_screen/components/custom_app_bar.dart';
 import '../order_screen/components/custom_elevated_button.dart';
@@ -98,11 +99,34 @@ class _OrderListPageState extends State<OrderListPage> {
               );
             }
           }),
-      floatingActionButton: CustomElevatedButton(
-        onPressed: () {
-          Navigator.popUntil(context, (route) => route.isFirst);
-        },
-        text: 'ホームに戻る',
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(30),
+            child: FloatingActionButton(
+              onPressed: () async {
+                const url = 'https://forms.gle/s9BVLxoujXDQy4fv8';
+                if (await canLaunchUrl(Uri.parse(url))) {
+                  // canLaunchからcanLaunchUrlに変更
+                  await launchUrl(Uri.parse(url)); // launchからlaunchUrlに変更
+                } else {
+                  throw 'Could not launch $url';
+                }
+              },
+              backgroundColor: Colors.brown[400],
+              heroTag: null, // 同じページ内で複数のFABを使用する場合に必要
+              child: Icon(Icons.mail),
+            ),
+          ),
+          SizedBox(height: 10),
+          CustomElevatedButton(
+            onPressed: () {
+              Navigator.popUntil(context, (route) => route.isFirst);
+            },
+            text: 'ホームに戻る',
+          ),
+        ],
       ),
     );
   }
