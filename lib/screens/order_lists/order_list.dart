@@ -78,7 +78,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                         );
                                       },
                                     ),
-                                    SizedBox(width: 20),
+                                    SizedBox(width: 5),
                                     Text(
                                       name,
                                       style: TextStyle(
