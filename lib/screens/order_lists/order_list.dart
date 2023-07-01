@@ -17,7 +17,7 @@ class _OrderListPageState extends State<OrderListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Order List'),
-      body: FutureBuilder<Map<String, Map<String, List<String>>>>(
+      body: FutureBuilder<Map<String, Map<String, List<Map<String, dynamic>>>>>(
           future: loadOrder(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -25,7 +25,8 @@ class _OrderListPageState extends State<OrderListPage> {
             } else if (snapshot.hasError) {
               return Center(child: Text('エラーが発生しました: ${snapshot.error}'));
             } else {
-              Map<String, Map<String, List<String>>> orders = snapshot.data!;
+              Map<String, Map<String, List<Map<String, dynamic>>>> orders =
+                  snapshot.data!;
               return ListView.builder(
                 itemCount: orders.length,
                 itemBuilder: (context, index) {
@@ -39,7 +40,7 @@ class _OrderListPageState extends State<OrderListPage> {
                             TextStyle(color: Colors.brown[800], fontSize: 20)),
                     children: orders[time]!.entries.map((entry) {
                       String coffeeType = entry.key;
-                      List<String> names = entry.value;
+                      List<Map<String, dynamic>> ordersList = entry.value;
                       return Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),
@@ -52,14 +53,14 @@ class _OrderListPageState extends State<OrderListPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '$coffeeType     ${names.length}名',
+                                '$coffeeType     ${ordersList.length}名',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
                                     color: Colors.brown[800]),
                               ),
                               Divider(color: Colors.brown[800]),
-                              ...names.map((name) {
+                              ...ordersList.map((order) {
                                 return Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -71,7 +72,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => EditOrderPage(
-                                              name: name,
+                                              name: order['name'],
                                               initialCoffeeType: coffeeType,
                                               initialTime: time,
                                             ),
@@ -80,11 +81,34 @@ class _OrderListPageState extends State<OrderListPage> {
                                       },
                                     ),
                                     SizedBox(width: 5),
-                                    Text(
-                                      name,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.brown[700]),
+                                    Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '${order['name']}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.brown[700],
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${order['isSugar'] ? '   砂糖' : ''}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.red, // ここで色を変更します
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.blue, // ここで色を変更します
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 );
@@ -108,14 +132,13 @@ class _OrderListPageState extends State<OrderListPage> {
               onPressed: () async {
                 const url = 'https://forms.gle/s9BVLxoujXDQy4fv8';
                 if (await canLaunchUrl(Uri.parse(url))) {
-                  // canLaunchからcanLaunchUrlに変更
-                  await launchUrl(Uri.parse(url)); // launchからlaunchUrlに変更
+                  await launchUrl(Uri.parse(url));
                 } else {
                   throw 'Could not launch $url';
                 }
               },
-              backgroundColor: Colors.brown[400],
-              heroTag: null, // 同じページ内で複数のFABを使用する場合に必要
+              backgroundColor: Colors.brown[500],
+              heroTag: null,
               child: Icon(Icons.mail),
             ),
           ),

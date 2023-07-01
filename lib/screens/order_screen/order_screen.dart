@@ -24,7 +24,21 @@ class _OrderPageState extends State<OrderPage> {
   bool _isSugar = false;
   bool _isPickupOn4thFloor = false;
 
-  Future<void> _saveOrder(String time, String coffeeType, String name) async {
+  // Future<void> _saveOrder(String time, String coffeeType, String name) async {
+  //   CollectionReference orders =
+  //       FirebaseFirestore.instance.collection('orders');
+  //   return orders
+  //       .add({
+  //         'time': time,
+  //         'coffeeType': coffeeType,
+  //         'name': name,
+  //       })
+  //       .then((value) => print("Order Added"))
+  //       .catchError((error) => print("Failed to add order: $error"));
+  // }
+
+  Future<void> _saveOrder(String time, String coffeeType, String name,
+      bool isSugar, bool isPickupOn4thFloor) async {
     CollectionReference orders =
         FirebaseFirestore.instance.collection('orders');
     return orders
@@ -32,6 +46,8 @@ class _OrderPageState extends State<OrderPage> {
           'time': time,
           'coffeeType': coffeeType,
           'name': name,
+          'isSugar': isSugar,
+          'isPickupOn4thFloor': isPickupOn4thFloor,
         })
         .then((value) => print("Order Added"))
         .catchError((error) => print("Failed to add order: $error"));
@@ -131,11 +147,24 @@ class _OrderPageState extends State<OrderPage> {
                 });
               },
             ),
+            // CustomElevatedButton(
+            //   onPressed: () {
+            //     if (_formKey.currentState!.validate()) {
+            //       _saveOrder(
+            //           timeDropdownValue, dropdownValue, _nameController.text);
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => const ThanksPage()),
+            //       );
+            //     }
+            //   },
+            //   text: '注文',
+            // ),
             CustomElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  _saveOrder(
-                      timeDropdownValue, dropdownValue, _nameController.text);
+                  _saveOrder(timeDropdownValue, dropdownValue,
+                      _nameController.text, _isSugar, _isPickupOn4thFloor);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const ThanksPage()),

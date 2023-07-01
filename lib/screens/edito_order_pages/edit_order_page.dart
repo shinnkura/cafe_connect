@@ -25,13 +25,8 @@ class _EditOrderPageState extends State<EditOrderPage> {
   late String dropdownValue;
   late String selectedTime;
   bool isOrderCancelled = false;
-
-  @override
-  void initState() {
-    super.initState();
-    dropdownValue = widget.initialCoffeeType;
-    selectedTime = widget.initialTime;
-  }
+  bool isSugar = false; // 追加
+  bool isPickupOn4thFloor = false; // 追加
 
   Future<void> updateOrder() async {
     CollectionReference orders =
@@ -45,6 +40,8 @@ class _EditOrderPageState extends State<EditOrderPage> {
         doc.reference.update({
           'coffeeType': dropdownValue,
           'time': selectedTime,
+          'isSugar': isSugar, // 追加
+          'isPickupOn4thFloor': isPickupOn4thFloor, // 追加
         });
         break;
       }
@@ -64,6 +61,13 @@ class _EditOrderPageState extends State<EditOrderPage> {
         break;
       }
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    dropdownValue = widget.initialCoffeeType;
+    selectedTime = widget.initialTime;
   }
 
   @override
@@ -108,6 +112,27 @@ class _EditOrderPageState extends State<EditOrderPage> {
                     child: Text(value),
                   );
                 }).toList(),
+              ),
+              const SizedBox(height: 20),
+              CheckboxListTile(
+                // 追加
+                title: const Text("砂糖あり"),
+                value: isSugar,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isSugar = value!;
+                  });
+                },
+              ),
+              CheckboxListTile(
+                // 追加
+                title: const Text("４階で受け取る"),
+                value: isPickupOn4thFloor,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isPickupOn4thFloor = value!;
+                  });
+                },
               ),
               const SizedBox(height: 20),
             ],
