@@ -64,7 +64,7 @@ class _OrderListPageState extends State<OrderListPage> {
                               ...ordersList.map((order) {
                                 return Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     IconButton(
                                       icon: Icon(Icons.edit,
