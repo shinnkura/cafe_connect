@@ -63,6 +63,8 @@ class _OrderListPageState extends State<OrderListPage> {
                               ...ordersList.map((order) {
                                 return Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .center, // Add this line
                                   children: [
                                     IconButton(
                                       icon: Icon(Icons.edit,
@@ -71,7 +73,8 @@ class _OrderListPageState extends State<OrderListPage> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => EditOrderPage(
+                                            builder: (context) =>
+                                                EditOrderPage(
                                               name: order['name'],
                                               initialCoffeeType: coffeeType,
                                               initialTime: time,
@@ -80,7 +83,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                         );
                                       },
                                     ),
-                                    SizedBox(width: 5),
+                                    SizedBox(height: 5),
                                     Text.rich(
                                       TextSpan(
                                         children: [
@@ -130,7 +133,8 @@ class _OrderListPageState extends State<OrderListPage> {
             padding: const EdgeInsets.all(30),
             child: FloatingActionButton(
               onPressed: () async {
-                const url = 'https://forms.gle/s9BVLxoujXDQy4fv8';
+                const url =
+                    'http://docs.google.com/forms/d/e/1FAIpQLSc1fO0xXfhBt_h-m62Evx0wL_J_z60Xe4rfH-zvxDGnaw-9aQ/viewform';
                 if (await canLaunchUrl(Uri.parse(url))) {
                   await launchUrl(Uri.parse(url));
                 } else {
