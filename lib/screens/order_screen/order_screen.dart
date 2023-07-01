@@ -19,9 +19,10 @@ class _OrderPageState extends State<OrderPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
 
-  bool _isSugar = false;
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時30分';
+  bool _isSugar = false;
+  bool _isPickupOn4thFloor = false;
 
   Future<void> _saveOrder(String time, String coffeeType, String name) async {
     CollectionReference orders =
@@ -118,6 +119,15 @@ class _OrderPageState extends State<OrderPage> {
               onChanged: (bool value) {
                 setState(() {
                   _isSugar = value;
+                });
+              },
+            ),
+            SwitchListTile(
+              title: const Text('4階で受け取る'),
+              value: _isPickupOn4thFloor,
+              onChanged: (bool value) {
+                setState(() {
+                  _isPickupOn4thFloor = value;
                 });
               },
             ),
