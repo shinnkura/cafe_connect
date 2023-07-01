@@ -67,8 +67,10 @@ class _OrderListPageState extends State<OrderListPage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     IconButton(
-                                      icon: Icon(Icons.edit,
-                                          color: Colors.brown[700]),
+                                      icon: Icon(
+                                        Icons.edit,
+                                        color: Colors.brown[700],
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                           context,
@@ -82,7 +84,6 @@ class _OrderListPageState extends State<OrderListPage> {
                                         );
                                       },
                                     ),
-                                    SizedBox(width: 5),
                                     Expanded(
                                       child: Text.rich(
                                         TextSpan(
