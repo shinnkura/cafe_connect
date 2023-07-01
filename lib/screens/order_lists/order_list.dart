@@ -64,8 +64,7 @@ class _OrderListPageState extends State<OrderListPage> {
                               ...ordersList.map((order) {
                                 return Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment
-                                      .center, // Add this line
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     IconButton(
                                       icon: Icon(Icons.edit,
@@ -83,9 +82,8 @@ class _OrderListPageState extends State<OrderListPage> {
                                         );
                                       },
                                     ),
-                                    SizedBox(width: 5), // Change this line
+                                    SizedBox(width: 5),
                                     Expanded(
-                                      // Add this line
                                       child: Text.rich(
                                         TextSpan(
                                           children: [
