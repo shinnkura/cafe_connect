@@ -10,22 +10,17 @@ class ThanksPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.brown[100],
-      body: ListView(
-        padding: const EdgeInsets.all(8.0),
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ThankYouText(),
-                SizedBox(height: 20),
-                OrderConfirmationText(),
-                SizedBox(height: 40),
-                OrderListButton(),
-              ],
-            ),
-          ),
-        ],
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ThankYouText(),
+            SizedBox(height: 20),
+            OrderConfirmationText(),
+            SizedBox(height: 40),
+            OrderListButton(),
+          ],
+        ),
       ),
     );
   }

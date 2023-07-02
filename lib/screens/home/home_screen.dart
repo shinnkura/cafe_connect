@@ -14,22 +14,18 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.brown,
       ),
       body: Center(
-        child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          padding: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const GreetingText(),
             const SizedBox(height: 20),
             const OrderButton(),
-            const SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/orderList');
-                },
-                text: '注文一覧',
-              ),
+            const SizedBox(height: 200),
+            CustomElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/orderList');
+              },
+              text: '注文一覧',
             ),
           ],
         ),
