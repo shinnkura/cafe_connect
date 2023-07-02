@@ -22,11 +22,14 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             const OrderButton(),
             const SizedBox(height: 40),
-            CustomElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/orderList');
-              },
-              text: '注文一覧',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/orderList');
+                },
+                text: '注文一覧',
+              ),
             ),
           ],
         ),
