@@ -18,120 +18,123 @@ class _OrderListPageState extends State<OrderListPage> {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Order List'),
       body: FutureBuilder<Map<String, Map<String, List<Map<String, dynamic>>>>>(
-          future: loadOrder(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('エラーが発生しました: ${snapshot.error}'));
-            } else {
-              Map<String, Map<String, List<Map<String, dynamic>>>> orders =
-                  snapshot.data!;
-              return ListView.builder(
-                itemCount: orders.length,
-                itemBuilder: (context, index) {
-                  String time = orders.keys.elementAt(index);
-                  int totalOrdersAtThisTime = orders[time]!
-                      .values
-                      .fold(0, (prev, curr) => prev + curr.length);
-                  return ExpansionTile(
-                    title: Text('$time     $totalOrdersAtThisTime名',
-                        style:
-                            TextStyle(color: Colors.brown[800], fontSize: 20)),
-                    children: orders[time]!.entries.map((entry) {
-                      String coffeeType = entry.key;
-                      List<Map<String, dynamic>> ordersList = entry.value;
-                      return Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        elevation: 10,
-                        margin: const EdgeInsets.all(8.0),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '$coffeeType     ${ordersList.length}名',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                    color: Colors.brown[800]),
-                              ),
-                              Divider(color: Colors.brown[800]),
-                              ...ordersList.map((order) {
-                                return Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.edit,
-                                        color: Colors.brown[700],
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => EditOrderPage(
-                                              name: order['name'],
-                                              initialCoffeeType: coffeeType,
-                                              initialTime: time,
-                                            ),
-                                          ),
-                                        );
-                                      },
+        future: loadOrder(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('エラーが発生しました: ${snapshot.error}'));
+          } else {
+            Map<String, Map<String, List<Map<String, dynamic>>>> orders =
+                snapshot.data!;
+            return ListView.builder(
+              itemCount: orders.length,
+              itemBuilder: (context, index) {
+                String time = orders.keys.elementAt(index);
+                int totalOrdersAtThisTime = orders[time]!
+                    .values
+                    .fold(0, (prev, curr) => prev + curr.length);
+                return ExpansionTile(
+                  title: Text('$time     $totalOrdersAtThisTime名',
+                      style: TextStyle(color: Colors.brown[800], fontSize: 20)),
+                  children: orders[time]!.entries.map((entry) {
+                    String coffeeType = entry.key;
+                    List<Map<String, dynamic>> ordersList = entry.value;
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      elevation: 10,
+                      margin: const EdgeInsets.all(8.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '$coffeeType     ${ordersList.length}名',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.brown[800]),
+                            ),
+                            Divider(color: Colors.brown[800]),
+                            ...ordersList.map((order) {
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Colors.brown[700],
                                     ),
-                                    Text.rich(
-                                      TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: '${order['name']}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.brown[700],
-                                            ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => EditOrderPage(
+                                            name: order['name'],
+                                            initialCoffeeType: coffeeType,
+                                            initialTime: time,
                                           ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  Container(
+                                    height: 50,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text.rich(
                                           TextSpan(
-                                            text:
-                                                '${order['isSugar'] ? '   砂糖' : ''}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.red,
-                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text: '${order['name']}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.brown[700],
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text:
+                                                    '${order['isSugar'] ? '   砂糖' : ''}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text:
+                                                    '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.blue,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          TextSpan(
-                                            text:
-                                                '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                );
-                              }).toList(),
-                            ],
-                          ),
+                                  ),
+                                ],
+                              );
+                            }).toList(),
+                          ],
                         ),
-                      );
-                    }).toList(),
-                  );
-                },
-              );
-            }
-          }),
-      // floatingActionButton: CustomElevatedButton(
-      //   onPressed: () {
-      //     Navigator.popUntil(context, (route) => route.isFirst);
-      //   },
-      //   text: 'ホームに戻る',
-      // ),
+                      ),
+                    );
+                  }).toList(),
+                );
+              },
+            );
+          }
+        },
+      ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
