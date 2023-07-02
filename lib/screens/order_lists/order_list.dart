@@ -84,35 +84,33 @@ class _OrderListPageState extends State<OrderListPage> {
                                         );
                                       },
                                     ),
-                                    Expanded(
-                                      child: Text.rich(
-                                        TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: '${order['name']}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.brown[700],
-                                              ),
+                                    Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '${order['name']}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.brown[700],
                                             ),
-                                            TextSpan(
-                                              text:
-                                                  '${order['isSugar'] ? '   砂糖' : ''}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.red,
-                                              ),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${order['isSugar'] ? '   砂糖' : ''}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.red,
                                             ),
-                                            TextSpan(
-                                              text:
-                                                  '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.blue,
-                                              ),
+                                          ),
+                                          TextSpan(
+                                            text:
+                                                '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.blue,
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
