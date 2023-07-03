@@ -84,11 +84,11 @@ class _OrderListPageState extends State<OrderListPage> {
                                     },
                                   ),
                                   Expanded(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                    child: Row(
+                                      // mainAxisAlignment:
+                                      //     MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Text.rich(
                                           TextSpan(
