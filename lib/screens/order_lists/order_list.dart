@@ -88,6 +88,8 @@ class _OrderListPageState extends State<OrderListPage> {
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Text.rich(
                                           TextSpan(
