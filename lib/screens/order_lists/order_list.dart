@@ -83,8 +83,8 @@ class _OrderListPageState extends State<OrderListPage> {
                                       );
                                     },
                                   ),
-                                  Container(
-                                    height: 50,
+                                  Expanded(
+                                    // height: 50,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
