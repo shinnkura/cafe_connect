@@ -12,9 +12,8 @@ Future<Map<String, Map<String, List<Map<String, dynamic>>>>> loadOrder() async {
     String time = data['time'];
     String coffeeType = data['coffeeType'];
     String name = data['name'];
-    bool isSugar = data['isSugar'] ?? false; // null check added here
-    bool isPickupOn4thFloor =
-        data['isPickupOn4thFloor'] ?? false; // null check added here
+    bool isSugar = data['isSugar'] ?? false;
+    bool isPickupOn4thFloor = data['isPickupOn4thFloor'] ?? false;
     if (ordersMap[time] == null) {
       ordersMap[time] = {};
     }

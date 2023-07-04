@@ -2,8 +2,13 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> saveOrder(String time, String coffeeType, String name,
-    bool isSugar, bool isPickupOn4thFloor) async {
+Future<void> saveOrder(
+  String time,
+  String coffeeType,
+  String name,
+  bool isSugar,
+  bool isPickupOn4thFloor,
+) async {
   final prefs = await SharedPreferences.getInstance();
   // 保存するデータを作成します
   Map<String, dynamic> order = {

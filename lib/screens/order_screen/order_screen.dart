@@ -24,8 +24,13 @@ class _OrderPageState extends State<OrderPage> {
   bool _isSugar = false;
   bool _isPickupOn4thFloor = false;
 
-  Future<void> _saveOrder(String time, String coffeeType, String name,
-      bool isSugar, bool isPickupOn4thFloor) async {
+  Future<void> _saveOrder(
+    String time,
+    String coffeeType,
+    String name,
+    bool isSugar,
+    bool isPickupOn4thFloor,
+  ) async {
     CollectionReference orders =
         FirebaseFirestore.instance.collection('orders');
     return orders

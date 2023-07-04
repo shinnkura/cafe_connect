@@ -10,11 +10,12 @@ class EditOrderPage extends StatefulWidget {
   final String initialCoffeeType;
   final String initialTime;
 
-  const EditOrderPage(
-      {super.key,
-      required this.name,
-      required this.initialCoffeeType,
-      required this.initialTime});
+  const EditOrderPage({
+    super.key,
+    required this.name,
+    required this.initialCoffeeType,
+    required this.initialTime,
+  });
 
   @override
   _EditOrderPageState createState() => _EditOrderPageState();

@@ -66,6 +66,12 @@ class _OrderListPageState extends State<OrderListPage> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   IconButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                        Colors.pink[800],
+                                      ),
+                                    ),
                                     icon: Icon(
                                       Icons.edit,
                                       color: Colors.brown[700],
@@ -83,44 +89,40 @@ class _OrderListPageState extends State<OrderListPage> {
                                       );
                                     },
                                   ),
-                                  Expanded(
-                                    child: Row(
-                                      // mainAxisAlignment:
-                                      //     MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Text.rich(
-                                          TextSpan(
-                                            children: [
-                                              TextSpan(
-                                                text: '${order['name']}',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.brown[700],
-                                                ),
+                                  Row(
+                                    // crossAxisAlignment:
+                                    //     CrossAxisAlignment.end,
+                                    children: [
+                                      Text.rich(
+                                        TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: '${order['name']}',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.brown[700],
                                               ),
-                                              TextSpan(
-                                                text:
-                                                    '${order['isSugar'] ? '   砂糖' : ''}',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.red,
-                                                ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  '${order['isSugar'] ? '   砂糖' : ''}',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.red,
                                               ),
-                                              TextSpan(
-                                                text:
-                                                    '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.blue,
-                                                ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.blue,
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               );
