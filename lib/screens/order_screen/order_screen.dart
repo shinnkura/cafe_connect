@@ -22,6 +22,7 @@ class _OrderPageState extends State<OrderPage> {
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時30分';
   bool _isSugar = false;
+  bool _isCondecensedMilk = false;
   bool _isPickupOn4thFloor = false;
 
   Future<void> _saveOrder(
@@ -29,6 +30,7 @@ class _OrderPageState extends State<OrderPage> {
     String coffeeType,
     String name,
     bool isSugar,
+    bool isCondecensedMilk,
     bool isPickupOn4thFloor,
   ) async {
     CollectionReference orders =
@@ -39,6 +41,7 @@ class _OrderPageState extends State<OrderPage> {
           'coffeeType': coffeeType,
           'name': name,
           'isSugar': isSugar,
+          'isCondecensedMilk': isCondecensedMilk,
           'isPickupOn4thFloor': isPickupOn4thFloor,
         })
         .then((value) => print("Order Added"))
@@ -131,6 +134,15 @@ class _OrderPageState extends State<OrderPage> {
               },
             ),
             CheckboxListTile(
+              title: const Text("練乳あり"),
+              value: _isCondecensedMilk,
+              onChanged: (bool? value) {
+                setState(() {
+                  _isCondecensedMilk = value!;
+                });
+              },
+            ),
+            CheckboxListTile(
               title: const Text("４階で受け取る"),
               value: _isPickupOn4thFloor,
               onChanged: (bool? value) {
@@ -142,8 +154,14 @@ class _OrderPageState extends State<OrderPage> {
             CustomElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  _saveOrder(timeDropdownValue, dropdownValue,
-                      _nameController.text, _isSugar, _isPickupOn4thFloor);
+                  _saveOrder(
+                    timeDropdownValue,
+                    dropdownValue,
+                    _nameController.text,
+                    _isSugar,
+                    _isCondecensedMilk,
+                    _isPickupOn4thFloor,
+                  );
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const ThanksPage()),

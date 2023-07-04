@@ -113,10 +113,18 @@ class _OrderListPageState extends State<OrderListPage> {
                                             ),
                                             TextSpan(
                                               text:
-                                                  '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                                  '${order['isCondecensedMilk'] ? '   練乳' : ''}',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 color: Colors.blue,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.green,
                                               ),
                                             ),
                                           ],

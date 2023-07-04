@@ -27,6 +27,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
   late String selectedTime;
   bool isOrderCancelled = false;
   bool isSugar = false;
+  bool isCondecensedMilk = false;
   bool isPickupOn4thFloor = false;
 
   Future<void> updateOrder() async {
@@ -43,6 +44,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
           'coffeeType': dropdownValue,
           'time': selectedTime,
           'isSugar': isSugar,
+          'isCondecensedMilk': isCondecensedMilk,
           'isPickupOn4thFloor': isPickupOn4thFloor,
         });
         break;
@@ -133,6 +135,15 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 onChanged: (bool? value) {
                   setState(() {
                     isSugar = value!;
+                  });
+                },
+              ),
+              CheckboxListTile(
+                title: const Text("練乳あり"),
+                value: isCondecensedMilk,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isCondecensedMilk = value!;
                   });
                 },
               ),

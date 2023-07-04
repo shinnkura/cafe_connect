@@ -7,6 +7,7 @@ Future<void> saveOrder(
   String coffeeType,
   String name,
   bool isSugar,
+  bool isCondecensedMilk,
   bool isPickupOn4thFloor,
 ) async {
   final prefs = await SharedPreferences.getInstance();
@@ -16,6 +17,7 @@ Future<void> saveOrder(
     'coffeeType': coffeeType,
     'name': name,
     'isSugar': isSugar,
+    'isCondecensedMilk': isCondecensedMilk,
     'isPickupOn4thFloor': isPickupOn4thFloor,
   };
   // データをJSON形式の文字列に変換します
