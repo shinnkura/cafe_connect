@@ -159,37 +159,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
               const SizedBox(height: 20),
             ],
             Container(
-              width: double.infinity, // コンテナの幅を最大に設定
-              child: ElevatedButton(
-                onPressed: () async {
-                  await cancelOrder();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ThanksPage()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.red,
-                  ),
-                  padding: MaterialStateProperty.all<EdgeInsets>(
-                    const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 15.0,
-                    ),
-                  ),
-                ),
-                child: const Text(
-                  '注文取り消し',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              width: double.infinity, // コンテナの幅を最大に設定
+              width: double.infinity,
               child: ElevatedButton(
                 onPressed: () async {
                   if (!isOrderCancelled) {
@@ -213,6 +183,36 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 ),
                 child: const Text(
                   '注文',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () async {
+                  await cancelOrder();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ThanksPage()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.red,
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 15.0,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  '注文取り消し',
                   style: TextStyle(
                     fontSize: 20,
                   ),
