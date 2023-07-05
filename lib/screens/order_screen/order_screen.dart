@@ -21,6 +21,7 @@ class _OrderPageState extends State<OrderPage> {
 
   String dropdownValue = 'コーヒー';
   String timeDropdownValue = '15時30分';
+  bool small = false;
   bool _isSugar = false;
   bool _isCondecensedMilk = false;
   bool _isPickupOn4thFloor = false;
@@ -29,6 +30,7 @@ class _OrderPageState extends State<OrderPage> {
     String time,
     String coffeeType,
     String name,
+    bool small,
     bool isSugar,
     bool isCondecensedMilk,
     bool isPickupOn4thFloor,
@@ -40,6 +42,7 @@ class _OrderPageState extends State<OrderPage> {
           'time': time,
           'coffeeType': coffeeType,
           'name': name,
+          'small': small,
           'isSugar': isSugar,
           'isCondecensedMilk': isCondecensedMilk,
           'isPickupOn4thFloor': isPickupOn4thFloor,
@@ -125,6 +128,15 @@ class _OrderPageState extends State<OrderPage> {
               ),
             ),
             CheckboxListTile(
+              title: const Text("少なめ（250ml程度）"),
+              value: small,
+              onChanged: (bool? value) {
+                setState(() {
+                  small = value!;
+                });
+              },
+            ),
+            CheckboxListTile(
               title: const Text("砂糖あり"),
               value: _isSugar,
               onChanged: (bool? value) {
@@ -158,6 +170,7 @@ class _OrderPageState extends State<OrderPage> {
                     timeDropdownValue,
                     dropdownValue,
                     _nameController.text,
+                    small,
                     _isSugar,
                     _isCondecensedMilk,
                     _isPickupOn4thFloor,

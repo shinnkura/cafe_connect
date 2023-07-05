@@ -105,6 +105,14 @@ class _OrderListPageState extends State<OrderListPage> {
                                             ),
                                             TextSpan(
                                               text:
+                                                  '${order['small'] ? '   少なめ' : ''}',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.orange,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text:
                                                   '${order['isSugar'] ? '   砂糖' : ''}',
                                               style: TextStyle(
                                                 fontSize: 16,

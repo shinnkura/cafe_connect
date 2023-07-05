@@ -26,6 +26,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
   late String dropdownValue;
   late String selectedTime;
   bool isOrderCancelled = false;
+  bool small = false;
   bool isSugar = false;
   bool isCondecensedMilk = false;
   bool isPickupOn4thFloor = false;
@@ -43,6 +44,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
           'name': _nameController.text,
           'coffeeType': dropdownValue,
           'time': selectedTime,
+          'small': small,
           'isSugar': isSugar,
           'isCondecensedMilk': isCondecensedMilk,
           'isPickupOn4thFloor': isPickupOn4thFloor,
@@ -129,6 +131,15 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 ),
               ),
               const SizedBox(height: 20),
+              CheckboxListTile(
+                title: const Text("少なめ（250ml程度）"),
+                value: small,
+                onChanged: (bool? value) {
+                  setState(() {
+                    small = value!;
+                  });
+                },
+              ),
               CheckboxListTile(
                 title: const Text("砂糖あり"),
                 value: isSugar,
