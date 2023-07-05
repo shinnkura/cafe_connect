@@ -66,12 +66,6 @@ class _OrderListPageState extends State<OrderListPage> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   IconButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                        Colors.pink[800],
-                                      ),
-                                    ),
                                     icon: Icon(
                                       Icons.edit,
                                       color: Colors.brown[700],
@@ -89,57 +83,94 @@ class _OrderListPageState extends State<OrderListPage> {
                                       );
                                     },
                                   ),
+                                  // Text.rich(
+                                  //   TextSpan(
+                                  //     children: [
+                                  //       TextSpan(
+                                  //         text: '${order['name']}',
+                                  //         style: TextStyle(
+                                  //           fontSize: 16,
+                                  //           color: Colors.brown[700],
+                                  //         ),
+                                  //       ),
+                                  //       TextSpan(
+                                  //         text:
+                                  //             '${order['small'] ? '   少なめ' : ''}',
+                                  //         style: TextStyle(
+                                  //           fontSize: 16,
+                                  //           color: Colors.orange,
+                                  //         ),
+                                  //       ),
+                                  //       TextSpan(
+                                  //         text:
+                                  //             '${order['isSugar'] ? '   砂糖' : ''}',
+                                  //         style: TextStyle(
+                                  //           fontSize: 16,
+                                  //           color: Colors.red,
+                                  //         ),
+                                  //       ),
+                                  //       TextSpan(
+                                  //         text:
+                                  //             '${order['isCondecensedMilk'] ? '   練乳' : ''}',
+                                  //         style: TextStyle(
+                                  //           fontSize: 16,
+                                  //           color: Colors.blue,
+                                  //         ),
+                                  //       ),
+                                  //       TextSpan(
+                                  //         text:
+                                  //             '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
+                                  //         style: TextStyle(
+                                  //           fontSize: 16,
+                                  //           color: Colors.green,
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                   Row(
-                                    // crossAxisAlignment:
-                                    //     CrossAxisAlignment.end,
                                     children: [
-                                      Text.rich(
-                                        TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: '${order['name']}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.brown[700],
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text:
-                                                  '${order['small'] ? '   少なめ' : ''}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.orange,
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text:
-                                                  '${order['isSugar'] ? '   砂糖' : ''}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text:
-                                                  '${order['isCondecensedMilk'] ? '   練乳' : ''}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.blue,
-                                              ),
-                                            ),
-                                            TextSpan(
-                                              text:
-                                                  '${order['isPickupOn4thFloor'] ? '   4階で受け取る' : ''}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.green,
-                                              ),
-                                            ),
-                                          ],
+                                      Text(
+                                        '${order['name']}',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.brown[700],
                                         ),
                                       ),
+                                      if (order['small'])
+                                        Text(
+                                          '  少なめ',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.orange,
+                                          ),
+                                        ),
+                                      if (order['isSugar'])
+                                        Text(
+                                          '  砂糖',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.red,
+                                          ),
+                                        ),
+                                      if (order['isCondecensedMilk'])
+                                        Text(
+                                          '  練乳',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.blue,
+                                          ),
+                                        ),
+                                      if (order['isPickupOn4thFloor'])
+                                        Text(
+                                          '  4階で受け取る',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.green,
+                                          ),
+                                        ),
                                     ],
-                                  ),
+                                  )
                                 ],
                               );
                             }).toList(),
