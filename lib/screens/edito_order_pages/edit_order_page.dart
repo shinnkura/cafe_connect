@@ -28,6 +28,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
   bool isOrderCancelled = false;
   bool small = false;
   bool isSugar = false;
+  bool caramel = false;
   bool isCondecensedMilk = false;
   bool isPickupOn4thFloor = false;
 
@@ -46,6 +47,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
           'time': selectedTime,
           'small': small,
           'isSugar': isSugar,
+          'caramel': caramel,
           'isCondecensedMilk': isCondecensedMilk,
           'isPickupOn4thFloor': isPickupOn4thFloor,
         });
@@ -141,7 +143,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 },
               ),
               CheckboxListTile(
-                title: const Text("砂糖あり"),
+                title: const Text("砂糖"),
                 value: isSugar,
                 onChanged: (bool? value) {
                   setState(() {
@@ -150,7 +152,16 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 },
               ),
               CheckboxListTile(
-                title: const Text("練乳あり"),
+                title: const Text("キャラメルシロップ"),
+                value: caramel,
+                onChanged: (bool? value) {
+                  setState(() {
+                    caramel = value!;
+                  });
+                },
+              ),
+              CheckboxListTile(
+                title: const Text("練乳"),
                 value: isCondecensedMilk,
                 onChanged: (bool? value) {
                   setState(() {

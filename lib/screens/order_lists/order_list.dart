@@ -62,7 +62,6 @@ class _OrderListPageState extends State<OrderListPage> {
                             Divider(color: Colors.brown[800]),
                             ...ordersList.map((order) {
                               return Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   IconButton(
@@ -84,6 +83,8 @@ class _OrderListPageState extends State<OrderListPage> {
                                     },
                                   ),
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         '${order['name']}',
@@ -106,6 +107,14 @@ class _OrderListPageState extends State<OrderListPage> {
                                           style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.red,
+                                          ),
+                                        ),
+                                      if (order['caramel'])
+                                        Text(
+                                          '  キャラメル',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.purple,
                                           ),
                                         ),
                                       if (order['isCondecensedMilk'])
