@@ -25,5 +25,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MEALPLANNER_BB410 }}"
-          projectId: mealplanner-bb410
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEE_ORDER_8A3A3 }}"
+          projectId: coffee-order-8a3a3
