@@ -25,8 +25,6 @@ class CoffeeTypeDropdown extends StatelessWidget {
         'アイスカフェオレ（ミルク多め）',
         'ソイラテ',
         'アイスソイラテ',
-        '温かい緑茶',
-        '冷たい緑茶',
       ].map<DropdownMenuItem<String>>((value) {
         return DropdownMenuItem<String>(
           value: value,

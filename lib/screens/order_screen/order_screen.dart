@@ -126,8 +126,6 @@ class _OrderPageState extends State<OrderPage> {
                     'アイスカフェオレ（ミルク多め）',
                     'ソイラテ',
                     'アイスソイラテ',
-                    '温かい緑茶',
-                    '冷たい緑茶',
                   ],
                 ),
               ),
