@@ -137,7 +137,6 @@ class _OrderPageState extends State<OrderPage> {
                   controller: _nameController,
                   style: Theme.of(context).textTheme.titleMedium,
                   decoration: InputDecoration(
-                    // labelText: 'Name',
                     labelStyle: TextStyle(color: kTextColor),
                     filled: true,
                     fillColor: Colors.white,
