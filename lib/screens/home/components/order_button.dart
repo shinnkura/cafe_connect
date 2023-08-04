@@ -29,7 +29,7 @@ class OrderButton extends StatelessWidget {
             Colors.brown,
           ),
           padding: MaterialStateProperty.all<EdgeInsets>(
-            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
