@@ -24,10 +24,18 @@ class CustomElevatedButton extends StatelessWidget {
           padding: MaterialStateProperty.all<EdgeInsets>(
             const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
           ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 20),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 20),
+          ),
         ),
       ),
     );
