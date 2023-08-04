@@ -1,5 +1,6 @@
-import 'package:cafe_connect/screens/order_lists/order_list.dart';
 import 'package:flutter/material.dart';
+
+import '../../order_lists/order_list.dart';
 
 class OrderListButton extends StatelessWidget {
   const OrderListButton({Key? key}) : super(key: key);
@@ -10,7 +11,10 @@ class OrderListButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
         backgroundColor: Colors.brown[800],
-        minimumSize: const Size(200, 60), // ボタンの最小サイズを設定
+        minimumSize: const Size(200, 60),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
       ),
       onPressed: () {
         Navigator.push(
@@ -20,7 +24,7 @@ class OrderListButton extends StatelessWidget {
       },
       child: const Text(
         '注文一覧へ',
-        style: TextStyle(fontSize: 20), // テキストのサイズを大きく
+        style: TextStyle(fontSize: 20),
       ),
     );
   }
