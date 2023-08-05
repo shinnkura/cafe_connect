@@ -19,7 +19,7 @@ class _OrderListPageState extends State<OrderListPage> {
     'コーヒー':
         'https://images.unsplash.com/photo-1634913564795-7825a3266590?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
     'カフェオレ':
-        'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80',
+        'https://images.unsplash.com/photo-1484244619813-7dd17c80db4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
     'ちょいふわカフェオレ':
         'https://images.unsplash.com/photo-1666600638856-dc0fb01c01bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
     'ふわふわカフェオレ':
@@ -32,6 +32,10 @@ class _OrderListPageState extends State<OrderListPage> {
         'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80',
     'アイスカフェオレ（ミルク多め）':
         'https://images.unsplash.com/photo-1553909489-ec2175ef3f52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+    'ソイラテ':
+        'https://images.unsplash.com/photo-1608651057580-4a50b2fc2281?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+    'アイスソイラテ':
+        'https://images.unsplash.com/photo-1471691118458-a88597b4c1f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
   };
 
   @override
@@ -58,6 +62,7 @@ class _OrderListPageState extends State<OrderListPage> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
+              print(snapshot.error);
               return Center(child: Text('エラーが発生しました: ${snapshot.error}'));
             } else {
               Map<String, Map<String, List<Map<String, dynamic>>>> orders =
@@ -99,7 +104,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                     fontSize: 18,
                                     color: Colors.brown[800],
                                   ),
-                                  textAlign: TextAlign.left, // Add this line
+                                  textAlign: TextAlign.left,
                                 ),
                               ),
                             ],
@@ -108,7 +113,6 @@ class _OrderListPageState extends State<OrderListPage> {
                             return Dismissible(
                               key: Key(order['name']),
                               onDismissed: (direction) async {
-                                // Remove the item from the Firestore.
                                 CollectionReference orders = FirebaseFirestore
                                     .instance
                                     .collection('orders');
@@ -139,12 +143,39 @@ class _OrderListPageState extends State<OrderListPage> {
                                 // Then show a snackbar.
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                      content:
-                                          Text("${order['name']} dismissed")),
+                                    content: Text("${order['name']} dismissed"),
+                                    action: SnackBarAction(
+                                      label: '元に戻す',
+                                      onPressed: () async {
+                                        // Add the item back to the Firestore.
+                                        await orders.add(order);
+
+                                        // Update the state of the application to reflect the addition.
+                                        setState(() {
+                                          if (ordersMap.containsKey(time)) {
+                                            if (ordersMap[time]!
+                                                .containsKey(coffeeType)) {
+                                              ordersMap[time]![coffeeType]!
+                                                  .add(order);
+                                            } else {
+                                              ordersMap[time]![coffeeType] = [
+                                                order
+                                              ];
+                                            }
+                                          } else {
+                                            ordersMap[time] = {
+                                              coffeeType: [order]
+                                            };
+                                          }
+                                        });
+                                      },
+                                    ),
+                                  ),
                                 );
                               },
                               background: Container(
-                                  color: Colors.red), // Red background on swipe
+                                color: Colors.red,
+                              ),
                               child: Card(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.0),
