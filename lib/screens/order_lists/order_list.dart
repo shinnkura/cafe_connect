@@ -139,8 +139,34 @@ class _OrderListPageState extends State<OrderListPage> {
                                 // Then show a snackbar.
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                      content:
-                                          Text("${order['name']} dismissed")),
+                                    content: Text("${order['name']} dismissed"),
+                                    action: SnackBarAction(
+                                      label: '元に戻す',
+                                      onPressed: () async {
+                                        // Add the item back to the Firestore.
+                                        await orders.add(order);
+
+                                        // Update the state of the application to reflect the addition.
+                                        setState(() {
+                                          if (ordersMap.containsKey(time)) {
+                                            if (ordersMap[time]!
+                                                .containsKey(coffeeType)) {
+                                              ordersMap[time]![coffeeType]!
+                                                  .add(order);
+                                            } else {
+                                              ordersMap[time]![coffeeType] = [
+                                                order
+                                              ];
+                                            }
+                                          } else {
+                                            ordersMap[time] = {
+                                              coffeeType: [order]
+                                            };
+                                          }
+                                        });
+                                      },
+                                    ),
+                                  ),
                                 );
                               },
                               background: Container(
