@@ -105,7 +105,7 @@ class _OrderPageState extends State<OrderPage> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(15.0),
                 child: _buildBody(),
               ),
             ),
@@ -190,7 +190,7 @@ class _OrderPageState extends State<OrderPage> {
                               child: Text(
                                 '15時30分',
                                 style: TextStyle(
-                                    fontSize: 17.0,
+                                    fontSize: 15.0,
                                     color: timeDropdownValue == '15時30分'
                                         ? Colors.white
                                         : Colors.black),
@@ -225,7 +225,7 @@ class _OrderPageState extends State<OrderPage> {
                             child: ElevatedButton(
                               child: Text('17時30分',
                                   style: TextStyle(
-                                      fontSize: 17.0,
+                                      fontSize: 15.0,
                                       color: timeDropdownValue == '17時30分'
                                           ? Colors.white
                                           : Colors.black)),
