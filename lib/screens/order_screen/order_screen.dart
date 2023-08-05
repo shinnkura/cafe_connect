@@ -342,17 +342,21 @@ class _OrderPageState extends State<OrderPage> {
                                   ? Colors.brown
                                   : null,
                               child: Container(
-                                height: 180,
+                                height: 200,
                                 width: 150,
                                 child: Column(
                                   children: <Widget>[
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      child: Image.network(
-                                        item['image']!,
-                                        height: 100,
-                                        width: 140,
-                                        fit: BoxFit.cover,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        child: Image.network(
+                                          item['image']!,
+                                          height: 100,
+                                          width: 140,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                     ListTile(
