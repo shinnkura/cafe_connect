@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                 const GreetingText(),
                 const SizedBox(height: 20),
                 const OrderButton(),
-                const SizedBox(height: 200),
+                const SizedBox(height: 100),
               ],
             ),
           ),
