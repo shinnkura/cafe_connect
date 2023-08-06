@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../edito_order_pages/edit_order_page.dart';
-import '../order_screen/components/custom_elevated_button.dart';
 import 'components/order_loader.dart';
 
 class OrderListPage extends StatefulWidget {
@@ -315,26 +314,31 @@ class _OrderListPageState extends State<OrderListPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            FloatingActionButton(
-              onPressed: () async {
-                const url =
-                    'http://docs.google.com/forms/d/e/1FAIpQLSc1fO0xXfhBt_h-m62Evx0wL_J_z60Xe4rfH-zvxDGnaw-9aQ/viewform';
-                if (await canLaunch(url)) {
-                  await launch(url);
-                } else {
-                  throw 'Could not launch $url';
-                }
-              },
-              backgroundColor: Colors.brown[500],
-              heroTag: null,
-              child: Icon(Icons.mail),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: FloatingActionButton(
+                onPressed: () async {
+                  const url =
+                      'http://docs.google.com/forms/d/e/1FAIpQLSc1fO0xXfhBt_h-m62Evx0wL_J_z60Xe4rfH-zvxDGnaw-9aQ/viewform';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+                backgroundColor: Colors.brown[500],
+                heroTag: null,
+                child: Icon(Icons.mail),
+              ),
             ),
-            CustomElevatedButton(
+            FloatingActionButton(
               onPressed: () {
                 Navigator.popUntil(context, (route) => route.isFirst);
               },
-              text: 'ホームに戻る',
-            ),
+              child: Icon(Icons.home),
+              backgroundColor: Colors.brown[500],
+              tooltip: 'ホームに戻る',
+            )
           ],
         ),
       ),
