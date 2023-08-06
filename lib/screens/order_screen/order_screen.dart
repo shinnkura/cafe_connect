@@ -268,16 +268,22 @@ class _OrderPageState extends State<OrderPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        _controller.animateTo(
-                          _controller.offset - 250,
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                    ),
+                    MediaQuery.of(context).size.width > 600
+                        ? IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.brown,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              _controller.animateTo(
+                                _controller.offset - 250,
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            },
+                          )
+                        : Container(),
                     Expanded(
                       child: SingleChildScrollView(
                         controller: _controller,
@@ -409,16 +415,22 @@ class _OrderPageState extends State<OrderPage> {
                         ),
                       ),
                     ),
-                    IconButton(
-                      icon: Icon(Icons.arrow_forward_ios),
-                      onPressed: () {
-                        _controller.animateTo(
-                          _controller.offset + 250,
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeInOut,
-                        );
-                      },
-                    ),
+                    MediaQuery.of(context).size.width > 600
+                        ? IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.brown,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              _controller.animateTo(
+                                _controller.offset + 250,
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            },
+                          )
+                        : Container(),
                   ],
                 ),
               ),
