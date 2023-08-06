@@ -132,7 +132,6 @@ class _OrderListPageState extends State<OrderListPage> {
                                   }
                                 }
 
-                                // Update the state of the application to reflect the deletion.
                                 setState(() {
                                   ordersMap[time]![coffeeType]!.remove(order);
                                   if (ordersMap[time]![coffeeType]!.isEmpty) {
@@ -143,17 +142,14 @@ class _OrderListPageState extends State<OrderListPage> {
                                   }
                                 });
 
-                                // Then show a snackbar.
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text("${order['name']} dismissed"),
                                     action: SnackBarAction(
                                       label: '元に戻す',
                                       onPressed: () async {
-                                        // Add the item back to the Firestore.
                                         await orders.add(order);
 
-                                        // Update the state of the application to reflect the addition.
                                         setState(() {
                                           if (ordersMap.containsKey(time)) {
                                             if (ordersMap[time]!
@@ -288,6 +284,15 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 name: order['name'],
                                                 initialCoffeeType: coffeeType,
                                                 initialTime: time,
+                                                initialIsSugar:
+                                                    order['isSugar'],
+                                                initialCaramel:
+                                                    order['caramel'],
+                                                initialIsCondecensedMilk:
+                                                    order['isCondecensedMilk'],
+                                                initialSmall: order['small'],
+                                                initialIsPickupOn4thFloor:
+                                                    order['isPickupOn4thFloor'],
                                               ),
                                             ),
                                           );

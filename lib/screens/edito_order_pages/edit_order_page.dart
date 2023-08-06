@@ -9,12 +9,22 @@ class EditOrderPage extends StatefulWidget {
   final String name;
   final String initialCoffeeType;
   final String initialTime;
+  final bool initialIsSugar;
+  final bool initialCaramel;
+  final bool initialIsCondecensedMilk;
+  final bool initialSmall;
+  final bool initialIsPickupOn4thFloor;
 
   const EditOrderPage({
     super.key,
     required this.name,
     required this.initialCoffeeType,
     required this.initialTime,
+    required this.initialIsSugar,
+    required this.initialCaramel,
+    required this.initialIsCondecensedMilk,
+    required this.initialSmall,
+    required this.initialIsPickupOn4thFloor,
   });
 
   @override
@@ -77,6 +87,11 @@ class _EditOrderPageState extends State<EditOrderPage> {
     _nameController = TextEditingController(text: widget.name);
     dropdownValue = widget.initialCoffeeType;
     selectedTime = widget.initialTime;
+    isSugar = widget.initialIsSugar;
+    caramel = widget.initialCaramel;
+    isCondecensedMilk = widget.initialIsCondecensedMilk;
+    small = widget.initialSmall;
+    isPickupOn4thFloor = widget.initialIsPickupOn4thFloor;
   }
 
   @override
@@ -337,7 +352,8 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ThanksPage()),
+                              builder: (context) => const ThanksPage(),
+                            ),
                           );
                         },
                         style: ButtonStyle(
