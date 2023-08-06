@@ -338,7 +338,7 @@ class _OrderListPageState extends State<OrderListPage> {
               child: FloatingActionButton(
                 onPressed: () async {
                   const url =
-                      'http://docs.google.com/forms/d/e/1FAIpQLSc1fO0xXfhBt_h-m62Evx0wL_J_z60Xe4rfH-zvxDGnaw-9aQ/viewform';
+                      'https://calico-crowd-6dc.notion.site/93cb15b68f2443f3a7608d68b5afb83a?pvs=4';
                   if (await canLaunch(url)) {
                     await launch(url);
                   } else {
