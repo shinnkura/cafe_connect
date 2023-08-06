@@ -80,6 +80,8 @@ class _OrderListPageState extends State<OrderListPage> {
                       .values
                       .fold(0, (prev, curr) => prev + curr.length);
                   return ExpansionTile(
+                    collapsedIconColor: Colors.brown[800],
+                    iconColor: Colors.brown[800],
                     title: Text(
                       '$time     $totalOrdersAtThisTime名',
                       style: TextStyle(
