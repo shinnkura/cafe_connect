@@ -259,16 +259,13 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: CoffeeTypeDropdown(
-                          dropdownValue: dropdownValue,
-                          onChanged: (newValue) {
-                            setState(() {
-                              dropdownValue = newValue!;
-                            });
-                          },
-                        ),
+                      CoffeeTypeDropdown(
+                        dropdownValue: dropdownValue,
+                        onChanged: (newValue) {
+                          setState(() {
+                            dropdownValue = newValue!;
+                          });
+                        },
                       ),
                       const SizedBox(height: 20),
                       Text(
