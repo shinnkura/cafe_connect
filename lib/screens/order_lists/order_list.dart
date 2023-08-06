@@ -176,6 +176,16 @@ class _OrderListPageState extends State<OrderListPage> {
                               },
                               background: Container(
                                 color: Colors.red,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 20.0),
+                                    child: Icon(
+                                      Icons.delete,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                               ),
                               child: Card(
                                 shape: RoundedRectangleBorder(
@@ -183,7 +193,9 @@ class _OrderListPageState extends State<OrderListPage> {
                                 ),
                                 elevation: 10,
                                 margin: const EdgeInsets.symmetric(
-                                    vertical: 8.0, horizontal: 16.0),
+                                  vertical: 8.0,
+                                  horizontal: 16.0,
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Row(
