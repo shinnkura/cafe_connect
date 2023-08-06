@@ -271,7 +271,11 @@ class _OrderPageState extends State<OrderPage> {
                     IconButton(
                       icon: Icon(Icons.arrow_back_ios),
                       onPressed: () {
-                        _controller.jumpTo(_controller.offset - 150);
+                        _controller.animateTo(
+                          _controller.offset - 250,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
                       },
                     ),
                     Expanded(
@@ -408,7 +412,11 @@ class _OrderPageState extends State<OrderPage> {
                     IconButton(
                       icon: Icon(Icons.arrow_forward_ios),
                       onPressed: () {
-                        _controller.jumpTo(_controller.offset + 150);
+                        _controller.animateTo(
+                          _controller.offset + 250,
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
                       },
                     ),
                   ],
