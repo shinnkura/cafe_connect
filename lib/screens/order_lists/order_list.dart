@@ -236,6 +236,13 @@ class _OrderListPageState extends State<OrderListPage> {
                                               Row(
                                                 children: [
                                                   Text(
+                                                    order['isIce'] ? '氷あり' : '',
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.blue[300],
+                                                    ),
+                                                  ),
+                                                  Text(
                                                     order['small'] ? '少なめ' : '',
                                                     style: TextStyle(
                                                       fontSize: 12,
@@ -298,6 +305,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 name: order['name'],
                                                 initialCoffeeType: coffeeType,
                                                 initialTime: time,
+                                                initialIsIce: order['isIce'],
                                                 initialIsSugar:
                                                     order['isSugar'],
                                                 initialCaramel:

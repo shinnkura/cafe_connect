@@ -9,6 +9,7 @@ class EditOrderPage extends StatefulWidget {
   final String name;
   final String initialCoffeeType;
   final String initialTime;
+  final bool initialIsIce;
   final bool initialIsSugar;
   final bool initialCaramel;
   final bool initialIsCondecensedMilk;
@@ -20,6 +21,7 @@ class EditOrderPage extends StatefulWidget {
     required this.name,
     required this.initialCoffeeType,
     required this.initialTime,
+    required this.initialIsIce,
     required this.initialIsSugar,
     required this.initialCaramel,
     required this.initialIsCondecensedMilk,
@@ -36,6 +38,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
   late String dropdownValue;
   late String selectedTime;
   bool isOrderCancelled = false;
+  bool isIce = false;
   bool small = false;
   bool isSugar = false;
   bool caramel = false;
@@ -55,6 +58,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
           'name': _nameController.text,
           'coffeeType': dropdownValue,
           'time': selectedTime,
+          'isIce': isIce,
           'small': small,
           'isSugar': isSugar,
           'caramel': caramel,
@@ -86,6 +90,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
     super.initState();
     _nameController = TextEditingController(text: widget.name);
     dropdownValue = widget.initialCoffeeType;
+    isIce = widget.initialIsIce;
     selectedTime = widget.initialTime;
     isSugar = widget.initialIsSugar;
     caramel = widget.initialCaramel;
@@ -289,6 +294,16 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      CheckboxListTile(
+                        title: const Text("氷あり"),
+                        value: isIce,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isIce = value!;
+                          });
+                        },
+                        activeColor: Colors.brown,
                       ),
                       CheckboxListTile(
                         title: const Text("砂糖"),
