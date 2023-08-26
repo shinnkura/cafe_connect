@@ -41,7 +41,7 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Colors.brown,
       nextScreen: HomePage(),
       splashIconSize: 250,
-      duration: 3000,
+      duration: 1000,
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.leftToRightWithFade,
       animationDuration: const Duration(milliseconds: 1500),
