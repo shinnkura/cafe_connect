@@ -70,7 +70,7 @@ class _OrderPageState extends State<OrderPage> {
           ),
           SingleChildScrollView(
             child: Container(
-              margin: EdgeInsets.only(top: 350.0),
+              margin: EdgeInsets.only(top: 150.0),
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey[200],
