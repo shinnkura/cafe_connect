@@ -189,7 +189,7 @@ class _OrderPageState extends State<OrderPage> {
                                     ? Colors.brown
                                     : Colors.white,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 30,
@@ -223,7 +223,7 @@ class _OrderPageState extends State<OrderPage> {
                                     ? Colors.brown
                                     : Colors.white,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(5),
                                 ),
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 30,
