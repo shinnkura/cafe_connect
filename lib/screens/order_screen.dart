@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../constants.dart';
-import '../thanks_pages/thanks_page.dart';
-import 'components/custom_elevated_button.dart';
+import '../constants.dart';
+import 'thanks_page.dart';
+import '../components/custom_elevated_button.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({required Key key, required this.title}) : super(key: key);
@@ -60,28 +60,6 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   leading: Padding(
-      //     padding: EdgeInsets.only(left: 16.0),
-      //     child: InkWell(
-      //       borderRadius: BorderRadius.circular(30),
-      //       child: Container(
-      //         padding: EdgeInsets.all(2.0),
-      //         decoration: BoxDecoration(
-      //           color: Colors.white,
-      //           shape: BoxShape.circle,
-      //         ),
-      //         child: IconButton(
-      //           icon: Icon(Icons.arrow_back, color: Colors.brown),
-      //           iconSize: 16.0,
-      //           onPressed: () => Navigator.of(context).pop(),
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: Stack(
         children: [
           Image.network(

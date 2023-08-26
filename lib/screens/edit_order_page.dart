@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../constants.dart';
-import '../thanks_pages/thanks_page.dart';
-import 'components/coffee_type_dropdown.dart';
+import '../constants.dart';
+import 'thanks_page.dart';
+import '../components/coffee_type_dropdown.dart';
 
 class EditOrderPage extends StatefulWidget {
   final String name;

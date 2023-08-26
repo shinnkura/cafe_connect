@@ -2,8 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // import 'package:url_launcher/url_launcher.dart';
-import '../edito_order_pages/edit_order_page.dart';
-import 'components/order_loader.dart';
+import '../components/order_loader.dart';
+import 'edit_order_page.dart';
+// import 'order_lists/components/order_loader.dart';
 
 class OrderListPage extends StatefulWidget {
   const OrderListPage({Key? key}) : super(key: key);

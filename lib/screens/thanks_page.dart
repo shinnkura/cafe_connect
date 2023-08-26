@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'components/order_confirm_text.dart';
-import 'components/order_list_button.dart';
-import 'components/thank_you_text.dart';
+import '../components/order_confirm_text.dart';
+import '../components/order_list_button.dart';
+import '../components/thank_you_text.dart';
 
 class ThanksPage extends StatelessWidget {
   const ThanksPage({Key? key}) : super(key: key);

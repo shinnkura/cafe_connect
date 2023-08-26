@@ -1,8 +1,8 @@
-import 'package:cafe_connect/screens/order_lists/order_list.dart';
+import 'package:cafe_connect/screens/order_list.dart';
 import 'package:flutter/material.dart';
 
 import '../components/bottom_nav_bar.dart';
-import 'order_screen/order_screen.dart';
+import 'order_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

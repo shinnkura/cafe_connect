@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../order_lists/order_list.dart';
+import '../screens/order_list.dart';
 
 class OrderListButton extends StatelessWidget {
   const OrderListButton({Key? key}) : super(key: key);
