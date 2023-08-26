@@ -405,7 +405,8 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ThanksPage()),
+                              builder: (context) => const ThanksPage(),
+                            ),
                           );
                         },
                         style: ButtonStyle(
