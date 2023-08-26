@@ -1,6 +1,7 @@
+// import 'package:cafe_connect/screens/order_screen/order_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 import '../edito_order_pages/edit_order_page.dart';
 import 'components/order_loader.dart';
 
@@ -353,39 +354,40 @@ class _OrderListPageState extends State<OrderListPage> {
           },
         ),
       ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: FloatingActionButton(
-                onPressed: () async {
-                  const url =
-                      'https://calico-crowd-6dc.notion.site/93cb15b68f2443f3a7608d68b5afb83a?pvs=4';
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                },
-                backgroundColor: Colors.brown[500],
-                heroTag: null,
-                child: Icon(Icons.mail),
-              ),
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                Navigator.popUntil(context, (route) => route.isFirst);
-              },
-              child: Icon(Icons.home),
-              backgroundColor: Colors.brown[500],
-              tooltip: 'ホームに戻る',
-            )
-          ],
-        ),
-      ),
+
+      // floatingActionButton: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       Padding(
+      //         padding: const EdgeInsets.only(left: 20.0),
+      //         child: FloatingActionButton(
+      //           onPressed: () async {
+      //             const url =
+      //                 'https://calico-crowd-6dc.notion.site/93cb15b68f2443f3a7608d68b5afb83a?pvs=4';
+      //             if (await canLaunch(url)) {
+      //               await launch(url);
+      //             } else {
+      //               throw 'Could not launch $url';
+      //             }
+      //           },
+      //           backgroundColor: Colors.brown[500],
+      //           heroTag: null,
+      //           child: Icon(Icons.mail),
+      //         ),
+      //       ),
+      //       FloatingActionButton(
+      //         onPressed: () {
+      //           Navigator.popUntil(context, (route) => route.isFirst);
+      //         },
+      //         child: Icon(Icons.home),
+      //         backgroundColor: Colors.brown[500],
+      //         tooltip: 'ホームに戻る',
+      //       )
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

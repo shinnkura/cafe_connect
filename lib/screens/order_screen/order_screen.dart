@@ -60,28 +60,28 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Padding(
-          padding: EdgeInsets.only(left: 16.0),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(30),
-            child: Container(
-              padding: EdgeInsets.all(2.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.brown),
-                iconSize: 16.0,
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: Padding(
+      //     padding: EdgeInsets.only(left: 16.0),
+      //     child: InkWell(
+      //       borderRadius: BorderRadius.circular(30),
+      //       child: Container(
+      //         padding: EdgeInsets.all(2.0),
+      //         decoration: BoxDecoration(
+      //           color: Colors.white,
+      //           shape: BoxShape.circle,
+      //         ),
+      //         child: IconButton(
+      //           icon: Icon(Icons.arrow_back, color: Colors.brown),
+      //           iconSize: 16.0,
+      //           onPressed: () => Navigator.of(context).pop(),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Image.network(
@@ -95,7 +95,8 @@ class _OrderPageState extends State<OrderPage> {
               margin: EdgeInsets.only(top: 400.0),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0xFFF8F7FA),
+                // color: Color(0xFFF8F7FA),
+                color: Colors.grey[200],
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 4.0,

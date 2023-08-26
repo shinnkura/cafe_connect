@@ -1,12 +1,13 @@
 import 'package:cafe_connect/screens/order_screen/order_screen.dart';
 import 'package:cafe_connect/screens/order_lists/order_list.dart';
-import 'package:cafe_connect/screens/home/home_screen.dart';
+// import 'package:cafe_connect/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'constants.dart';
+import 'screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Coffee Order',
       theme: _buildThemeData(context),
-      home: const HomeScreen(),
+      // home: const HomeScreen(),
+      home: HomePage(),
       routes: _buildRoutes(),
     );
   }
