@@ -34,8 +34,8 @@ class MyBottomNavBar extends StatelessWidget {
           ),
           GButton(
             backgroundColor: Colors.brown,
-            icon: Icons.favorite,
-            text: 'Likes',
+            icon: Icons.border_color_outlined,
+            text: 'Order List',
           ),
         ],
       ),
