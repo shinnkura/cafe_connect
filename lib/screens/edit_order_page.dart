@@ -167,25 +167,37 @@ class _EditOrderPageState extends State<EditOrderPage> {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: TextField(
+                      child: TextFormField(
                         controller: _nameController,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
                         decoration: InputDecoration(
-                          labelStyle: TextStyle(color: kTextColor),
+                          labelStyle: TextStyle(color: Colors.grey),
                           filled: true,
-                          fillColor: Colors.white,
+                          fillColor: Colors.grey[100],
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
-                              color: kTextColor,
+                              color: Colors.grey[400]!,
+                              width: 1,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(15),
                             borderSide: BorderSide(
-                              color: Colors.brown,
+                              color: Colors.blue,
+                              width: 1,
                             ),
                           ),
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'お名前をご記入ください';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     const SizedBox(height: 20),

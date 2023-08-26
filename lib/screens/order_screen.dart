@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
 
-import '../constants.dart';
 import '../components/custom_elevated_button.dart';
 
 class OrderPage extends StatefulWidget {
@@ -118,21 +117,26 @@ class _OrderPageState extends State<OrderPage> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TextFormField(
                   controller: _nameController,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
                   decoration: InputDecoration(
-                    labelStyle: TextStyle(color: kTextColor),
+                    labelStyle: TextStyle(color: Colors.grey),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Colors.grey[100],
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
-                        color: kTextColor,
+                        color: Colors.grey[400]!,
+                        width: 1,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(
-                        color: Colors.brown,
+                        color: Colors.blue,
+                        width: 1,
                       ),
                     ),
                   ),
