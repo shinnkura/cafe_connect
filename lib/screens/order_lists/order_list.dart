@@ -53,6 +53,22 @@ class _OrderListPageState extends State<OrderListPage> {
     });
   }
 
+  // 削除処理を行うメソッド
+  Future<void> _deleteOrder(String name, String coffeeType, String time) async {
+    CollectionReference orders =
+        FirebaseFirestore.instance.collection('orders');
+    QuerySnapshot querySnapshot = await orders.get();
+    for (var doc in querySnapshot.docs) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      if (data['name'] == name &&
+          data['coffeeType'] == coffeeType &&
+          data['time'] == time) {
+        doc.reference.delete();
+        break;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -318,6 +334,28 @@ class _OrderListPageState extends State<OrderListPage> {
                                               ),
                                             ),
                                           );
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.brown[700],
+                                        ),
+                                        onPressed: () async {
+                                          await _deleteOrder(
+                                              order['name'], coffeeType, time);
+                                          setState(() {
+                                            ordersMap[time]![coffeeType]!
+                                                .remove(order);
+                                            if (ordersMap[time]![coffeeType]!
+                                                .isEmpty) {
+                                              ordersMap[time]!
+                                                  .remove(coffeeType);
+                                              if (ordersMap[time]!.isEmpty) {
+                                                ordersMap.remove(time);
+                                              }
+                                            }
+                                          });
                                         },
                                       ),
                                     ],
