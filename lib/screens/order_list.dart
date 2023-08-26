@@ -173,7 +173,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                             Text(
                                               '${order['name']}',
                                               style: TextStyle(
-                                                fontSize: 18,
+                                                fontSize: 15,
                                                 color: Colors.brown[700],
                                                 fontWeight: FontWeight.bold,
                                               ),

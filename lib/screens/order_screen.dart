@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:lottie/lottie.dart';
+
 import '../constants.dart';
-import 'thanks_page.dart';
 import '../components/custom_elevated_button.dart';
 
 class OrderPage extends StatefulWidget {
@@ -517,10 +518,51 @@ class _OrderPageState extends State<OrderPage> {
                         _isCondecensedMilk,
                         _isPickupOn4thFloor,
                       );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ThanksPage()),
+
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            backgroundColor: Colors.white.withOpacity(0.9),
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.all(20),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    '注文完了',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Lottie.network(
+                                    'https://lottie.host/59766007-61be-4bad-af60-b642e632bc9c/xhAatOnIvn.json',
+                                    repeat: false,
+                                    reverse: false,
+                                    animate: true,
+                                    width: 200,
+                                    height: 200,
+                                    fit: BoxFit.fill,
+                                    alignment: Alignment.center,
+                                  ),
+                                  SizedBox(height: 20),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('閉じる'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       );
                     }
                   },
