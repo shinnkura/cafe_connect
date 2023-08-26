@@ -131,235 +131,155 @@ class _OrderListPageState extends State<OrderListPage> {
                             ],
                           ),
                           ...ordersList.map((order) {
-                            return Dismissible(
-                              key: Key(order['name']),
-                              onDismissed: (direction) async {
-                                CollectionReference orders = FirebaseFirestore
-                                    .instance
-                                    .collection('orders');
-                                QuerySnapshot querySnapshot =
-                                    await orders.get();
-                                for (var doc in querySnapshot.docs) {
-                                  Map<String, dynamic> data =
-                                      doc.data() as Map<String, dynamic>;
-                                  if (data['name'] == order['name'] &&
-                                      data['coffeeType'] == coffeeType &&
-                                      data['time'] == time) {
-                                    doc.reference.delete();
-                                    break;
-                                  }
-                                }
-
-                                setState(() {
-                                  ordersMap[time]![coffeeType]!.remove(order);
-                                  if (ordersMap[time]![coffeeType]!.isEmpty) {
-                                    ordersMap[time]!.remove(coffeeType);
-                                    if (ordersMap[time]!.isEmpty) {
-                                      ordersMap.remove(time);
-                                    }
-                                  }
-                                });
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text("${order['name']} dismissed"),
-                                    action: SnackBarAction(
-                                      label: '元に戻す',
+                            return Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              elevation: 10,
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 8.0,
+                                horizontal: 16.0,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width: 80,
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                              coffeeImages[coffeeType] ?? ''),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 16.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${order['name']}',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.brown[700],
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  order['isIce'] ? '氷あり' : '',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.blue[300],
+                                                  ),
+                                                ),
+                                                Text(
+                                                  order['small'] ? '少なめ' : '',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.orange,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  order['isSugar'] ? '砂糖' : '',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.red,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  order['caramel']
+                                                      ? 'キャラメル'
+                                                      : '',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.purple,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  order['isCondecensedMilk']
+                                                      ? '練乳'
+                                                      : '',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.blue,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  order['isPickupOn4thFloor']
+                                                      ? '4階受取'
+                                                      : '',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.green,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.edit,
+                                        color: Colors.brown[700],
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => EditOrderPage(
+                                              name: order['name'],
+                                              initialCoffeeType: coffeeType,
+                                              initialTime: time,
+                                              initialIsIce: order['isIce'],
+                                              initialIsSugar: order['isSugar'],
+                                              initialCaramel: order['caramel'],
+                                              initialIsCondecensedMilk:
+                                                  order['isCondecensedMilk'],
+                                              initialSmall: order['small'],
+                                              initialIsPickupOn4thFloor:
+                                                  order['isPickupOn4thFloor'],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.brown[700],
+                                      ),
                                       onPressed: () async {
-                                        await orders.add(order);
-
+                                        await _deleteOrder(
+                                            order['name'], coffeeType, time);
                                         setState(() {
-                                          if (ordersMap.containsKey(time)) {
-                                            if (ordersMap[time]!
-                                                .containsKey(coffeeType)) {
-                                              ordersMap[time]![coffeeType]!
-                                                  .add(order);
-                                            } else {
-                                              ordersMap[time]![coffeeType] = [
-                                                order
-                                              ];
+                                          ordersMap[time]![coffeeType]!
+                                              .remove(order);
+                                          if (ordersMap[time]![coffeeType]!
+                                              .isEmpty) {
+                                            ordersMap[time]!.remove(coffeeType);
+                                            if (ordersMap[time]!.isEmpty) {
+                                              ordersMap.remove(time);
                                             }
-                                          } else {
-                                            ordersMap[time] = {
-                                              coffeeType: [order]
-                                            };
                                           }
                                         });
                                       },
                                     ),
-                                  ),
-                                );
-                              },
-                              background: Container(
-                                color: Colors.red,
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 20.0),
-                                    child: Icon(
-                                      Icons.delete,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                elevation: 10,
-                                margin: const EdgeInsets.symmetric(
-                                  vertical: 8.0,
-                                  horizontal: 16.0,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 80,
-                                        height: 60,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                                coffeeImages[coffeeType] ?? ''),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 16.0),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${order['name']}',
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.brown[700],
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    order['isIce'] ? '氷あり' : '',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.blue[300],
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    order['small'] ? '少なめ' : '',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.orange,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    order['isSugar']
-                                                        ? '砂糖'
-                                                        : '',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.red,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    order['caramel']
-                                                        ? 'キャラメル'
-                                                        : '',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.purple,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    order['isCondecensedMilk']
-                                                        ? '練乳'
-                                                        : '',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.blue,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    order['isPickupOn4thFloor']
-                                                        ? '4階受取'
-                                                        : '',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.green,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.edit,
-                                          color: Colors.brown[700],
-                                        ),
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EditOrderPage(
-                                                name: order['name'],
-                                                initialCoffeeType: coffeeType,
-                                                initialTime: time,
-                                                initialIsIce: order['isIce'],
-                                                initialIsSugar:
-                                                    order['isSugar'],
-                                                initialCaramel:
-                                                    order['caramel'],
-                                                initialIsCondecensedMilk:
-                                                    order['isCondecensedMilk'],
-                                                initialSmall: order['small'],
-                                                initialIsPickupOn4thFloor:
-                                                    order['isPickupOn4thFloor'],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.delete,
-                                          color: Colors.brown[700],
-                                        ),
-                                        onPressed: () async {
-                                          await _deleteOrder(
-                                              order['name'], coffeeType, time);
-                                          setState(() {
-                                            ordersMap[time]![coffeeType]!
-                                                .remove(order);
-                                            if (ordersMap[time]![coffeeType]!
-                                                .isEmpty) {
-                                              ordersMap[time]!
-                                                  .remove(coffeeType);
-                                              if (ordersMap[time]!.isEmpty) {
-                                                ordersMap.remove(time);
-                                              }
-                                            }
-                                          });
-                                        },
-                                      ),
-                                    ],
-                                  ),
+                                  ],
                                 ),
                               ),
                             );
