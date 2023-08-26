@@ -288,20 +288,52 @@ class _OrderListPageState extends State<OrderListPage> {
                                             color: Colors.white,
                                           ),
                                           onPressed: () async {
-                                            await _deleteOrder(order['name'],
-                                                coffeeType, time);
-                                            setState(() {
-                                              ordersMap[time]![coffeeType]!
-                                                  .remove(order);
-                                              if (ordersMap[time]![coffeeType]!
-                                                  .isEmpty) {
-                                                ordersMap[time]!
-                                                    .remove(coffeeType);
-                                                if (ordersMap[time]!.isEmpty) {
-                                                  ordersMap.remove(time);
+                                            // 確認ダイアログを表示
+                                            final bool? result =
+                                                await showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title: Text("確認"),
+                                                  content: Text(
+                                                      "${order['name']}さんの注文を削除してもよろしいですか？"), // 注文者の名前を含む文言に変更
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.of(context)
+                                                              .pop(false),
+                                                      child: Text("キャンセル"),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.of(context)
+                                                              .pop(true),
+                                                      child: Text("削除"),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+
+                                            // ユーザーが「削除」を選択した場合
+                                            if (result == true) {
+                                              await _deleteOrder(order['name'],
+                                                  coffeeType, time);
+                                              setState(() {
+                                                ordersMap[time]![coffeeType]!
+                                                    .remove(order);
+                                                if (ordersMap[time]![
+                                                        coffeeType]!
+                                                    .isEmpty) {
+                                                  ordersMap[time]!
+                                                      .remove(coffeeType);
+                                                  if (ordersMap[time]!
+                                                      .isEmpty) {
+                                                    ordersMap.remove(time);
+                                                  }
                                                 }
-                                              }
-                                            });
+                                              });
+                                            }
                                           },
                                         ),
                                       ),
