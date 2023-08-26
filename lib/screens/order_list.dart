@@ -239,7 +239,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                           const EdgeInsets.only(right: 8.0),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.green[400],
+                                          color: Colors.amber[700],
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                         ),
@@ -298,7 +298,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 return AlertDialog(
                                                   title: Text("確認"),
                                                   content: Text(
-                                                      "${order['name']}さんの注文を削除してもよろしいですか？"), // 注文者の名前を含む文言に変更
+                                                      "${order['name']}さんの注文を削除してもよろしいですか？"),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
