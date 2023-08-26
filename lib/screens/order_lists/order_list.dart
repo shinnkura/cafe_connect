@@ -232,52 +232,79 @@ class _OrderListPageState extends State<OrderListPage> {
                                         ),
                                       ),
                                     ),
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.edit,
-                                        color: Colors.brown[700],
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => EditOrderPage(
-                                              name: order['name'],
-                                              initialCoffeeType: coffeeType,
-                                              initialTime: time,
-                                              initialIsIce: order['isIce'],
-                                              initialIsSugar: order['isSugar'],
-                                              initialCaramel: order['caramel'],
-                                              initialIsCondecensedMilk:
-                                                  order['isCondecensedMilk'],
-                                              initialSmall: order['small'],
-                                              initialIsPickupOn4thFloor:
-                                                  order['isPickupOn4thFloor'],
-                                            ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.green[400],
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        child: IconButton(
+                                          icon: Icon(
+                                            Icons.edit,
+                                            color: Colors.white,
                                           ),
-                                        );
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: Colors.brown[700],
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    EditOrderPage(
+                                                  name: order['name'],
+                                                  initialCoffeeType: coffeeType,
+                                                  initialTime: time,
+                                                  initialIsIce: order['isIce'],
+                                                  initialIsSugar:
+                                                      order['isSugar'],
+                                                  initialCaramel:
+                                                      order['caramel'],
+                                                  initialIsCondecensedMilk:
+                                                      order[
+                                                          'isCondecensedMilk'],
+                                                  initialSmall: order['small'],
+                                                  initialIsPickupOn4thFloor:
+                                                      order[
+                                                          'isPickupOn4thFloor'],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
                                       ),
-                                      onPressed: () async {
-                                        await _deleteOrder(
-                                            order['name'], coffeeType, time);
-                                        setState(() {
-                                          ordersMap[time]![coffeeType]!
-                                              .remove(order);
-                                          if (ordersMap[time]![coffeeType]!
-                                              .isEmpty) {
-                                            ordersMap[time]!.remove(coffeeType);
-                                            if (ordersMap[time]!.isEmpty) {
-                                              ordersMap.remove(time);
-                                            }
-                                          }
-                                        });
-                                      },
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.red[400],
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        child: IconButton(
+                                          icon: Icon(
+                                            Icons.delete,
+                                            color: Colors.white,
+                                          ),
+                                          onPressed: () async {
+                                            await _deleteOrder(order['name'],
+                                                coffeeType, time);
+                                            setState(() {
+                                              ordersMap[time]![coffeeType]!
+                                                  .remove(order);
+                                              if (ordersMap[time]![coffeeType]!
+                                                  .isEmpty) {
+                                                ordersMap[time]!
+                                                    .remove(coffeeType);
+                                                if (ordersMap[time]!.isEmpty) {
+                                                  ordersMap.remove(time);
+                                                }
+                                              }
+                                            });
+                                          },
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
