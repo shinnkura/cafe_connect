@@ -355,40 +355,6 @@ class _OrderListPageState extends State<OrderListPage> {
           },
         ),
       ),
-
-      // floatingActionButton: Padding(
-      //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: [
-      //       Padding(
-      //         padding: const EdgeInsets.only(left: 20.0),
-      //         child: FloatingActionButton(
-      //           onPressed: () async {
-      //             const url =
-      //                 'https://calico-crowd-6dc.notion.site/93cb15b68f2443f3a7608d68b5afb83a?pvs=4';
-      //             if (await canLaunch(url)) {
-      //               await launch(url);
-      //             } else {
-      //               throw 'Could not launch $url';
-      //             }
-      //           },
-      //           backgroundColor: Colors.brown[500],
-      //           heroTag: null,
-      //           child: Icon(Icons.mail),
-      //         ),
-      //       ),
-      //       FloatingActionButton(
-      //         onPressed: () {
-      //           Navigator.popUntil(context, (route) => route.isFirst);
-      //         },
-      //         child: Icon(Icons.home),
-      //         backgroundColor: Colors.brown[500],
-      //         tooltip: 'ホームに戻る',
-      //       )
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
