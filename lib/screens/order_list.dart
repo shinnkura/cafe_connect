@@ -58,15 +58,18 @@ class _OrderListPageState extends State<OrderListPage> {
   Future<void> _deleteOrder(String name, String coffeeType, String time) async {
     CollectionReference orders =
         FirebaseFirestore.instance.collection('orders');
-    QuerySnapshot querySnapshot = await orders.get();
-    for (var doc in querySnapshot.docs) {
-      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      if (data['name'] == name &&
-          data['coffeeType'] == coffeeType &&
-          data['time'] == time) {
-        doc.reference.delete();
-        break;
-      }
+
+    // 特定の条件に一致するドキュメントを検索
+    Query query = orders
+        .where('name', isEqualTo: name)
+        .where('coffeeType', isEqualTo: coffeeType)
+        .where('time', isEqualTo: time);
+
+    QuerySnapshot querySnapshot = await query.get();
+
+    // ドキュメントが存在する場合、削除
+    if (querySnapshot.docs.isNotEmpty) {
+      querySnapshot.docs.first.reference.delete();
     }
   }
 
