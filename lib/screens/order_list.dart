@@ -211,7 +211,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
-                                              Row(
+                                              Wrap(
                                                 children: [
                                                   Text(
                                                     order['isIce'] ? '氷あり' : '',
