@@ -439,6 +439,7 @@ class _OrderPageState extends State<OrderPage> {
                     });
                   },
                   activeColor: Colors.brown,
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
               Padding(
@@ -452,6 +453,7 @@ class _OrderPageState extends State<OrderPage> {
                     });
                   },
                   activeColor: Colors.brown,
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
               Padding(
@@ -465,6 +467,7 @@ class _OrderPageState extends State<OrderPage> {
                     });
                   },
                   activeColor: Colors.brown,
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
               Padding(
@@ -478,6 +481,7 @@ class _OrderPageState extends State<OrderPage> {
                     });
                   },
                   activeColor: Colors.brown,
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
               Padding(
@@ -491,6 +495,7 @@ class _OrderPageState extends State<OrderPage> {
                     });
                   },
                   activeColor: Colors.brown,
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
               Padding(
@@ -504,6 +509,7 @@ class _OrderPageState extends State<OrderPage> {
                     });
                   },
                   activeColor: Colors.brown,
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
               Padding(
