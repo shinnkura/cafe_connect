@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
 
 import '../components/custom_elevated_button.dart';
+import 'order_list.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({required Key key, required this.title}) : super(key: key);
@@ -174,14 +175,7 @@ class _OrderPageState extends State<OrderPage> {
                                 timeDropdownValue == '15時30分' ? 10.0 : 0.0,
                             borderRadius: BorderRadius.circular(20),
                             child: ElevatedButton(
-                              child: Text(
-                                '15時30分',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: timeDropdownValue == '15時30分'
-                                        ? Colors.white
-                                        : Colors.black),
-                              ),
+                              
                               onPressed: () {
                                 setState(() {
                                   timeDropdownValue = '15時30分';
@@ -200,6 +194,14 @@ class _OrderPageState extends State<OrderPage> {
                                   vertical: 15,
                                 ),
                               ),
+                              child: Text(
+                                '15時30分',
+                                style: TextStyle(
+                                    fontSize: 15.0,
+                                    color: timeDropdownValue == '15時30分'
+                                        ? Colors.white
+                                        : Colors.black),
+                              ),
                             ),
                           ),
                         ),
@@ -210,12 +212,6 @@ class _OrderPageState extends State<OrderPage> {
                                 timeDropdownValue == '17時30分' ? 10.0 : 0.0,
                             borderRadius: BorderRadius.circular(20),
                             child: ElevatedButton(
-                              child: Text('17時30分',
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      color: timeDropdownValue == '17時30分'
-                                          ? Colors.white
-                                          : Colors.black)),
                               onPressed: () {
                                 setState(() {
                                   timeDropdownValue = '17時30分';
@@ -234,6 +230,12 @@ class _OrderPageState extends State<OrderPage> {
                                   vertical: 15,
                                 ),
                               ),
+                              child: Text('17時30分',
+                                  style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: timeDropdownValue == '17時30分'
+                                          ? Colors.white
+                                          : Colors.black)),
                             ),
                           ),
                         ),
@@ -359,7 +361,7 @@ class _OrderPageState extends State<OrderPage> {
                                     color: item['name'] == dropdownValue
                                         ? Colors.brown
                                         : null,
-                                    child: Container(
+                                    child: SizedBox(
                                       height: 200,
                                       width: 150,
                                       child: Column(
@@ -564,7 +566,12 @@ class _OrderPageState extends State<OrderPage> {
                                   SizedBox(height: 20),
                                   ElevatedButton(
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OrderListPage()),
+                                      );
                                     },
                                     child: Text('閉じる'),
                                   ),
