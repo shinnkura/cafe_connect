@@ -1,3 +1,4 @@
+import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
@@ -60,7 +61,19 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: kBackgroundColor,
+        title: Text(
+          '注文',
+          style: TextStyle(
+            fontSize: 24.0,
+            color: kTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        elevation: 0.0,
+      ),
       body: _buildBody(),
     );
   }
