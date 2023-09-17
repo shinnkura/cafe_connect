@@ -1,3 +1,4 @@
+import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -76,6 +77,18 @@ class _OrderListPageState extends State<OrderListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          '注文一覧',
+          style: TextStyle(
+            fontSize: 24.0,
+            color: kTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: kBackgroundColor,
+        elevation: 0,
+      ),
       body: RefreshIndicator(
         onRefresh: _refreshOrder,
         child:
