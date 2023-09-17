@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:cafe_connect/constants.dart';
 
 // ignore: must_be_immutable
 class MyBottomNavBar extends StatelessWidget {
@@ -16,7 +17,7 @@ class MyBottomNavBar extends StatelessWidget {
       margin: const EdgeInsets.all(10), // コンテナ全体にマージンを追加
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       decoration: BoxDecoration(
-        color: Colors.brown, // Nav barの背景色を茶色に設定
+        color: kPrimaryColor, // Nav barの背景色を茶色に設定
         borderRadius: BorderRadius.circular(30), // 角を丸くする
         boxShadow: [
           // 影を追加
@@ -32,7 +33,7 @@ class MyBottomNavBar extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         color: Colors.white60,
         activeColor: Colors.white,
-        tabBackgroundColor: Colors.brown[400]!,
+        tabBackgroundColor: kPrimaryLightColor,
         mainAxisAlignment: MainAxisAlignment.center,
         tabBorderRadius: 20,
         onTabChange: (value) => onTabChange?.call(value),

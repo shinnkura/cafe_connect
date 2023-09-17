@@ -68,7 +68,7 @@ class _OrderPageState extends State<OrderPage> {
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
         title: const Text(
-          '注文',
+          'ご注文',
           style: TextStyle(
             fontSize: 24.0,
             color: kTextColor,
@@ -166,7 +166,7 @@ class _OrderPageState extends State<OrderPage> {
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor: timeDropdownValue == '15時30分'
-                                    ? Colors.brown
+                                    ? kPrimaryColor
                                     : Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
@@ -202,7 +202,7 @@ class _OrderPageState extends State<OrderPage> {
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor: timeDropdownValue == '17時30分'
-                                    ? Colors.brown
+                                    ? kPrimaryColor
                                     : Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
@@ -242,7 +242,7 @@ class _OrderPageState extends State<OrderPage> {
                         ? IconButton(
                             icon: const Icon(
                               Icons.arrow_back_ios,
-                              color: Colors.brown,
+                              color: kPrimaryColor,
                               size: 30,
                             ),
                             onPressed: () {
@@ -325,7 +325,7 @@ class _OrderPageState extends State<OrderPage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Material(
                                 color: item['name'] == dropdownValue
-                                    ? Colors.brown
+                                    ? kPrimaryColor
                                     : null,
                                 elevation:
                                     item['name'] == dropdownValue ? 10.0 : 0.0,
@@ -341,7 +341,7 @@ class _OrderPageState extends State<OrderPage> {
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     color: item['name'] == dropdownValue
-                                        ? Colors.brown
+                                        ? kPrimaryColor
                                         : null,
                                     child: SizedBox(
                                       height: 200,
@@ -389,7 +389,7 @@ class _OrderPageState extends State<OrderPage> {
                         ? IconButton(
                             icon: const Icon(
                               Icons.arrow_forward_ios,
-                              color: Colors.brown,
+                              color: kPrimaryColor,
                               size: 30,
                             ),
                             onPressed: () {
@@ -422,7 +422,7 @@ class _OrderPageState extends State<OrderPage> {
                       _isIce = value!;
                     });
                   },
-                  activeColor: Colors.brown,
+                  activeColor: kPrimaryColor,
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
@@ -436,7 +436,7 @@ class _OrderPageState extends State<OrderPage> {
                       _isSugar = value!;
                     });
                   },
-                  activeColor: Colors.brown,
+                  activeColor: kPrimaryColor,
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
@@ -450,7 +450,7 @@ class _OrderPageState extends State<OrderPage> {
                       caramel = value!;
                     });
                   },
-                  activeColor: Colors.brown,
+                  activeColor: kPrimaryColor,
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
@@ -464,7 +464,7 @@ class _OrderPageState extends State<OrderPage> {
                       _isCondecensedMilk = value!;
                     });
                   },
-                  activeColor: Colors.brown,
+                  activeColor: kPrimaryColor,
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
@@ -478,7 +478,7 @@ class _OrderPageState extends State<OrderPage> {
                       small = value!;
                     });
                   },
-                  activeColor: Colors.brown,
+                  activeColor: kPrimaryColor,
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),
@@ -492,7 +492,7 @@ class _OrderPageState extends State<OrderPage> {
                       _isPickupOn4thFloor = value!;
                     });
                   },
-                  activeColor: Colors.brown,
+                  activeColor: kPrimaryColor,
                   controlAffinity: ListTileControlAffinity.leading,
                 ),
               ),

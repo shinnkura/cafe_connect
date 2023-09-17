@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cafe_connect/constants.dart';
 
 class CoffeeTypeDropdown extends StatefulWidget {
   final String dropdownValue;
@@ -28,7 +29,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
               ? IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
-                    color: Colors.brown,
+                    color: kPrimaryColor,
                     size: 30,
                   ),
                   onPressed: () {
@@ -111,7 +112,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                     padding: const EdgeInsets.all(8.0),
                     child: Material(
                       color: item['name'] == widget.dropdownValue
-                          ? Colors.brown
+                          ? kPrimaryColor
                           : null,
                       elevation:
                           item['name'] == widget.dropdownValue ? 10.0 : 0.0,
@@ -127,7 +128,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           color: item['name'] == widget.dropdownValue
-                              ? Colors.brown
+                              ? kPrimaryColor
                               : null,
                           child: SizedBox(
                             height: 200,
@@ -171,7 +172,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
               ? IconButton(
                   icon: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.brown,
+                    color: kPrimaryColor,
                     size: 30,
                   ),
                   onPressed: () {

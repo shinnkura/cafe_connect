@@ -80,7 +80,7 @@ class _OrderListPageState extends State<OrderListPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          '注文一覧',
+          'ご注文一覧',
           style: TextStyle(
             fontSize: 24.0,
             color: kTextColor,
@@ -114,12 +114,12 @@ class _OrderListPageState extends State<OrderListPage> {
                       .values
                       .fold(0, (prev, curr) => prev + curr.length);
                   return ExpansionTile(
-                    collapsedIconColor: Colors.brown[800],
-                    iconColor: Colors.brown[800],
+                    collapsedIconColor: kTextColor,
+                    iconColor: kTextColor,
                     title: Text(
                       '$time     $totalOrdersAtThisTime名',
-                      style: TextStyle(
-                        color: Colors.brown[800],
+                      style: const TextStyle(
+                        color: kTextColor,
                         fontSize: 24,
                       ),
                     ),
@@ -138,10 +138,10 @@ class _OrderListPageState extends State<OrderListPage> {
                                 ),
                                 child: Text(
                                   '$coffeeType     ${ordersList.length}名',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
-                                    color: Colors.brown[800],
+                                    color: kTextColor,
                                   ),
                                   textAlign: TextAlign.left,
                                 ),
@@ -219,9 +219,9 @@ class _OrderListPageState extends State<OrderListPage> {
                                             children: [
                                               Text(
                                                 '${order['name']}',
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 15,
-                                                  color: Colors.brown[700],
+                                                  color: kTextColor,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),

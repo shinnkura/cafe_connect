@@ -119,7 +119,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.brown),
+                icon: const Icon(Icons.arrow_back, color: kPrimaryColor),
                 iconSize: 16.0,
                 onPressed: () => Navigator.of(context).pop(),
               ),
@@ -227,7 +227,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
                                   backgroundColor: selectedTime == '15時30分'
-                                      ? Colors.brown
+                                      ? kPrimaryColor
                                       : Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
@@ -262,7 +262,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
                                   backgroundColor: selectedTime == '17時30分'
-                                      ? Colors.brown
+                                      ? kPrimaryColor
                                       : Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
@@ -317,7 +317,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                             isIce = value!;
                           });
                         },
-                        activeColor: Colors.brown,
+                        activeColor: kPrimaryColor,
                       ),
                       CheckboxListTile(
                         title: const Text("砂糖"),
@@ -327,7 +327,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                             isSugar = value!;
                           });
                         },
-                        activeColor: Colors.brown,
+                        activeColor: kPrimaryColor,
                       ),
                       CheckboxListTile(
                         title: const Text("キャラメルシロップ"),
@@ -337,7 +337,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                             caramel = value!;
                           });
                         },
-                        activeColor: Colors.brown,
+                        activeColor: kPrimaryColor,
                       ),
                       CheckboxListTile(
                         title: const Text("練乳"),
@@ -347,7 +347,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                             isCondecensedMilk = value!;
                           });
                         },
-                        activeColor: Colors.brown,
+                        activeColor: kPrimaryColor,
                       ),
                       CheckboxListTile(
                         title: const Text("少なめ（250ml程度）"),
@@ -357,7 +357,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                             small = value!;
                           });
                         },
-                        activeColor: Colors.brown,
+                        activeColor: kPrimaryColor,
                       ),
                       CheckboxListTile(
                         title: const Text("４階で受け取る"),
@@ -367,7 +367,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                             isPickupOn4thFloor = value!;
                           });
                         },
-                        activeColor: Colors.brown,
+                        activeColor: kPrimaryColor,
                       ),
                       const SizedBox(height: 20),
                     ],
