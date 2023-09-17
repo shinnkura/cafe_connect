@@ -42,7 +42,7 @@ class SplashScreen extends StatelessWidget {
               for (var letter in 'ウエルカム'.split(''))
                 Text(
                   letter,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
             ],
@@ -56,7 +56,7 @@ class SplashScreen extends StatelessWidget {
         ],
       ),
       // backgroundColor: Colors.brown,
-      nextScreen: HomePage(),
+      nextScreen: const HomePage(),
       splashIconSize: 250,
       duration: 1000,
       splashTransition: SplashTransition.fadeTransition,
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Coffee Order',
       theme: _buildThemeData(context),
-      home: SplashScreen(),
+      home: const SplashScreen(),
       routes: _buildRoutes(),
     );
   }

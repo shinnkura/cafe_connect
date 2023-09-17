@@ -31,6 +31,7 @@ class EditOrderPage extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _EditOrderPageState createState() => _EditOrderPageState();
 }
 
@@ -108,17 +109,17 @@ class _EditOrderPageState extends State<EditOrderPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: InkWell(
             borderRadius: BorderRadius.circular(30),
             child: Container(
-              padding: EdgeInsets.all(2.0),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.all(2.0),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.brown),
+                icon: const Icon(Icons.arrow_back, color: Colors.brown),
                 iconSize: 16.0,
                 onPressed: () => Navigator.of(context).pop(),
               ),
@@ -136,9 +137,9 @@ class _EditOrderPageState extends State<EditOrderPage> {
           ),
           SingleChildScrollView(
             child: Container(
-              margin: EdgeInsets.only(top: 150.0),
+              margin: const EdgeInsets.only(top: 150.0),
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFFF8F7FA),
                 boxShadow: [
                   BoxShadow(
@@ -158,7 +159,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     const SizedBox(height: 20),
-                    Text(
+                    const Text(
                       'Name',
                       style: TextStyle(
                         fontSize: 20,
@@ -169,12 +170,12 @@ class _EditOrderPageState extends State<EditOrderPage> {
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: TextFormField(
                         controller: _nameController,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.black,
                         ),
                         decoration: InputDecoration(
-                          labelStyle: TextStyle(color: Colors.grey),
+                          labelStyle: const TextStyle(color: Colors.grey),
                           filled: true,
                           fillColor: Colors.grey[100],
                           enabledBorder: OutlineInputBorder(
@@ -186,7 +187,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.blue,
                               width: 1,
                             ),
@@ -202,7 +203,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                     ),
                     const SizedBox(height: 20),
                     if (!isOrderCancelled) ...[
-                      Text(
+                      const Text(
                         'Time',
                         style: TextStyle(
                           fontSize: 20,
@@ -218,14 +219,6 @@ class _EditOrderPageState extends State<EditOrderPage> {
                               elevation: selectedTime == '15時30分' ? 10.0 : 0.0,
                               borderRadius: BorderRadius.circular(20),
                               child: ElevatedButton(
-                                child: Text(
-                                  '15時30分',
-                                  style: TextStyle(
-                                      fontSize: 17.0,
-                                      color: selectedTime == '15時30分'
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
                                 onPressed: () {
                                   setState(() {
                                     selectedTime = '15時30分';
@@ -239,10 +232,18 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 30,
                                     vertical: 15,
                                   ),
+                                ),
+                                child: Text(
+                                  '15時30分',
+                                  style: TextStyle(
+                                      fontSize: 17.0,
+                                      color: selectedTime == '15時30分'
+                                          ? Colors.white
+                                          : Colors.black),
                                 ),
                               ),
                             ),
@@ -253,14 +254,6 @@ class _EditOrderPageState extends State<EditOrderPage> {
                               elevation: selectedTime == '17時30分' ? 10.0 : 0.0,
                               borderRadius: BorderRadius.circular(20),
                               child: ElevatedButton(
-                                child: Text(
-                                  '17時30分',
-                                  style: TextStyle(
-                                      fontSize: 17.0,
-                                      color: selectedTime == '17時30分'
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
                                 onPressed: () {
                                   setState(() {
                                     selectedTime = '17時30分';
@@ -274,10 +267,18 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 30,
                                     vertical: 15,
                                   ),
+                                ),
+                                child: Text(
+                                  '17時30分',
+                                  style: TextStyle(
+                                      fontSize: 17.0,
+                                      color: selectedTime == '17時30分'
+                                          ? Colors.white
+                                          : Colors.black),
                                 ),
                               ),
                             ),
@@ -285,7 +286,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Text(
+                      const Text(
                         'Categories',
                         style: TextStyle(
                           fontSize: 20,
@@ -301,7 +302,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                         },
                       ),
                       const SizedBox(height: 20),
-                      Text(
+                      const Text(
                         'Topping',
                         style: TextStyle(
                           fontSize: 20,
@@ -370,7 +371,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                       ),
                       const SizedBox(height: 20),
                     ],
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () async {
@@ -389,18 +390,18 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Container(
-                                    padding: EdgeInsets.all(20),
+                                    padding: const EdgeInsets.all(20),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Text(
+                                        const Text(
                                           '注文完了',
                                           style: TextStyle(
                                             fontSize: 24,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         Lottie.network(
                                           'https://lottie.host/59766007-61be-4bad-af60-b642e632bc9c/xhAatOnIvn.json',
                                           repeat: false,
@@ -411,12 +412,12 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                           fit: BoxFit.fill,
                                           alignment: Alignment.center,
                                         ),
-                                        SizedBox(height: 20),
+                                        const SizedBox(height: 20),
                                         ElevatedButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
-                                          child: Text('閉じる'),
+                                          child: const Text('閉じる'),
                                         ),
                                       ],
                                     ),

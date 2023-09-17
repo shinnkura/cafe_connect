@@ -10,6 +10,7 @@ class OrderListPage extends StatefulWidget {
   const OrderListPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _OrderListPageState createState() => _OrderListPageState();
 }
 
@@ -98,7 +99,7 @@ class _OrderListPageState extends State<OrderListPage> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              print(snapshot.error);
+              // print(snapshot.error);
               return Center(child: Text('エラーが発生しました: ${snapshot.error}'));
             } else {
               Map<String, Map<String, List<Map<String, dynamic>>>> orders =
@@ -198,10 +199,10 @@ class _OrderListPageState extends State<OrderListPage> {
                                             imageUrl:
                                                 coffeeImages[coffeeType] ?? '',
                                             placeholder: (context, url) =>
-                                                CircularProgressIndicator(),
+                                                const CircularProgressIndicator(),
                                             errorWidget:
                                                 (context, url, error) =>
-                                                    Icon(Icons.error),
+                                                    const Icon(Icons.error),
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -235,7 +236,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                   ),
                                                   Text(
                                                     order['small'] ? '少なめ' : '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 12,
                                                       color: Colors.orange,
                                                     ),
@@ -244,7 +245,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                     order['isSugar']
                                                         ? '砂糖'
                                                         : '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 12,
                                                       color: Colors.red,
                                                     ),
@@ -253,7 +254,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                     order['caramel']
                                                         ? 'キャラメル'
                                                         : '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 12,
                                                       color: Colors.purple,
                                                     ),
@@ -262,7 +263,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                     order['isCondecensedMilk']
                                                         ? '練乳'
                                                         : '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 12,
                                                       color: Colors.blue,
                                                     ),
@@ -271,7 +272,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                     order['isPickupOn4thFloor']
                                                         ? '4階受取'
                                                         : '',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 12,
                                                       color: Colors.green,
                                                     ),
@@ -292,7 +293,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 BorderRadius.circular(50.0),
                                           ),
                                           child: IconButton(
-                                            icon: Icon(
+                                            icon: const Icon(
                                               Icons.clear,
                                               color: Colors.white,
                                             ),
@@ -303,7 +304,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                                 context: context,
                                                 builder: (context) {
                                                   return AlertDialog(
-                                                    title: Text("確認"),
+                                                    title: const Text("確認"),
                                                     content: Text(
                                                         "${order['name']}さんの注文を削除してもよろしいですか？"),
                                                     actions: [
@@ -312,14 +313,15 @@ class _OrderListPageState extends State<OrderListPage> {
                                                             Navigator.of(
                                                                     context)
                                                                 .pop(false),
-                                                        child: Text("キャンセル"),
+                                                        child:
+                                                            const Text("キャンセル"),
                                                       ),
                                                       TextButton(
                                                         onPressed: () =>
                                                             Navigator.of(
                                                                     context)
                                                                 .pop(true),
-                                                        child: Text("削除"),
+                                                        child: const Text("削除"),
                                                       ),
                                                     ],
                                                   );

@@ -13,8 +13,8 @@ class MyBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10), // コンテナ全体にマージンを追加
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      margin: const EdgeInsets.all(10), // コンテナ全体にマージンを追加
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       decoration: BoxDecoration(
         color: Colors.brown, // Nav barの背景色を茶色に設定
         borderRadius: BorderRadius.circular(30), // 角を丸くする
@@ -24,19 +24,19 @@ class MyBottomNavBar extends StatelessWidget {
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: GNav(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         color: Colors.white60,
         activeColor: Colors.white,
         tabBackgroundColor: Colors.brown[400]!,
         mainAxisAlignment: MainAxisAlignment.center,
         tabBorderRadius: 20,
         onTabChange: (value) => onTabChange?.call(value),
-        tabs: [
+        tabs: const [
           GButton(
             icon: Icons.home,
             text: 'Home',

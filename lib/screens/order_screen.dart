@@ -12,6 +12,7 @@ class OrderPage extends StatefulWidget {
   final String title;
 
   @override
+  // ignore: library_private_types_in_public_api
   _OrderPageState createState() => _OrderPageState();
 }
 
@@ -54,7 +55,9 @@ class _OrderPageState extends State<OrderPage> {
           'isCondecensedMilk': isCondecensedMilk,
           'isPickupOn4thFloor': isPickupOn4thFloor,
         })
+        // ignore: avoid_print
         .then((value) => print("Order Added"))
+        // ignore: avoid_print
         .catchError((error) => print("Failed to add order: $error"));
   }
 
@@ -64,7 +67,7 @@ class _OrderPageState extends State<OrderPage> {
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
-        title: Text(
+        title: const Text(
           '注文',
           style: TextStyle(
             fontSize: 24.0,
@@ -87,7 +90,7 @@ class _OrderPageState extends State<OrderPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Text(
+              const Text(
                 'Name',
                 style: TextStyle(
                   fontSize: 20,
@@ -98,12 +101,12 @@ class _OrderPageState extends State<OrderPage> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TextFormField(
                   controller: _nameController,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black,
                   ),
                   decoration: InputDecoration(
-                    labelStyle: TextStyle(color: Colors.grey),
+                    labelStyle: const TextStyle(color: Colors.grey),
                     filled: true,
                     fillColor: Colors.grey[100],
                     enabledBorder: OutlineInputBorder(
@@ -115,7 +118,7 @@ class _OrderPageState extends State<OrderPage> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.blue,
                         width: 1,
                       ),
@@ -138,7 +141,7 @@ class _OrderPageState extends State<OrderPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Time',
                       style: TextStyle(
                         fontSize: 20,
@@ -168,7 +171,7 @@ class _OrderPageState extends State<OrderPage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 30,
                                   vertical: 15,
                                 ),
@@ -204,7 +207,7 @@ class _OrderPageState extends State<OrderPage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 30,
                                   vertical: 15,
                                 ),
@@ -224,7 +227,7 @@ class _OrderPageState extends State<OrderPage> {
                 ),
               ),
               const SizedBox(height: 20.0),
-              Text(
+              const Text(
                 'Categories',
                 style: TextStyle(
                   fontSize: 20,
@@ -237,7 +240,7 @@ class _OrderPageState extends State<OrderPage> {
                   children: [
                     MediaQuery.of(context).size.width > 600
                         ? IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_back_ios,
                               color: Colors.brown,
                               size: 30,
@@ -245,7 +248,7 @@ class _OrderPageState extends State<OrderPage> {
                             onPressed: () {
                               _controller.animateTo(
                                 _controller.offset - 250,
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
                               );
                             },
@@ -384,7 +387,7 @@ class _OrderPageState extends State<OrderPage> {
                     ),
                     MediaQuery.of(context).size.width > 600
                         ? IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_forward_ios,
                               color: Colors.brown,
                               size: 30,
@@ -392,7 +395,7 @@ class _OrderPageState extends State<OrderPage> {
                             onPressed: () {
                               _controller.animateTo(
                                 _controller.offset + 250,
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
                               );
                             },
@@ -402,7 +405,7 @@ class _OrderPageState extends State<OrderPage> {
                 ),
               ),
               const SizedBox(height: 20.0),
-              Text(
+              const Text(
                 'Topping',
                 style: TextStyle(
                   fontSize: 20,
@@ -520,18 +523,18 @@ class _OrderPageState extends State<OrderPage> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Container(
-                              padding: EdgeInsets.all(20),
+                              padding: const EdgeInsets.all(20),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Text(
+                                  const Text(
                                     '注文完了',
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 20),
+                                  const SizedBox(height: 20),
                                   Lottie.network(
                                     'https://lottie.host/59766007-61be-4bad-af60-b642e632bc9c/xhAatOnIvn.json',
                                     repeat: false,
@@ -542,17 +545,17 @@ class _OrderPageState extends State<OrderPage> {
                                     fit: BoxFit.fill,
                                     alignment: Alignment.center,
                                   ),
-                                  SizedBox(height: 20),
+                                  const SizedBox(height: 20),
                                   ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                OrderListPage()),
+                                                const OrderListPage()),
                                       );
                                     },
-                                    child: Text('閉じる'),
+                                    child: const Text('閉じる'),
                                   ),
                                 ],
                               ),

@@ -5,11 +5,13 @@ class CoffeeTypeDropdown extends StatefulWidget {
   final ValueChanged<String?> onChanged;
 
   const CoffeeTypeDropdown({
+    super.key,
     required this.dropdownValue,
     required this.onChanged,
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _CoffeeTypeDropdownState createState() => _CoffeeTypeDropdownState();
 }
 
@@ -24,7 +26,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
         children: [
           MediaQuery.of(context).size.width > 600
               ? IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back_ios,
                     color: Colors.brown,
                     size: 30,
@@ -32,7 +34,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                   onPressed: () {
                     _controller.animateTo(
                       _controller.offset - 250,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
@@ -127,7 +129,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                           color: item['name'] == widget.dropdownValue
                               ? Colors.brown
                               : null,
-                          child: Container(
+                          child: SizedBox(
                             height: 200,
                             width: 150,
                             child: Column(
@@ -167,7 +169,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
           ),
           MediaQuery.of(context).size.width > 600
               ? IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.brown,
                     size: 30,
@@ -175,7 +177,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                   onPressed: () {
                     _controller.animateTo(
                       _controller.offset + 250,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
