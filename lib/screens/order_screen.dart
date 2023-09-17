@@ -61,40 +61,7 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: Stack(
-        children: [
-          Image.network(
-            'https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-            width: double.infinity,
-            height: 500.0,
-            fit: BoxFit.cover,
-          ),
-          SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.only(top: 150.0),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 4.0,
-                    color: Color(0x320E151B),
-                    offset: Offset(0.0, -2.0),
-                  )
-                ],
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40.0),
-                  topRight: Radius.circular(40.0),
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(15.0),
-                child: _buildBody(),
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: _buildBody(),
     );
   }
 
