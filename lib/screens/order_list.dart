@@ -280,7 +280,7 @@ class _OrderListPageState extends State<OrderListPage> {
                                           ),
                                           child: IconButton(
                                             icon: Icon(
-                                              Icons.close,
+                                              Icons.clear,
                                               color: Colors.white,
                                             ),
                                             onPressed: () async {
