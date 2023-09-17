@@ -33,12 +33,29 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: Lottie.network(
-        'https://lottie.host/c377cb11-db7c-441f-b444-683224969d58/TfSIr1spOc.json',
-        height: 250,
-        width: 250,
+      splash: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // 「ウエルカム」という文字を縦に並べる
+          Column(
+            children: [
+              for (var letter in 'ウエルカム'.split(''))
+                Text(
+                  letter,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+            ],
+          ),
+          // Lottieアイコンを配置
+          Lottie.network(
+            'https://lottie.host/c377cb11-db7c-441f-b444-683224969d58/TfSIr1spOc.json',
+            height: 250,
+            width: 250,
+          ),
+        ],
       ),
-      backgroundColor: Colors.brown,
+      // backgroundColor: Colors.brown,
       nextScreen: HomePage(),
       splashIconSize: 250,
       duration: 1000,

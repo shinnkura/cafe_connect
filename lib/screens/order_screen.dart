@@ -175,7 +175,6 @@ class _OrderPageState extends State<OrderPage> {
                                 timeDropdownValue == '15時30分' ? 10.0 : 0.0,
                             borderRadius: BorderRadius.circular(20),
                             child: ElevatedButton(
-                              
                               onPressed: () {
                                 setState(() {
                                   timeDropdownValue = '15時30分';
