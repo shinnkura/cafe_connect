@@ -276,11 +276,11 @@ class _OrderListPageState extends State<OrderListPage> {
                                           decoration: BoxDecoration(
                                             color: Colors.red[400],
                                             borderRadius:
-                                                BorderRadius.circular(12.0),
+                                                BorderRadius.circular(50.0),
                                           ),
                                           child: IconButton(
                                             icon: Icon(
-                                              Icons.delete,
+                                              Icons.close,
                                               color: Colors.white,
                                             ),
                                             onPressed: () async {
