@@ -89,7 +89,9 @@ class _OrderListPageState extends State<OrderListPage> {
         ),
         backgroundColor: kBackgroundColor,
         elevation: 0,
+        iconTheme: const IconThemeData(color: kTextColor),
       ),
+      drawer: myDrawer,
       body: RefreshIndicator(
         onRefresh: _refreshOrder,
         child:

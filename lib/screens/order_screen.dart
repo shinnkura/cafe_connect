@@ -76,7 +76,10 @@ class _OrderPageState extends State<OrderPage> {
           ),
         ),
         elevation: 0.0,
+        // iconカラーを変更
+        iconTheme: const IconThemeData(color: kTextColor),
       ),
+      drawer: myDrawer,
       body: _buildBody(),
     );
   }
