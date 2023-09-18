@@ -121,7 +121,7 @@ class _OrderListPageState extends State<OrderListPage> {
             Padding(
               padding: tilePadding,
               child: ListTile(
-                leading: const Icon(Icons.list_alt),
+                leading: const Icon(Icons.history_edu_rounded),
                 title: Text(
                   '本 日 の ご 注 文',
                   style: drawerTextColor,
