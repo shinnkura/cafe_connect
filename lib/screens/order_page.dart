@@ -7,9 +7,7 @@ import '../components/custom_elevated_button.dart';
 import 'order_list.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({required Key key, required this.title}) : super(key: key);
-
-  final String title;
+  const OrderPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -64,7 +62,6 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
         title: const Text(
@@ -79,7 +76,51 @@ class _OrderPageState extends State<OrderPage> {
         // iconカラーを変更
         iconTheme: const IconThemeData(color: kTextColor),
       ),
-      drawer: myDrawer,
+      drawer: Drawer(
+        backgroundColor: Colors.grey[300],
+        elevation: 0,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.home),
+                title: Text(
+                  'ご 注 文',
+                  style: drawerTextColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const OrderPage(),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.list_alt),
+                title: Text(
+                  '本 日 の ご 注 文',
+                  style: drawerTextColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const OrderListPage(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
       body: _buildBody(),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'package:cafe_connect/screens/order_page.dart';
 import '../components/order_loader.dart';
 import 'edit_order_page.dart';
 
@@ -79,19 +80,64 @@ class _OrderListPageState extends State<OrderListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kBackgroundColor,
         title: const Text(
-          'ご注文一覧',
+          'ご注文',
           style: TextStyle(
             fontSize: 24.0,
             color: kTextColor,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: kBackgroundColor,
-        elevation: 0,
+        elevation: 0.0,
+        // iconカラーを変更
         iconTheme: const IconThemeData(color: kTextColor),
       ),
-      drawer: myDrawer,
+      drawer: Drawer(
+        backgroundColor: Colors.grey[300],
+        elevation: 0,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.home),
+                title: Text(
+                  'ご 注 文',
+                  style: drawerTextColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const OrderPage(),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.list_alt),
+                title: Text(
+                  '本 日 の ご 注 文',
+                  style: drawerTextColor,
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const OrderListPage(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
       body: RefreshIndicator(
         onRefresh: _refreshOrder,
         child:

@@ -1,17 +1,16 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:cafe_connect/screens/order_screen.dart';
-import 'package:cafe_connect/screens/order_list.dart';
+import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
-import 'firebase_options.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
+import 'firebase_options.dart';
+import 'package:cafe_connect/screens/order_page.dart';
+import 'package:cafe_connect/screens/order_list.dart';
 import 'constants.dart';
-import 'screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,7 +56,7 @@ class SplashScreen extends StatelessWidget {
         ],
       ),
       // backgroundColor: kPrimaryColor,
-      nextScreen: const HomePage(),
+      nextScreen: const OrderPage(),
       splashIconSize: 250,
       duration: 1000,
       splashTransition: SplashTransition.fadeTransition,
@@ -100,10 +99,7 @@ class MyApp extends StatelessWidget {
 
   Map<String, WidgetBuilder> _buildRoutes() {
     return {
-      '/order': (context) => const OrderPage(
-            key: Key('order'),
-            title: 'Coffee Order',
-          ),
+      '/order': (context) => const OrderPage(),
       '/orderList': (context) => const OrderListPage(),
     };
   }
