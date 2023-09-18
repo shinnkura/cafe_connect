@@ -35,7 +35,6 @@ class SplashScreen extends StatelessWidget {
       splash: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // 「ウエルカム」という文字を縦に並べる
           Column(
             children: [
               for (var letter in 'ウエルカム'.split(''))
@@ -47,7 +46,6 @@ class SplashScreen extends StatelessWidget {
                 ),
             ],
           ),
-          // Lottieアイコンを配置
           Lottie.network(
             'https://lottie.host/c377cb11-db7c-441f-b444-683224969d58/TfSIr1spOc.json',
             height: 250,
@@ -55,7 +53,6 @@ class SplashScreen extends StatelessWidget {
           ),
         ],
       ),
-      // backgroundColor: kPrimaryColor,
       nextScreen: const OrderPage(),
       splashIconSize: 250,
       duration: 1000,
