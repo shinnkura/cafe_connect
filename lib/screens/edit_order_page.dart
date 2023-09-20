@@ -1,3 +1,4 @@
+import 'package:cafe_connect/screens/order_list.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
@@ -415,7 +416,13 @@ class _EditOrderPageState extends State<EditOrderPage> {
                                         const SizedBox(height: 20),
                                         ElevatedButton(
                                           onPressed: () {
-                                            Navigator.pop(context);
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const OrderListPage(),
+                                              ),
+                                            );
                                           },
                                           child: const Text('閉じる'),
                                         ),

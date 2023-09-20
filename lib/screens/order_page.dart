@@ -683,8 +683,9 @@ class _OrderPageState extends State<OrderPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                const OrderListPage()),
+                                          builder: (context) =>
+                                              const OrderListPage(),
+                                        ),
                                       );
                                     },
                                     child: const Text('閉じる'),
