@@ -272,32 +272,35 @@ class _OrderPageState extends State<OrderPage> {
               ),
               const SizedBox(height: 20.0),
               const Text(
-                'Categories',
+                'Drinks',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.all(8.0), // テキスト周りのパディングを追加
+                  decoration: BoxDecoration(
+                    color: Colors.red[400], // 背景色を赤に設定
+                    borderRadius: BorderRadius.circular(15.0), // 丸みを持たせる
+                  ),
+                  child: const Text(
+                    'ホット',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white, // テキスト色を白に設定
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: [
-                    MediaQuery.of(context).size.width > 600
-                        ? IconButton(
-                            icon: const Icon(
-                              Icons.arrow_back_ios,
-                              color: kPrimaryColor,
-                              size: 30,
-                            ),
-                            onPressed: () {
-                              _controller.animateTo(
-                                _controller.offset - 250,
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                              );
-                            },
-                          )
-                        : Container(),
                     Expanded(
                       child: SingleChildScrollView(
                         controller: _controller,
@@ -315,15 +318,126 @@ class _OrderPageState extends State<OrderPage> {
                                   "https://images.unsplash.com/photo-1484244619813-7dd17c80db4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
                             },
                             {
-                              "name": "ちょいふわ\nカフェオレ",
-                              "image":
-                                  "https://images.unsplash.com/photo-1666600638856-dc0fb01c01bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-                            },
-                            {
                               "name": "ふわふわ\nカフェオレ",
                               "image":
                                   "https://images.unsplash.com/photo-1585494156145-1c60a4fe952b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
                             },
+                            {
+                              "name": "ソイラテ",
+                              "image":
+                                  "https://images.unsplash.com/photo-1608651057580-4a50b2fc2281?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                            },
+                            {
+                              "name": "緑茶",
+                              "image":
+                                  "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                            },
+                            {
+                              "name": "サクラティー\nラテ",
+                              "image":
+                                  "https://images.unsplash.com/38/QoR8Bv1S2SEqH6UcSJCA_Tea.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                            },
+                            {
+                              "name": "抹茶ラテ",
+                              "image":
+                                  "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80",
+                            },
+                          ].map((Map<String, String> item) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Material(
+                                color: item['name'] == dropdownValue
+                                    ? kPrimaryColor
+                                    : null,
+                                elevation:
+                                    item['name'] == dropdownValue ? 10.0 : 0.0,
+                                borderRadius: BorderRadius.circular(20),
+                                child: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      dropdownValue = item['name']!;
+                                    });
+                                  },
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    color: item['name'] == dropdownValue
+                                        ? kPrimaryColor
+                                        : null,
+                                    child: SizedBox(
+                                      height: 200,
+                                      width: 150,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              child: Image.network(
+                                                item['image']!,
+                                                height: 100,
+                                                width: 140,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          ListTile(
+                                            title: Text(
+                                              item['name']!,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: item['name'] ==
+                                                        dropdownValue
+                                                    ? Colors.white
+                                                    : null,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.blue[400],
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: const Text(
+                    'アイス',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        controller: _controller,
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: <Map<String, String>>[
                             {
                               "name": "アイスコーヒー\n（水出し）",
                               "image":
@@ -345,19 +459,9 @@ class _OrderPageState extends State<OrderPage> {
                                   "https://images.unsplash.com/photo-1553909489-ec2175ef3f52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80"
                             },
                             {
-                              "name": "ソイラテ",
-                              "image":
-                                  "https://images.unsplash.com/photo-1608651057580-4a50b2fc2281?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                            },
-                            {
                               "name": "アイスソイラテ",
                               "image":
                                   "https://images.unsplash.com/photo-1471691118458-a88597b4c1f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-                            },
-                            {
-                              "name": "緑茶",
-                              "image":
-                                  "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
                             },
                             {
                               "name": "緑茶（アイス）",
@@ -429,22 +533,6 @@ class _OrderPageState extends State<OrderPage> {
                         ),
                       ),
                     ),
-                    MediaQuery.of(context).size.width > 600
-                        ? IconButton(
-                            icon: const Icon(
-                              Icons.arrow_forward_ios,
-                              color: kPrimaryColor,
-                              size: 30,
-                            ),
-                            onPressed: () {
-                              _controller.animateTo(
-                                _controller.offset + 250,
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                              );
-                            },
-                          )
-                        : Container(),
                   ],
                 ),
               ),
