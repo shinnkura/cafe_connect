@@ -108,7 +108,7 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                         "https://images.unsplash.com/photo-1455621481073-d5bc1c40e3cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1324&q=80",
                   },
                   {
-                    "name": "サクラティー\nラテ",
+                    "name": "ティーラテ",
                     "image":
                         "https://images.unsplash.com/38/QoR8Bv1S2SEqH6UcSJCA_Tea.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
                   },
@@ -116,6 +116,16 @@ class _CoffeeTypeDropdownState extends State<CoffeeTypeDropdown> {
                     "name": "抹茶ラテ",
                     "image":
                         "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80",
+                  },
+                  {
+                    "name": "アイスミルクティー",
+                    "image":
+                        "https://plus.unsplash.com/premium_photo-1663933533712-eef7095f782b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80",
+                  },
+                  {
+                    "name": "アイス抹茶ラテ",
+                    "image":
+                        "https://plus.unsplash.com/premium_photo-1695151556198-6b21eae6215d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1983&q=80",
                   },
                 ].map((Map<String, String> item) {
                   return Padding(
