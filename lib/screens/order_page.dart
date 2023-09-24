@@ -2,6 +2,7 @@ import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/custom_elevated_button.dart';
 import 'order_list.dart';
@@ -118,11 +119,36 @@ class _OrderPageState extends State<OrderPage> {
                 },
               ),
             ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.coffee_maker),
+                title: Text(
+                  'コーヒーメーカー の 使 い 方',
+                  style: drawerTextColor,
+                ),
+                onTap: () {
+                  _launchURL();
+                },
+              ),
+            ),
           ],
         ),
       ),
       body: _buildBody(),
     );
+  }
+
+  _launchURL() async {
+    const url =
+        'https://iris-paste-aba.notion.site/2359cb056bc2421a9bc9c89a85fcfc64?pvs=4';
+    // ignore: deprecated_member_use
+    if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   Widget _buildBody() {

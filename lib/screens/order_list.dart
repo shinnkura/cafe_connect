@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:cafe_connect/screens/order_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../components/order_loader.dart';
 import 'edit_order_page.dart';
 
@@ -78,6 +79,18 @@ class _OrderListPageState extends State<OrderListPage> {
     }
   }
 
+  _launchURL() async {
+    const url =
+        'https://iris-paste-aba.notion.site/2359cb056bc2421a9bc9c89a85fcfc64?pvs=4';
+    // ignore: deprecated_member_use
+    if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,6 +147,19 @@ class _OrderListPageState extends State<OrderListPage> {
                       builder: (context) => const OrderListPage(),
                     ),
                   );
+                },
+              ),
+            ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.coffee_maker),
+                title: Text(
+                  'コーヒーメーカー の 使 い 方',
+                  style: drawerTextColor,
+                ),
+                onTap: () {
+                  _launchURL();
                 },
               ),
             ),
