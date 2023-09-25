@@ -1,4 +1,5 @@
 import 'package:cafe_connect/constants.dart';
+import 'package:cafe_connect/screens/admin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -160,6 +161,75 @@ class _OrderListPageState extends State<OrderListPage> {
                 ),
                 onTap: () {
                   _launchURL();
+                },
+              ),
+            ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.history_edu_rounded),
+                title: Text(
+                  '管 理 画 面',
+                  style: drawerTextColor,
+                ),
+                onTap: () async {
+                  String password = ''; // パスワード変数の初期値を空文字列に設定
+
+                  // パスワード入力ダイアログを表示
+                  password = await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('パスワードを入力してください'),
+                            content: TextField(
+                              obscureText: true, // パスワードを隠す
+                              onChanged: (value) {
+                                password = value;
+                              },
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop(password);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ) ??
+                      ''; // ダイアログがキャンセルされた場合は空文字列を返す
+
+                  // パスワードが正しいかチェック
+                  if (password == '1010') {
+                    // パスワードが正しければAdminPageに遷移
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AdminPage()),
+                    );
+                  } else {
+                    // パスワードが間違っていればエラーメッセージを表示
+                    // ignore: use_build_context_synchronously
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('エラー'),
+                          content: const Text('パスワードが間違っています'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 },
               ),
             ),
