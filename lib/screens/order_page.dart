@@ -10,13 +10,8 @@ import '../components/custom_elevated_button.dart';
 import 'order_list.dart';
 
 class OrderPage extends StatefulWidget {
-  final String message;
-  final bool isButtonPressed;
-
   const OrderPage({
     Key? key,
-    required this.message,
-    this.isButtonPressed = false,
   }) : super(key: key);
 
   @override
@@ -71,6 +66,9 @@ class _OrderPageState extends State<OrderPage> {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference status =
+        FirebaseFirestore.instance.collection('status');
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
@@ -105,10 +103,7 @@ class _OrderPageState extends State<OrderPage> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const OrderPage(
-                        message: '本日はお休みです',
-                        isButtonPressed: false,
-                      ),
+                      builder: (context) => const OrderPage(),
                     ),
                   );
                 },
@@ -149,7 +144,7 @@ class _OrderPageState extends State<OrderPage> {
               child: ListTile(
                 leading: const Icon(Icons.settings),
                 title: Text(
-                  '管 理 画 面 🔒',
+                  '管 理 画 面',
                   style: drawerTextColor,
                 ),
                 onTap: () async {
@@ -216,9 +211,22 @@ class _OrderPageState extends State<OrderPage> {
           ],
         ),
       ),
-      body: widget.isButtonPressed
-          ? Center(child: Text(widget.message))
-          : _buildBody(),
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: status.doc('shopStatus').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Center(child: Text('エラーが発生しました'));
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          bool isOpen = snapshot.data!.get('isOpen');
+
+          return isOpen ? _buildBody() : const Center(child: Text('本日はお休みです'));
+        },
+      ),
     );
   }
 

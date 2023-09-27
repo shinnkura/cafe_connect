@@ -53,10 +53,7 @@ class SplashScreen extends StatelessWidget {
           ),
         ],
       ),
-      nextScreen: const OrderPage(
-        message: '本日はお休みです',
-        isButtonPressed: false,
-      ),
+      nextScreen: const OrderPage(),
       splashIconSize: 250,
       duration: 1000,
       splashTransition: SplashTransition.fadeTransition,
@@ -99,10 +96,7 @@ class MyApp extends StatelessWidget {
 
   Map<String, WidgetBuilder> _buildRoutes() {
     return {
-      '/order': (context) => const OrderPage(
-            message: '本日はお休みです',
-            isButtonPressed: false,
-          ),
+      '/order': (context) => const OrderPage(),
       '/orderList': (context) => const OrderListPage(),
     };
   }
