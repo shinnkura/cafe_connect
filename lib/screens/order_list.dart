@@ -128,7 +128,10 @@ class _OrderListPageState extends State<OrderListPage> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const OrderPage(),
+                      builder: (context) => const OrderPage(
+                        message: '本日はお休みです',
+                        isButtonPressed: false,
+                      ),
                     ),
                   );
                 },

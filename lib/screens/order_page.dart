@@ -1,14 +1,23 @@
-import 'package:cafe_connect/constants.dart';
 import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:cafe_connect/constants.dart';
+import 'package:cafe_connect/screens/admin_page.dart';
 import '../components/custom_elevated_button.dart';
 import 'order_list.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+  final String message;
+  final bool isButtonPressed;
+
+  const OrderPage({
+    Key? key,
+    required this.message,
+    this.isButtonPressed = false,
+  }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -96,7 +105,10 @@ class _OrderPageState extends State<OrderPage> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const OrderPage(),
+                      builder: (context) => const OrderPage(
+                        message: '本日はお休みです',
+                        isButtonPressed: false,
+                      ),
                     ),
                   );
                 },
@@ -132,10 +144,81 @@ class _OrderPageState extends State<OrderPage> {
                 },
               ),
             ),
+            Padding(
+              padding: tilePadding,
+              child: ListTile(
+                leading: const Icon(Icons.settings),
+                title: Text(
+                  '管 理 画 面 🔒',
+                  style: drawerTextColor,
+                ),
+                onTap: () async {
+                  String password = ''; // パスワード変数の初期値を空文字列に設定
+
+                  // パスワード入力ダイアログを表示
+                  password = await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('パスワードを入力してください'),
+                            content: TextField(
+                              obscureText: true, // パスワードを隠す
+                              onChanged: (value) {
+                                password = value;
+                              },
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop(password);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ) ??
+                      ''; // ダイアログがキャンセルされた場合は空文字列を返す
+
+                  // パスワードが正しいかチェック
+                  if (password == '1010') {
+                    // パスワードが正しければAdminPageに遷移
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AdminPage()),
+                    );
+                  } else {
+                    // パスワードが間違っていればエラーメッセージを表示
+                    // ignore: use_build_context_synchronously
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('エラー'),
+                          content: const Text('パスワードが間違っています'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),
-      body: _buildBody(),
+      body: widget.isButtonPressed
+          ? Center(child: Text(widget.message))
+          : _buildBody(),
     );
   }
 
