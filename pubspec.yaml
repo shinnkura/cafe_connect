@@ -11,7 +11,6 @@ environment:
 dependencies:
   cloud_firestore:
   cupertino_icons: ^1.0.2
-  device_preview: ^1.1.0
   firebase_analytics:
   firebase_core: ^2.13.1
   flutter:
