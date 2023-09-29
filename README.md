@@ -10,11 +10,13 @@
 
 ## Version2.0
 <div style="display: flex;">
-    <img src="images/Simulator Screenshot - iPhone 14 - 2023-06-12 at 03.30.45.png" alt="ホーム画面" style="width: 30%;">
-    <img src="images/Simulator Screenshot - iPhone 14 - 2023-06-12 at 03.30.49.png" alt="ホーム画面" style="width: 30%;">
-    <img src="images/Simulator Screenshot - iPhone 14 - 2023-06-12 at 03.31.13.png" alt="ホーム画面" style="width: 30%;">
-    <img src="images/Simulator Screenshot - iPhone 14 - 2023-06-12 at 03.31.23.png" alt="ホーム画面" style="width: 30%;">
-    <img src="images/Simulator Screenshot - iPhone 14 - 2023-06-12 at 03.31.51.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.47.39.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.47.48.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.48.03.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.48.22.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.48.32.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.53.47.png" alt="ホーム画面" style="width: 30%;">
+    <img src="images/Version2.0/Simulator%20Screenshot%20-%20iPhone%2014%20-%202023-09-28%20at%2014.53.55.png" alt="ホーム画面" style="width: 30%;">
 </div>
 
 
