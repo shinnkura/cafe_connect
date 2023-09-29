@@ -7,7 +7,8 @@ class AdminPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference status = FirebaseFirestore.instance.collection('status');
+    CollectionReference status =
+        FirebaseFirestore.instance.collection('status');
 
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +28,7 @@ class AdminPage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('お休みにする'),
+              child: const Text('15:30'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(

@@ -97,7 +97,9 @@ class _OrderPageState extends State<OrderPage> {
 
           bool isOpen = snapshot.data!.get('isOpen');
 
-          return isOpen ? _buildBody() : const Center(child: Text('本日はお休みです'));
+          return isOpen
+              ? _buildBody()
+              : const Center(child: Text('15:30 からご注文できます'));
         },
       ),
     );
