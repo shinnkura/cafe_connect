@@ -28,7 +28,7 @@ class AdminPage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('15:30'),
+              child: const Text('お休みにする'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
