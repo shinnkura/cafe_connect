@@ -31,17 +31,32 @@ class NotificationPage extends StatelessWidget {
             ),
             children: [
               TextSpan(
-                text: '大学との都合により、コーヒーの配布は ',
+                text: 'お疲れ様です。 ',
               ),
               TextSpan(
-                text: '1日一回、 17時', // 強調したい部分
+                text: '\n\n', // 1つの改行と、もう1つの改行をパディングとして使用
+              ),
+              TextSpan(
+                text: 'いつも、コーヒーアプリをご利用いただきありがとうございます。 ',
+              ),
+              TextSpan(
+                text: '\n\n', // 1つの改行と、もう1つの改行をパディングとして使用
+              ),
+              TextSpan(
+                text: 'この度、大学との都合により、コーヒーの配布は ',
+              ),
+              TextSpan(
+                text: '1日一回、 17時',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold, // 太字にする
-                  color: Colors.red, // 色を赤にする
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
                 ),
               ),
               TextSpan(
-                text: ' に行います。よろしくお願いします。',
+                text: ' に行うことにさせて頂きます。',
+              ),
+              TextSpan(
+                text: ' よろしくお願いします。',
               ),
               TextSpan(
                 text: '\n\n', // 1つの改行と、もう1つの改行をパディングとして使用
