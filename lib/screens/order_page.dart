@@ -158,6 +158,33 @@ class _OrderPageState extends State<OrderPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RichText(
+                  text: const TextSpan(
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black, // デフォルトの色を黒に設定
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '※ 注文時間は',
+                      ),
+                      TextSpan(
+                        text: '17：00 限定', // 赤文字で強調したい部分
+                        style: TextStyle(
+                          color: Colors.red, // 色を赤にする
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'とさせていただきます。',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
               const Text(
                 'Name',
                 style: TextStyle(
