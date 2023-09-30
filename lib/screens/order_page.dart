@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 
 import 'package:cafe_connect/constants.dart';
 import '../components/custom_elevated_button.dart';
+import 'notification_page.dart';
 import 'order_list.dart';
 
 class OrderPage extends StatefulWidget {
@@ -67,7 +68,6 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     CollectionReference status =
         FirebaseFirestore.instance.collection('status');
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
@@ -82,6 +82,48 @@ class _OrderPageState extends State<OrderPage> {
         elevation: 0.0,
         // iconカラーを変更
         iconTheme: const IconThemeData(color: kTextColor),
+        actions: [
+          // この行をAppBar内に移動
+          Stack(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () {
+                  // お知らせページに遷移
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationPage()),
+                  );
+                },
+              ),
+              // 新着メッセージがある場合は赤い丸を表示
+              Positioned(
+                right: 11,
+                top: 11,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  constraints: const BoxConstraints(
+                    minWidth: 14,
+                    minHeight: 14,
+                  ),
+                  child: const Text(
+                    '1',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 8,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       drawer: const CustomDrawer(),
       body: StreamBuilder<DocumentSnapshot>(
