@@ -211,80 +211,40 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Material(
-                              elevation: selectedTime == '15時30分' ? 10.0 : 0.0,
-                              borderRadius: BorderRadius.circular(20),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedTime = '15時30分';
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: selectedTime == '15時30分'
-                                      ? kPrimaryColor
-                                      : Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                    vertical: 15,
-                                  ),
-                                ),
-                                child: Text(
-                                  '15時30分',
-                                  style: TextStyle(
-                                      fontSize: 17.0,
-                                      color: selectedTime == '15時30分'
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Material(
+                          elevation: selectedTime == '17時00分' ? 10.0 : 0.0,
+                          borderRadius: BorderRadius.circular(20),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                selectedTime = '17時00分';
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: selectedTime == '17時00分'
+                                  ? kPrimaryColor
+                                  : Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 30,
+                                vertical: 15,
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Material(
-                              elevation: selectedTime == '17時30分' ? 10.0 : 0.0,
-                              borderRadius: BorderRadius.circular(20),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    selectedTime = '17時30分';
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: selectedTime == '17時30分'
-                                      ? kPrimaryColor
-                                      : Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 30,
-                                    vertical: 15,
-                                  ),
-                                ),
-                                child: Text(
-                                  '17時30分',
-                                  style: TextStyle(
-                                      fontSize: 17.0,
-                                      color: selectedTime == '17時30分'
-                                          ? Colors.white
-                                          : Colors.black),
-                                ),
-                              ),
+                            child: Text(
+                              '17時00分',
+                              style: TextStyle(
+                                  fontSize: 17.0,
+                                  color: selectedTime == '17時00分'
+                                      ? Colors.white
+                                      : Colors.black),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                       const SizedBox(height: 20),
                       const Text(

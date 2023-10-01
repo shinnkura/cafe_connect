@@ -25,7 +25,7 @@ class _OrderPageState extends State<OrderPage> {
   final ScrollController _controller = ScrollController();
 
   String dropdownValue = 'コーヒー';
-  String timeDropdownValue = '15時30分';
+  String timeDropdownValue = '17時00分';
   bool _isIce = false;
   bool small = false;
   bool _isSugar = false;
@@ -172,7 +172,7 @@ class _OrderPageState extends State<OrderPage> {
                         text: '※ 注文時間は',
                       ),
                       TextSpan(
-                        text: '17：00 限定', // 赤文字で強調したい部分
+                        text: '17 : 00 限定', // 赤文字で強調したい部分
                         style: TextStyle(
                           color: Colors.red, // 色を赤にする
                         ),
@@ -243,80 +243,42 @@ class _OrderPageState extends State<OrderPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Material(
-                            elevation:
-                                timeDropdownValue == '15時30分' ? 10.0 : 0.0,
-                            borderRadius: BorderRadius.circular(20),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  timeDropdownValue = '15時30分';
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: timeDropdownValue == '15時30分'
-                                    ? kPrimaryColor
-                                    : Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 30,
-                                  vertical: 15,
-                                ),
-                              ),
-                              child: Text(
-                                '15時30分',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: timeDropdownValue == '15時30分'
-                                        ? Colors.white
-                                        : Colors.black),
-                              ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                      ),
+                      child: Material(
+                        elevation: timeDropdownValue == '17時00分' ? 10.0 : 0.0,
+                        borderRadius: BorderRadius.circular(20),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              timeDropdownValue = '17時00分';
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: timeDropdownValue == '17時00分'
+                                ? kPrimaryColor
+                                : Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 30,
+                              vertical: 15,
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Material(
-                            elevation:
-                                timeDropdownValue == '17時30分' ? 10.0 : 0.0,
-                            borderRadius: BorderRadius.circular(20),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  timeDropdownValue = '17時30分';
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: timeDropdownValue == '17時30分'
-                                    ? kPrimaryColor
-                                    : Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 30,
-                                  vertical: 15,
-                                ),
-                              ),
-                              child: Text('17時30分',
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      color: timeDropdownValue == '17時30分'
-                                          ? Colors.white
-                                          : Colors.black)),
-                            ),
+                          child: Text(
+                            '17時00分',
+                            style: TextStyle(
+                                fontSize: 15.0,
+                                color: timeDropdownValue == '17時00分'
+                                    ? Colors.white
+                                    : Colors.black),
                           ),
                         ),
-                      ],
+                      ),
                     )
                   ],
                 ),
