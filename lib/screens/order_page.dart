@@ -133,7 +133,8 @@ class _OrderPageState extends State<OrderPage> {
             return const Center(child: Text('エラーが発生しました'));
           }
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if (!snapshot.hasData) {
+            // この行を追加
             return const Center(child: CircularProgressIndicator());
           }
 
