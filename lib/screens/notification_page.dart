@@ -1,4 +1,4 @@
-import 'package:cafe_connect/constants.dart';
+import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {

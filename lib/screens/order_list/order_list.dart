@@ -1,11 +1,11 @@
 import 'package:cafe_connect/components/custom_drawer.dart';
-import 'package:cafe_connect/constants.dart';
+import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../components/order_loader.dart';
-import 'edit_order_page.dart';
+import 'components/order_loader.dart';
+import '../edit_order_page/edit_order_page.dart';
 
 class OrderListPage extends StatefulWidget {
   const OrderListPage({Key? key}) : super(key: key);

@@ -5,10 +5,10 @@ import 'package:page_transition/page_transition.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'firebase_options.dart';
-import 'package:cafe_connect/screens/order_page.dart';
-import 'package:cafe_connect/screens/order_list.dart';
-import 'constants.dart';
+import 'config/firebase_options.dart';
+import 'package:cafe_connect/screens/order_page/order_page.dart';
+import 'package:cafe_connect/screens/order_list/order_list.dart';
+import 'config/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
 
-import 'package:cafe_connect/constants.dart';
-import '../components/custom_elevated_button.dart';
-import 'notification_page.dart';
-import 'order_list.dart';
+import 'package:cafe_connect/config/constants.dart';
+import 'components/custom_elevated_button.dart';
+import '../notification_page.dart';
+import '../order_list/order_list.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({

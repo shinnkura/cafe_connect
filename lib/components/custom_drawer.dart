@@ -1,8 +1,8 @@
-import 'package:cafe_connect/constants.dart';
+import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_connect/screens/admin_page.dart';
-import 'package:cafe_connect/screens/order_list.dart';
-import 'package:cafe_connect/screens/order_page.dart';
+import 'package:cafe_connect/screens/order_list/order_list.dart';
+import 'package:cafe_connect/screens/order_page/order_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomDrawer extends StatelessWidget {
