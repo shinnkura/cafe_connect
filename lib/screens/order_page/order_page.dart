@@ -126,26 +126,29 @@ class _OrderPageState extends State<OrderPage> {
         ],
       ),
       drawer: const CustomDrawer(),
-      body: StreamBuilder<DocumentSnapshot>(
-        stream: status.doc('shopStatus').snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Center(child: Text('エラーが発生しました'));
-          }
+      body: Container(
+        color: kBackgroundColor,
+        child: StreamBuilder<DocumentSnapshot>(
+          stream: status.doc('shopStatus').snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(child: Text('エラーが発生しました'));
+            }
 
-          if (!snapshot.hasData) {
-            // この行を追加
-            return const Center(child: CircularProgressIndicator());
-          }
+            if (!snapshot.hasData) {
+              // この行を追加
+              return const Center(child: CircularProgressIndicator());
+            }
 
-          bool isOpen = snapshot.data!.get('isOpen');
+            bool isOpen = snapshot.data!.get('isOpen');
 
-          return isOpen
-              ? _buildBody()
-              : const Center(
-                  child: Text('本日はお休みです'),
-                );
-        },
+            return isOpen
+                ? _buildBody()
+                : const Center(
+                    child: Text('本日はお休みです'),
+                  );
+          },
+        ),
       ),
     );
   }
