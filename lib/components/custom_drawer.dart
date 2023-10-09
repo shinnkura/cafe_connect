@@ -2,8 +2,8 @@ import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_connect/screens/admin_page.dart';
 import 'package:cafe_connect/screens/order_list/order_list.dart';
+import 'package:cafe_connect/screens/coffee_maker_description/coffee_maker_description.dart.dart';
 import 'package:cafe_connect/screens/order_page/order_page.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -61,7 +61,11 @@ class CustomDrawer extends StatelessWidget {
                 style: drawerTextColor,
               ),
               onTap: () {
-                _launchURL();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CoffeeMakerDescription(),
+                  ),
+                );
               },
             ),
           ),
@@ -136,17 +140,5 @@ class CustomDrawer extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  _launchURL() async {
-    const url =
-        'https://iris-paste-aba.notion.site/2359cb056bc2421a9bc9c89a85fcfc64?pvs=4';
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }

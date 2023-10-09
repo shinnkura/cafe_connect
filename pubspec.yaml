@@ -21,6 +21,7 @@ dependencies:
   cached_network_image:
   animated_splash_screen:
   page_transition:
+  youtube_player_flutter:
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
