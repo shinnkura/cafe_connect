@@ -73,7 +73,7 @@ class CustomDrawer extends StatelessWidget {
           Padding(
             padding: tilePadding,
             child: ListTile(
-              leading: const Icon(Icons.coffee_maker),
+              leading: const Icon(Icons.book),
               title: Text(
                 'レ シ ピ 一 覧',
                 style: drawerTextColor,
