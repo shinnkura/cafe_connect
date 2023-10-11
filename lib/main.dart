@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
                 bodyMedium: const TextStyle(
                   color: kTextColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 24,
+                  fontSize: 18,
                 ),
                 titleMedium: const TextStyle(color: kTextColor),
               ),

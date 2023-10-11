@@ -63,7 +63,7 @@ class CoffeeMakerDescription extends StatelessWidget {
                   //     ),
                   //   ),
                   // ),
-                  const SizedBox(height: 16),
+                  // const SizedBox(height: 16),
                   const Text(
                     '■ 抽出方法',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -71,7 +71,7 @@ class CoffeeMakerDescription extends StatelessWidget {
                   // 湯通しの説明
                   buildAside(
                     iconPath: '/icons/bookmark-outline_orange.svg',
-                    title: '湯通し：４ステップ',
+                    title: '湯通し：6ステップ',
                     content: '''※「湯通し」とは？
         最初に使う前に行うプロセスで、中の不純物を取り除くために行われます。
 
