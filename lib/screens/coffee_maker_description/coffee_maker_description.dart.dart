@@ -1,3 +1,4 @@
+import 'package:cafe_connect/components/custom_appbar.dart';
 import 'package:cafe_connect/components/custom_drawer.dart';
 import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
@@ -16,19 +17,7 @@ class CoffeeMakerDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: kBackgroundColor,
-          title: const Text(
-            'コーヒーメーカーの使い方',
-            style: TextStyle(
-              fontSize: 24.0,
-              color: kTextColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          elevation: 0.0,
-          iconTheme: const IconThemeData(color: kTextColor),
-        ),
+        appBar: const CustomAppbar(titleText: 'コーヒーメーカーの使い方'),
         drawer: const CustomDrawer(),
         body: Container(
           color: kBackgroundColor,

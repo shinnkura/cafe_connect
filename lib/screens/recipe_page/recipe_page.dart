@@ -1,6 +1,8 @@
 import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
+
 import 'package:cafe_connect/components/custom_drawer.dart';
+import 'package:cafe_connect/components/custom_appbar.dart';
 
 class RecipePage extends StatelessWidget {
   const RecipePage({super.key});
@@ -8,19 +10,7 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kBackgroundColor,
-        title: const Text(
-          'レシピ一覧',
-          style: TextStyle(
-            fontSize: 24.0,
-            color: kTextColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        elevation: 0.0,
-        iconTheme: const IconThemeData(color: kTextColor),
-      ),
+      appBar: const CustomAppbar(titleText: 'レシピ一覧'),
       drawer: const CustomDrawer(),
       body: Container(
         color: kBackgroundColor,
