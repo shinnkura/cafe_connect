@@ -145,7 +145,16 @@ class _OrderPageState extends State<OrderPage> {
             return isOpen
                 ? _buildBody()
                 : const Center(
-                    child: Text('本日はお休みです'),
+                    child: Text(
+                      '本日はお休みです！ \n※毎週月曜日は、定休日です',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        // 中央揃え
+                        fontSize: 24.0,
+                        color: kTextColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   );
           },
         ),
