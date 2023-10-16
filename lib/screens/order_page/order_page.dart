@@ -80,10 +80,8 @@ class _OrderPageState extends State<OrderPage> {
           ),
         ),
         elevation: 0.0,
-        // iconカラーを変更
         iconTheme: const IconThemeData(color: kTextColor),
         actions: [
-          // この行をAppBar内に移動
           Stack(
             children: [
               IconButton(
@@ -98,7 +96,6 @@ class _OrderPageState extends State<OrderPage> {
                   );
                 },
               ),
-              // 新着メッセージがある場合は赤い丸を表示
               Positioned(
                 right: 11,
                 top: 11,
@@ -137,7 +134,6 @@ class _OrderPageState extends State<OrderPage> {
             }
 
             if (!snapshot.hasData) {
-              // この行を追加
               return const Center(child: CircularProgressIndicator());
             }
 
@@ -150,7 +146,6 @@ class _OrderPageState extends State<OrderPage> {
                       '本日はお休みです！',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        // 中央揃え
                         fontSize: 24.0,
                         color: kTextColor,
                         fontWeight: FontWeight.bold,
@@ -179,7 +174,7 @@ class _OrderPageState extends State<OrderPage> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black, // デフォルトの色を黒に設定
+                      color: Colors.black,
                     ),
                     children: [
                       TextSpan(
@@ -286,10 +281,11 @@ class _OrderPageState extends State<OrderPage> {
                           child: Text(
                             '17時00分',
                             style: TextStyle(
-                                fontSize: 15.0,
-                                color: timeDropdownValue == '17時00分'
-                                    ? Colors.white
-                                    : Colors.black),
+                              fontSize: 15.0,
+                              color: timeDropdownValue == '17時00分'
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
                           ),
                         ),
                       ),
