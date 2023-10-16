@@ -146,7 +146,7 @@ class _OrderPageState extends State<OrderPage> {
                 ? _buildBody()
                 : const Center(
                     child: Text(
-                      '本日はお休みです！ \n※毎週月曜日は、定休日です',
+                      '本日はお休みです！',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         // 中央揃え
@@ -192,6 +192,18 @@ class _OrderPageState extends State<OrderPage> {
                       ),
                       TextSpan(
                         text: 'とさせていただきます。',
+                      ),
+                      TextSpan(
+                        text: '\n※ 本日は',
+                      ),
+                      TextSpan(
+                        text: '大喜多',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 73, 54, 244),
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'が担当します！',
                       ),
                     ],
                   ),
