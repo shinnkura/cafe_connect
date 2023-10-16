@@ -93,7 +93,8 @@ class _OrderPageState extends State<OrderPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const NotificationPage()),
+                      builder: (context) => const NotificationPage(),
+                    ),
                   );
                 },
               ),
@@ -181,18 +182,6 @@ class _OrderPageState extends State<OrderPage> {
                       color: Colors.black, // デフォルトの色を黒に設定
                     ),
                     children: [
-                      TextSpan(
-                        text: '※ 注文時間は',
-                      ),
-                      TextSpan(
-                        text: '17 : 00 限定', // 赤文字で強調したい部分
-                        style: TextStyle(
-                          color: Colors.red, // 色を赤にする
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'とさせていただきます。',
-                      ),
                       TextSpan(
                         text: '\n※ 本日は',
                       ),

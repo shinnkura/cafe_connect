@@ -31,16 +31,10 @@ class NotificationPage extends StatelessWidget {
             ),
             children: [
               TextSpan(
-                text: 'お疲れ様です。 ',
+                text: 'お疲れ様です。\n\n',
               ),
               TextSpan(
-                text: '\n\n', // 1つの改行と、もう1つの改行をパディングとして使用
-              ),
-              TextSpan(
-                text: 'いつも、コーヒーアプリをご利用いただきありがとうございます。 ',
-              ),
-              TextSpan(
-                text: '\n\n', // 1つの改行と、もう1つの改行をパディングとして使用
+                text: 'いつも、コーヒーアプリをご利用いただきありがとうございます。\n\n',
               ),
               TextSpan(
                 text: 'この度、大学との都合により、コーヒーの配布は ',
@@ -56,13 +50,10 @@ class NotificationPage extends StatelessWidget {
                 text: ' に行うことにさせて頂きます。',
               ),
               TextSpan(
-                text: ' よろしくお願いします。',
+                text: ' よろしくお願いします。\n\n',
               ),
               TextSpan(
-                text: '\n\n', // 1つの改行と、もう1つの改行をパディングとして使用
-              ),
-              TextSpan(
-                text: 'また、曜日によってはコーヒーを配布できない日もありますので、あらかじめご了承ください。',
+                text: 'また、都合によりコーヒーを配布できない日もありますので、あらかじめご了承ください。',
               ),
             ],
           ),
