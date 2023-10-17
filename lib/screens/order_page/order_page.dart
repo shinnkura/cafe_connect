@@ -167,33 +167,6 @@ class _OrderPageState extends State<OrderPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RichText(
-                  text: const TextSpan(
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: '\n※ 本日は',
-                      ),
-                      TextSpan(
-                        text: '大喜多',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 73, 54, 244),
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'が担当します！',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
               const Text(
                 'Name',
                 style: TextStyle(
