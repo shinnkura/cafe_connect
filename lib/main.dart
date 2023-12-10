@@ -123,6 +123,7 @@ class MobileLayout extends StatefulWidget {
   const MobileLayout({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MobileLayoutState createState() => _MobileLayoutState();
 }
 
@@ -220,13 +221,13 @@ class _DesktopLayoutState extends State<DesktopLayout> {
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
             labelType: NavigationRailLabelType.all,
-            selectedIconTheme: IconThemeData(
-              color: Colors.amber[800], // 選択されたアイコンの色
-            ),
-            selectedLabelTextStyle: TextStyle(
-              color: Colors.amber[800], // 選択されたラベルの色
-              fontWeight: FontWeight.bold,
-            ),
+            // selectedIconTheme: IconThemeData(
+            //   color: Colors.amber[800], // 選択されたアイコンの色
+            // ),
+            // selectedLabelTextStyle: TextStyle(
+            //   color: Colors.amber[800], // 選択されたラベルの色
+            //   fontWeight: FontWeight.bold,
+            // ),
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.home),
