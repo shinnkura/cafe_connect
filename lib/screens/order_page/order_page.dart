@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 
 import 'package:cafe_connect/config/constants.dart';
 import 'components/custom_elevated_button.dart';
-import '../notification_page.dart';
+// import '../notification_page.dart';
 import '../order_list/order_list.dart';
 
 class OrderPage extends StatefulWidget {
@@ -69,37 +69,37 @@ class _OrderPageState extends State<OrderPage> {
     CollectionReference status =
         FirebaseFirestore.instance.collection('status');
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kBackgroundColor,
-        title: const Text(
-          'ご注文',
-          style: TextStyle(
-            fontSize: 24.0,
-            color: kTextColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        elevation: 0.0,
-        iconTheme: const IconThemeData(color: kTextColor),
-        actions: [
-          Stack(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {
-                  // お知らせページに遷移
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const NotificationPage(),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: kBackgroundColor,
+      //   title: const Text(
+      //     'ご注文',
+      //     style: TextStyle(
+      //       fontSize: 24.0,
+      //       color: kTextColor,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      //   elevation: 0.0,
+      //   iconTheme: const IconThemeData(color: kTextColor),
+      //   actions: [
+      //     Stack(
+      //       children: [
+      //         IconButton(
+      //           icon: const Icon(Icons.notifications),
+      //           onPressed: () {
+      //             // お知らせページに遷移
+      //             Navigator.push(
+      //               context,
+      //               MaterialPageRoute(
+      //                 builder: (context) => const NotificationPage(),
+      //               ),
+      //             );
+      //           },
+      //         ),
+      //       ],
+      //     ),
+      //   ],
+      // ),
       drawer: const CustomDrawer(),
       body: Container(
         color: kBackgroundColor,

@@ -11,9 +11,9 @@ class AdminPage extends StatelessWidget {
         FirebaseFirestore.instance.collection('status');
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Admin Page'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Admin Page'),
+      // ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,4 @@
-import 'package:cafe_connect/components/custom_appbar.dart';
+// import 'package:cafe_connect/components/custom_appbar.dart';
 import 'package:cafe_connect/components/custom_drawer.dart';
 import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +96,7 @@ class _OrderListPageState extends State<OrderListPage> {
       //   // iconカラーを変更
       //   iconTheme: const IconThemeData(color: kTextColor),
       // ),
-      appBar: const CustomAppbar(titleText: 'ご注文'),
+      // appBar: const CustomAppbar(titleText: 'ご注文'),
       drawer: const CustomDrawer(),
       body: Container(
         color: kBackgroundColor,

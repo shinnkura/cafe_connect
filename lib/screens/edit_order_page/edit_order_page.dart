@@ -106,28 +106,28 @@ class _EditOrderPageState extends State<EditOrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(30),
-            child: Container(
-              padding: const EdgeInsets.all(2.0),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back, color: kPrimaryColor),
-                iconSize: 16.0,
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: Padding(
+      //     padding: const EdgeInsets.only(left: 16.0),
+      //     child: InkWell(
+      //       borderRadius: BorderRadius.circular(30),
+      //       child: Container(
+      //         padding: const EdgeInsets.all(2.0),
+      //         decoration: const BoxDecoration(
+      //           color: Colors.white,
+      //           shape: BoxShape.circle,
+      //         ),
+      //         child: IconButton(
+      //           icon: const Icon(Icons.arrow_back, color: kPrimaryColor),
+      //           iconSize: 16.0,
+      //           onPressed: () => Navigator.of(context).pop(),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Image.network(
