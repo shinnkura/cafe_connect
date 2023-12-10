@@ -101,8 +101,7 @@ class _MobileLayoutState extends State<MobileLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
-    AdminPage(), // 例として、管理画面を追加
-    // 他のページをここに追加
+    AdminPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -114,7 +113,7 @@ class _MobileLayoutState extends State<MobileLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('いつも、ありがとうございます！')),
+      appBar: AppBar(title: const Text('Simple Coffee')),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -170,7 +169,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('いつもありがとうございます！')),
+      appBar: AppBar(title: const Text('Simple Coffee')),
       body: Row(
         children: [
           NavigationRail(
@@ -193,7 +192,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               // 他のアイテム...
             ],
           ),
-          const VerticalDivider(thickness: 1, width: 1),
           Expanded(
             child: _widgetOptions.elementAt(_selectedIndex),
           ),

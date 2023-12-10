@@ -34,7 +34,10 @@ class CustomElevatedButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
           child: Text(
             text,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.white, // テキストの色を白に設定
+            ),
           ),
         ),
       ),
