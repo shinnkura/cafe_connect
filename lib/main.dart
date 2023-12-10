@@ -148,7 +148,10 @@ class _MobileLayoutState extends State<MobileLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Simple Coffee')),
+      appBar: AppBar(
+        title: const Text('Simple Coffee'),
+        backgroundColor: Colors.white,
+      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -207,13 +210,23 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Simple Coffee')),
+      appBar: AppBar(
+        title: const Text('Simple Coffee'),
+        backgroundColor: Colors.white,
+      ),
       body: Row(
         children: [
           NavigationRail(
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
             labelType: NavigationRailLabelType.all,
+            selectedIconTheme: IconThemeData(
+              color: Colors.amber[800], // 選択されたアイコンの色
+            ),
+            selectedLabelTextStyle: TextStyle(
+              color: Colors.amber[800], // 選択されたラベルの色
+              fontWeight: FontWeight.bold,
+            ),
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.home),
