@@ -1,9 +1,7 @@
 import 'package:cafe_connect/config/constants.dart';
-import 'package:cafe_connect/screens/recipe_page/recipe_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cafe_connect/screens/admin_page.dart';
 import 'package:cafe_connect/screens/order_list/order_list.dart';
-import 'package:cafe_connect/screens/coffee_maker_description/coffee_maker_description.dart.dart';
 import 'package:cafe_connect/screens/order_page/order_page.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -48,40 +46,6 @@ class CustomDrawer extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const OrderListPage(),
-                  ),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: tilePadding,
-            child: ListTile(
-              leading: const Icon(Icons.coffee_maker),
-              title: Text(
-                'コーヒーメーカー の 使 い 方',
-                style: drawerTextColor,
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const CoffeeMakerDescription(),
-                  ),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: tilePadding,
-            child: ListTile(
-              leading: const Icon(Icons.book),
-              title: Text(
-                'レ シ ピ 一 覧',
-                style: drawerTextColor,
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const RecipePage(),
                   ),
                 );
               },
