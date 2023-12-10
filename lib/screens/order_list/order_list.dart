@@ -1,5 +1,3 @@
-// import 'package:cafe_connect/components/custom_appbar.dart';
-import 'package:cafe_connect/components/custom_drawer.dart';
 import 'package:cafe_connect/config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -82,22 +80,6 @@ class _OrderListPageState extends State<OrderListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: kBackgroundColor,
-      //   title: const Text(
-      //     'ご注文',
-      //     style: TextStyle(
-      //       fontSize: 24.0,
-      //       color: kTextColor,
-      //       fontWeight: FontWeight.bold,
-      //     ),
-      //   ),
-      //   elevation: 0.0,
-      //   // iconカラーを変更
-      //   iconTheme: const IconThemeData(color: kTextColor),
-      // ),
-      // appBar: const CustomAppbar(titleText: 'ご注文'),
-      drawer: const CustomDrawer(),
       body: Container(
         color: kBackgroundColor,
         child: RefreshIndicator(
