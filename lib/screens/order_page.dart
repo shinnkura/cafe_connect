@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:cafe_connect/config/constants.dart';
-import 'components/custom_elevated_button.dart';
-import '../order_list/order_list.dart';
+import '../components/custom_elevated_button.dart';
+import 'order_list.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({

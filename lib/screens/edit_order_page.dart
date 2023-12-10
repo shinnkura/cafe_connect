@@ -1,11 +1,11 @@
-import 'package:cafe_connect/screens/order_list/order_list.dart';
+import 'package:cafe_connect/screens/order_list.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../config/constants.dart';
+import '../config/constants.dart';
 // import 'thanks_page.dart';
-import 'components/coffee_type_dropdown.dart';
+import '../components/coffee_type_dropdown.dart';
 
 class EditOrderPage extends StatefulWidget {
   final String name;

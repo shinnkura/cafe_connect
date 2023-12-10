@@ -6,10 +6,9 @@ import 'package:flutter/material.dart';
 // import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-// import 'components/custom_drawer.dart';
 import 'config/firebase_options.dart';
-import 'package:cafe_connect/screens/order_page/order_page.dart';
-import 'package:cafe_connect/screens/order_list/order_list.dart';
+import 'package:cafe_connect/screens/order_page.dart';
+import 'package:cafe_connect/screens/order_list.dart';
 import 'config/constants.dart';
 import 'screens/admin_page.dart';
 
@@ -138,7 +137,6 @@ class _MobileLayoutState extends State<MobileLayout> {
 
   void _onItemTapped(int index) async {
     if (index == 2) {
-      // Adminページのインデックス
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
     }

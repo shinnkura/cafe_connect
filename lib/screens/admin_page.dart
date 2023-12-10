@@ -1,4 +1,4 @@
-import 'package:cafe_connect/screens/order_page/order_page.dart';
+import 'package:cafe_connect/screens/order_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +11,6 @@ class AdminPage extends StatelessWidget {
         FirebaseFirestore.instance.collection('status');
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Admin Page'),
-      // ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
