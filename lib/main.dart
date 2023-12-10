@@ -87,6 +87,38 @@ class MyApp extends StatelessWidget {
   }
 }
 
+Future<bool> _showPasswordDialog(BuildContext context) async {
+  String password = '';
+  bool isAdmin = false;
+  await showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('パスワードを入力してください'),
+        content: TextField(
+          obscureText: true,
+          onChanged: (value) {
+            password = value;
+          },
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              if (password == '1010') {
+                // 正しいパスワード
+                isAdmin = true;
+              }
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+  return isAdmin;
+}
+
 // モバイルレイアウト用のウィジェット
 class MobileLayout extends StatefulWidget {
   const MobileLayout({Key? key}) : super(key: key);
@@ -104,7 +136,12 @@ class _MobileLayoutState extends State<MobileLayout> {
     AdminPage(),
   ];
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
+    if (index == 2) {
+      // Adminページのインデックス
+      bool isAdmin = await _showPasswordDialog(context);
+      if (!isAdmin) return;
+    }
     setState(() {
       _selectedIndex = index;
     });
@@ -131,7 +168,6 @@ class _MobileLayoutState extends State<MobileLayout> {
             icon: Icon(Icons.settings),
             label: 'Admin',
           ),
-          // 他のアイテム...
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
@@ -156,11 +192,15 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
-    AdminPage(), // 例として、管理画面を追加
-    // 他のページをここに追加
+    AdminPage(),
   ];
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
+    if (index == 2) {
+      // Adminページのインデックス
+      bool isAdmin = await _showPasswordDialog(context);
+      if (!isAdmin) return;
+    }
     setState(() {
       _selectedIndex = index;
     });
@@ -189,7 +229,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 icon: Icon(Icons.settings),
                 label: Text('Admin'),
               ),
-              // 他のアイテム...
             ],
           ),
           Expanded(
