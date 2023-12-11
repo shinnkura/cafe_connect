@@ -109,270 +109,287 @@ class _OrderListPageState extends State<OrderListPage> {
                         .fold(0, (prev, curr) => prev + curr.length);
                     return Theme(
                       data: Theme.of(context).copyWith(
-                        dividerColor: Colors.transparent, // ボーダーを透明に設定
+                        dividerColor: Colors.transparent,
                       ),
-                      child: ExpansionTile(
-                        collapsedIconColor: kTextColor,
-                        iconColor: kTextColor,
-                        title: Text(
-                          '$time     $totalOrdersAtThisTime名',
-                          style: const TextStyle(
-                            color: kTextColor,
-                            fontSize: 24,
-                          ),
-                        ),
-                        children: orders[time]!.entries.map((entry) {
-                          String coffeeType = entry.key;
-                          List<Map<String, dynamic>> ordersList = entry.value;
-                          return Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20.0,
-                                      vertical: 4.0,
-                                    ),
-                                    child: Text(
-                                      '$coffeeType     ${ordersList.length}名',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                        color: kTextColor,
-                                      ),
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                ],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Text(
+                              '本日の注文    $totalOrdersAtThisTime名',
+                              style: const TextStyle(
+                                color: kTextColor,
+                                fontSize: 24,
                               ),
-                              ...ordersList.map((order) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => EditOrderPage(
-                                          name: order['name'],
-                                          initialCoffeeType: coffeeType,
-                                          initialTime: time,
-                                          initialIsIce: order['isIce'],
-                                          initialIsSugar: order['isSugar'],
-                                          initialCaramel: order['caramel'],
-                                          initialIsCondecensedMilk:
-                                              order['isCondecensedMilk'],
-                                          initialSmall: order['small'],
-                                          initialIsPickupOn4thFloor:
-                                              order['isPickupOn4thFloor'],
+                            ),
+                          ),
+                          ...orders[time]!.entries.map((entry) {
+                            String coffeeType = entry.key;
+                            List<Map<String, dynamic>> ordersList = entry.value;
+                            return Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20.0,
+                                        vertical: 4.0,
+                                      ),
+                                      child: Text(
+                                        '$coffeeType     ${ordersList.length}名',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: kTextColor,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                ...ordersList.map((order) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => EditOrderPage(
+                                            name: order['name'],
+                                            initialCoffeeType: coffeeType,
+                                            initialTime: time,
+                                            initialIsIce: order['isIce'],
+                                            initialIsSugar: order['isSugar'],
+                                            initialCaramel: order['caramel'],
+                                            initialIsCondecensedMilk:
+                                                order['isCondecensedMilk'],
+                                            initialSmall: order['small'],
+                                            initialIsPickupOn4thFloor:
+                                                order['isPickupOn4thFloor'],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Card(
+                                      color: const Color(0xFFFFFFFF),
+                                      // color: Colors.orange[100], // カードの背景色を設定
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                      ),
+                                      elevation: 10,
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 8.0,
+                                        horizontal: 16.0,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              width: 80,
+                                              height: 60,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: coffeeImages[
+                                                          coffeeType] ??
+                                                      '',
+                                                  placeholder: (context, url) =>
+                                                      const CircularProgressIndicator(),
+                                                  errorWidget: (context, url,
+                                                          error) =>
+                                                      const Icon(Icons.error),
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 16.0),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      '${order['name']}',
+                                                      style: const TextStyle(
+                                                        fontSize: 15,
+                                                        color: kTextColor,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    Wrap(
+                                                      children: [
+                                                        Text(
+                                                          order['isIce']
+                                                              ? '氷あり'
+                                                              : '',
+                                                          style: TextStyle(
+                                                            fontSize: 12,
+                                                            color: Colors
+                                                                .blue[300],
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          order['small']
+                                                              ? '少なめ'
+                                                              : '',
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 12,
+                                                            color:
+                                                                Colors.orange,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          order['isSugar']
+                                                              ? '砂糖'
+                                                              : '',
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 12,
+                                                            color: Colors.red,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          order['caramel']
+                                                              ? 'キャラメル'
+                                                              : '',
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 12,
+                                                            color:
+                                                                Colors.purple,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          order['isCondecensedMilk']
+                                                              ? '練乳'
+                                                              : '',
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 12,
+                                                            color: Colors.blue,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          order['isPickupOn4thFloor']
+                                                              ? '4階受取'
+                                                              : '',
+                                                          style:
+                                                              const TextStyle(
+                                                            fontSize: 12,
+                                                            color: Colors.green,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Colors.red[400],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0),
+                                                ),
+                                                child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.clear,
+                                                    color: Colors.white,
+                                                  ),
+                                                  onPressed: () async {
+                                                    // 確認ダイアログを表示
+                                                    final bool? result =
+                                                        await showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return AlertDialog(
+                                                          title:
+                                                              const Text("確認"),
+                                                          content: Text(
+                                                              "${order['name']}さんの注文を削除してもよろしいですか？"),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop(
+                                                                          false),
+                                                              child: const Text(
+                                                                  "キャンセル"),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .pop(
+                                                                          true),
+                                                              child: const Text(
+                                                                  "削除"),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+
+                                                    // ユーザーが「削除」を選択した場合
+                                                    if (result == true) {
+                                                      await _deleteOrder(
+                                                          order['name'],
+                                                          coffeeType,
+                                                          time);
+                                                      setState(() {
+                                                        ordersMap[time]![
+                                                                coffeeType]!
+                                                            .remove(order);
+                                                        if (ordersMap[time]![
+                                                                coffeeType]!
+                                                            .isEmpty) {
+                                                          ordersMap[time]!
+                                                              .remove(
+                                                                  coffeeType);
+                                                          if (ordersMap[time]!
+                                                              .isEmpty) {
+                                                            ordersMap
+                                                                .remove(time);
+                                                          }
+                                                        }
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    );
-                                  },
-                                  child: Card(
-                                    color: const Color(0xFFFFFFFF),
-                                    // color: Colors.orange[100], // カードの背景色を設定
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15.0),
                                     ),
-                                    elevation: 10,
-                                    margin: const EdgeInsets.symmetric(
-                                      vertical: 8.0,
-                                      horizontal: 16.0,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: 80,
-                                            height: 60,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    coffeeImages[coffeeType] ??
-                                                        '',
-                                                placeholder: (context, url) =>
-                                                    const CircularProgressIndicator(),
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        const Icon(Icons.error),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 16.0),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    '${order['name']}',
-                                                    style: const TextStyle(
-                                                      fontSize: 15,
-                                                      color: kTextColor,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  Wrap(
-                                                    children: [
-                                                      Text(
-                                                        order['isIce']
-                                                            ? '氷あり'
-                                                            : '',
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color:
-                                                              Colors.blue[300],
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        order['small']
-                                                            ? '少なめ'
-                                                            : '',
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.orange,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        order['isSugar']
-                                                            ? '砂糖'
-                                                            : '',
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.red,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        order['caramel']
-                                                            ? 'キャラメル'
-                                                            : '',
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.purple,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        order['isCondecensedMilk']
-                                                            ? '練乳'
-                                                            : '',
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.blue,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        order['isPickupOn4thFloor']
-                                                            ? '4階受取'
-                                                            : '',
-                                                        style: const TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.green,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.red[400],
-                                                borderRadius:
-                                                    BorderRadius.circular(50.0),
-                                              ),
-                                              child: IconButton(
-                                                icon: const Icon(
-                                                  Icons.clear,
-                                                  color: Colors.white,
-                                                ),
-                                                onPressed: () async {
-                                                  // 確認ダイアログを表示
-                                                  final bool? result =
-                                                      await showDialog(
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return AlertDialog(
-                                                        title: const Text("確認"),
-                                                        content: Text(
-                                                            "${order['name']}さんの注文を削除してもよろしいですか？"),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop(false),
-                                                            child: const Text(
-                                                                "キャンセル"),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop(true),
-                                                            child: const Text(
-                                                                "削除"),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-
-                                                  // ユーザーが「削除」を選択した場合
-                                                  if (result == true) {
-                                                    await _deleteOrder(
-                                                        order['name'],
-                                                        coffeeType,
-                                                        time);
-                                                    setState(() {
-                                                      ordersMap[time]![
-                                                              coffeeType]!
-                                                          .remove(order);
-                                                      if (ordersMap[time]![
-                                                              coffeeType]!
-                                                          .isEmpty) {
-                                                        ordersMap[time]!
-                                                            .remove(coffeeType);
-                                                        if (ordersMap[time]!
-                                                            .isEmpty) {
-                                                          ordersMap
-                                                              .remove(time);
-                                                        }
-                                                      }
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }).toList(),
-                            ],
-                          );
-                        }).toList(),
+                                  );
+                                }).toList(),
+                              ],
+                            );
+                          }).toList(),
+                        ],
                       ),
                     );
                   },
