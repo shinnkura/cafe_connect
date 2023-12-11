@@ -150,7 +150,10 @@ class _MobileLayoutState extends State<MobileLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Simple Coffee'),
+        title: const Text(
+          'Simple Coffee',
+          style: TextStyle(color: Colors.black), // テキストカラーを黒に設定
+        ),
         backgroundColor: Colors.white,
       ),
       body: Center(
