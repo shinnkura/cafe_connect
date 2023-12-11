@@ -6,8 +6,10 @@ Future<void> saveOrder(
   String time,
   String coffeeType,
   String name,
+  bool isIce,
   bool small,
   bool isSugar,
+  bool caramel,
   bool isCondecensedMilk,
   bool isPickupOn4thFloor,
 ) async {
@@ -17,8 +19,10 @@ Future<void> saveOrder(
     'time': time,
     'coffeeType': coffeeType,
     'name': name,
+    'isIce': isIce,
     'small': small,
     'isSugar': isSugar,
+    'caramel': caramel,
     'isCondecensedMilk': isCondecensedMilk,
     'isPickupOn4thFloor': isPickupOn4thFloor,
   };
