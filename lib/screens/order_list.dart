@@ -44,6 +44,8 @@ class _OrderListPageState extends State<OrderListPage> {
         'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80',
     'アイス抹茶ラテ':
         'https://images.unsplash.com/photo-1634473115412-8fa5b647ef59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+    "アイス\n抹茶ソイラテ\n":
+        "https://images.unsplash.com/photo-1575487426366-079595af2247?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   };
 
   @override

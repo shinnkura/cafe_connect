@@ -415,6 +415,7 @@ class _EditOrderPageState extends State<EditOrderPage> {
                           '注文を変更する',
                           style: TextStyle(
                             fontSize: 20,
+                            color: Colors.white,
                           ),
                         ),
                       ),
