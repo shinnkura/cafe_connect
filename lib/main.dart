@@ -2,9 +2,9 @@ import 'package:cafe_connect/components/responsive_layout.dart';
 import 'package:cafe_connect/screens/seat_chart_page.dart';
 import 'package:flutter/material.dart';
 
-// import 'package:lottie/lottie.dart';
-// import 'package:page_transition/page_transition.dart';
-// import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'config/firebase_options.dart';
@@ -54,11 +54,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Coffee Order',
       theme: _buildThemeData(context),
-      home: const ResponsiveLayout(
-        mobileLayout: MobileLayout(),
-        desktopLayout: DesktopLayout(),
+      home: AnimatedSplashScreen(
+        splash: Lottie.network(
+          'https://lottie.host/9c2299d3-dd66-45ec-96aa-51e8525f81e8/HTuOq5CLAo.json',
+          height: 250,
+          width: 250,
+        ),
+        nextScreen: const ResponsiveLayout(
+          mobileLayout: MobileLayout(),
+          desktopLayout: DesktopLayout(),
+        ),
+        splashIconSize: 250,
+        duration: 1000,
+        splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.leftToRightWithFade,
+        backgroundColor: kBackgroundColor,
       ),
-      routes: _buildRoutes(),
     );
   }
 
