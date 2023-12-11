@@ -182,6 +182,7 @@ class _MobileLayoutState extends State<MobileLayout> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
     );
@@ -222,7 +223,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Simple Coffee'),
+        title: const Text(
+          'Simple Coffee',
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.white,
       ),
       body: Row(
@@ -231,6 +235,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
             labelType: NavigationRailLabelType.all,
+            selectedIconTheme:
+                IconThemeData(color: Colors.amber[800]), // 選択されたアイコンの色を設定
+            selectedLabelTextStyle:
+                TextStyle(color: Colors.amber[800]), // 選択されたラベルのテキストスタイルを設定
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.home),
