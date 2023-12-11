@@ -63,6 +63,7 @@ class _SeatChartPageState extends State<SeatChartPage> {
         backgroundColor: Colors.orange,
         child: const Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 
@@ -247,7 +248,7 @@ class _SeatChartPageState extends State<SeatChartPage> {
                 Text(
                   char,
                   style: TextStyle(
-                    fontSize: seatName.length > 2 ? 10 : 16,
+                    fontSize: seatName.length > 2 ? 14 : 16,
                   ),
                 ),
             if (hasText && !isSmallScreen)
