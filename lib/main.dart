@@ -1,4 +1,5 @@
 import 'package:cafe_connect/components/responsive_layout.dart';
+import 'package:cafe_connect/screens/seat_chart_page.dart';
 import 'package:flutter/material.dart';
 
 // import 'package:lottie/lottie.dart';
@@ -133,11 +134,12 @@ class _MobileLayoutState extends State<MobileLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
+    SeatChartPage(),
     AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 2) {
+    if (index == 3) {
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
     }
@@ -152,7 +154,7 @@ class _MobileLayoutState extends State<MobileLayout> {
       appBar: AppBar(
         title: const Text(
           'Simple Coffee',
-          style: TextStyle(color: Colors.black), // テキストカラーを黒に設定
+          style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
       ),
@@ -168,6 +170,10 @@ class _MobileLayoutState extends State<MobileLayout> {
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Orders',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chair),
+            label: 'Seat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -197,11 +203,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
+    SeatChartPage(),
     AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 2) {
+    if (index == 3) {
       // Adminページのインデックス
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
@@ -224,13 +231,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
             labelType: NavigationRailLabelType.all,
-            // selectedIconTheme: IconThemeData(
-            //   color: Colors.amber[800], // 選択されたアイコンの色
-            // ),
-            // selectedLabelTextStyle: TextStyle(
-            //   color: Colors.amber[800], // 選択されたラベルの色
-            //   fontWeight: FontWeight.bold,
-            // ),
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.home),
@@ -239,6 +239,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               NavigationRailDestination(
                 icon: Icon(Icons.list),
                 label: Text('Orders'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.chair),
+                label: Text('Seat'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.settings),
