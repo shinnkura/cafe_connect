@@ -138,7 +138,7 @@ class _MobileLayoutState extends State<MobileLayout> {
             label: 'Orders',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.inventory_rounded),
+            icon: Icon(Icons.chat_bubble),
             label: 'Board',
           ),
           BottomNavigationBarItem(
@@ -215,7 +215,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 label: Text('Orders'),
               ),
               NavigationRailDestination(
-                icon: Icon(Icons.inventory_rounded),
+                icon: Icon(Icons.chat_bubble),
                 label: Text('Board'),
               ),
               NavigationRailDestination(
