@@ -1,5 +1,4 @@
 import 'package:cafe_connect/components/responsive_layout.dart';
-// import 'package:cafe_connect/screens/seat_chart_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -73,7 +72,6 @@ Future<bool> _showPasswordDialog(BuildContext context) async {
             child: const Text('OK'),
             onPressed: () {
               if (password == '1010') {
-                // 正しいパスワード
                 isAdmin = true;
               }
               Navigator.of(context).pop();
@@ -101,7 +99,6 @@ class _MobileLayoutState extends State<MobileLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
-    // SeatChartPage(),
     AdminPage(),
   ];
 
@@ -138,10 +135,6 @@ class _MobileLayoutState extends State<MobileLayout> {
             icon: Icon(Icons.list),
             label: 'Orders',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.chair),
-          //   label: 'Seat',
-          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Admin',
@@ -171,7 +164,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
-    // SeatChartPage(),
     AdminPage(),
   ];
 
@@ -215,10 +207,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 icon: Icon(Icons.list),
                 label: Text('Orders'),
               ),
-              // NavigationRailDestination(
-              //   icon: Icon(Icons.chair),
-              //   label: Text('Seat'),
-              // ),
               NavigationRailDestination(
                 icon: Icon(Icons.settings),
                 label: Text('Admin'),
