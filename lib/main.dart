@@ -8,6 +8,7 @@ import 'package:cafe_connect/screens/order_page.dart';
 import 'package:cafe_connect/screens/order_list.dart';
 import 'config/constants.dart';
 import 'screens/admin_page.dart';
+import 'screens/bullentin_board.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -99,11 +100,12 @@ class _MobileLayoutState extends State<MobileLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
+    BulletinBoard(),
     AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 2) {
+    if (index == 3) {
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
     }
@@ -136,6 +138,10 @@ class _MobileLayoutState extends State<MobileLayout> {
             label: 'Orders',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.inventory_rounded),
+            label: 'Board',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Admin',
           ),
@@ -164,6 +170,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
+    BulletinBoard(),
     AdminPage(),
   ];
 
@@ -206,6 +213,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               NavigationRailDestination(
                 icon: Icon(Icons.list),
                 label: Text('Orders'),
+              ),
+              NavigationRailDestination(
+                icon: Icon(Icons.inventory_rounded),
+                label: Text('Board'),
               ),
               NavigationRailDestination(
                 icon: Icon(Icons.settings),

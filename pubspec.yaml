@@ -23,6 +23,7 @@ dependencies:
   page_transition:
   youtube_player_flutter:
   collection:
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
