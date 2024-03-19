@@ -138,7 +138,7 @@ class _MobileLayoutState extends State<MobileLayout> {
             label: 'Orders',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble),
+            icon: Icon(Icons.chat_rounded),
             label: 'Board',
           ),
           BottomNavigationBarItem(
@@ -175,7 +175,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 2) {
+    if (index == 3) {
       // Adminページのインデックス
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
@@ -215,7 +215,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 label: Text('Orders'),
               ),
               NavigationRailDestination(
-                icon: Icon(Icons.chat_bubble),
+                icon: Icon(Icons.chat_rounded),
                 label: Text('Board'),
               ),
               NavigationRailDestination(
