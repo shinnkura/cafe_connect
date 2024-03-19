@@ -1,5 +1,5 @@
 import 'package:cafe_connect/components/responsive_layout.dart';
-import 'package:cafe_connect/screens/seat_chart_page.dart';
+// import 'package:cafe_connect/screens/seat_chart_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -101,12 +101,12 @@ class _MobileLayoutState extends State<MobileLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
-    SeatChartPage(),
+    // SeatChartPage(),
     AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 3) {
+    if (index == 2) {
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
     }
@@ -138,10 +138,10 @@ class _MobileLayoutState extends State<MobileLayout> {
             icon: Icon(Icons.list),
             label: 'Orders',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chair),
-            label: 'Seat',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.chair),
+          //   label: 'Seat',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Admin',
@@ -171,12 +171,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   static const List<Widget> _widgetOptions = <Widget>[
     OrderPage(),
     OrderListPage(),
-    SeatChartPage(),
+    // SeatChartPage(),
     AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 3) {
+    if (index == 2) {
       // Adminページのインデックス
       bool isAdmin = await _showPasswordDialog(context);
       if (!isAdmin) return;
@@ -215,10 +215,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 icon: Icon(Icons.list),
                 label: Text('Orders'),
               ),
-              NavigationRailDestination(
-                icon: Icon(Icons.chair),
-                label: Text('Seat'),
-              ),
+              // NavigationRailDestination(
+              //   icon: Icon(Icons.chair),
+              //   label: Text('Seat'),
+              // ),
               NavigationRailDestination(
                 icon: Icon(Icons.settings),
                 label: Text('Admin'),
