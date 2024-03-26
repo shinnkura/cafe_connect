@@ -201,10 +201,8 @@ class _DesktopLayoutState extends State<DesktopLayout> {
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,
             labelType: NavigationRailLabelType.all,
-            selectedIconTheme:
-                IconThemeData(color: Colors.amber[800]), // 選択されたアイコンの色を設定
-            selectedLabelTextStyle:
-                TextStyle(color: Colors.amber[800]), // 選択されたラベルのテキストスタイルを設定
+            selectedIconTheme: IconThemeData(color: Colors.amber[800]),
+            selectedLabelTextStyle: TextStyle(color: Colors.amber[800]),
             destinations: const [
               NavigationRailDestination(
                 icon: Icon(Icons.home),
