@@ -72,7 +72,7 @@ class _BulletinBoardState extends State<BulletinBoard> {
                   decoration: const InputDecoration(labelText: '本文'),
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  minLines: 3,
+                  // minLines: 3,
                 ),
               ],
             ),
