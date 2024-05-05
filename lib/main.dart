@@ -101,17 +101,21 @@ class _MobileLayoutState extends State<MobileLayout> {
     OrderPage(),
     OrderListPage(),
     BulletinBoard(),
-    AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 3) {
-      bool isAdmin = await _showPasswordDialog(context);
-      if (!isAdmin) return;
-    }
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  // 管理者ページへのアクセスを試みる
+  Future<void> _tryAccessAdmin() async {
+    bool isAdmin = await _showPasswordDialog(context);
+    if (isAdmin) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (_) => const AdminPage()));
+    }
   }
 
   @override
@@ -123,6 +127,12 @@ class _MobileLayoutState extends State<MobileLayout> {
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.admin_panel_settings),
+            onPressed: _tryAccessAdmin,
+          )
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -140,10 +150,6 @@ class _MobileLayoutState extends State<MobileLayout> {
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment),
             label: 'Board',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Admin',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -171,18 +177,23 @@ class _DesktopLayoutState extends State<DesktopLayout> {
     OrderPage(),
     OrderListPage(),
     BulletinBoard(),
-    AdminPage(),
+    // AdminPage(),
   ];
 
   void _onItemTapped(int index) async {
-    if (index == 3) {
-      // Adminページのインデックス
-      bool isAdmin = await _showPasswordDialog(context);
-      if (!isAdmin) return;
-    }
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  // 管理者ページへのアクセスを試みる
+  Future<void> _tryAccessAdmin() async {
+    bool isAdmin = await _showPasswordDialog(context);
+    if (isAdmin) {
+      // ignore: use_build_context_synchronously
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (_) => const AdminPage()));
+    }
   }
 
   @override
@@ -194,6 +205,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.admin_panel_settings),
+            onPressed: _tryAccessAdmin,
+          )
+        ],
       ),
       body: Row(
         children: [
@@ -215,10 +232,6 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               NavigationRailDestination(
                 icon: Icon(Icons.assignment),
                 label: Text('Board'),
-              ),
-              NavigationRailDestination(
-                icon: Icon(Icons.settings),
-                label: Text('Admin'),
               ),
             ],
           ),
